@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.dao.GoodsDao">
+    <resultMap type="goods" id="goodsMapper">
+        <id property="goods_id" column="goods_id"></id>
+        <result property="platform_id" column="platform_id"/>
+        <result property="seller_id" column="seller_id"/>
+        <result property="goods_title" column="goods_title"/>
+        <result property="goods_stitle" column="goods_stitle"/>
+        <result property="goods_pic" column="goods_pic"/>
+        <result property="goods_url" column="goods_url"/>
+        <result property="goods_intro" column="goods_intro"/>
+        <result property="goods_price" column="goods_price"/>
+        <result property="goods_sale" column="goods_sale"/>
+        <result property="goods_cid" column="goods_cid"/>
+        <result property="commission_rate" column="commission_rate"/>
+        <result property="commission_type" column="commission_type"/>
+        <result property="coupon_id" column="coupon_id"/>
+        <result property="coupon_url" column="coupon_url"/>
+        <result property="coupon_price" column="coupon_price"/>
+        <result property="after_coupon" column="after_coupon"/>
+        <result property="coupon_condition" column="coupon_condition"/>
+        <result property="coupon_total" column="coupon_total"/>
+        <result property="coupon_rest" column="coupon_rest"/>
+        <result property="coupon_use" column="coupon_use"/>
+        <result property="coupon_start" column="coupon_start"/>
+        <result property="coupon_end" column="coupon_end"/>
+        <result property="is_tmall" column="is_tmall"/>
+        <result property="is_ju" column="is_ju"/>
+        <result property="is_qiang" column="is_qiang"/>
+        <result property="is_yun" column="is_yun"/>
+        <result property="is_gold" column="is_gold"/>
+        <result property="is_ji" column="is_ji"/>
+        <result property="is_hai" column="is_hai"/>
+        <result property="dsr" column="dsr"/>
+    </resultMap>
+
+    <!--商品总条数-->
+    <select id="getGoodsNum" resultType="java.lang.Integer">
+        select count(*) from goods where 1=1
+    </select>
+
+    <!--全网商品，获取数据-->
+    <select id="getGoods" resultType="goods" resultMap="goodsMapper">
+        select * from goods where 1=1
+        <if test="word != null and word != ''">
+            and goods_title like concat(concat("%",#{word}),"%")
+        </if>
+        <if test="goods_cid != null and goods_cid != 0">
+            and goods_cid =#{goods_cid}
+        </if>
+        <if test="is_qiang != null">
+            and is_qiang =#{is_qiang}
+        </if>
+        <if test="is_ju != null">
+            and is_ju =#{is_ju}
+        </if>
+        <if test="is_tmall != null">
+            and is_tmall =#{is_tmall}
+        </if>
+        <if test="is_gold != null">
+            and is_gold =#{is_gold}
+        </if>
+        <if test="is_ji != null">
+            and is_ji =#{is_ji}
+        </if>
+        <if test="is_hai != null">
+            and is_hai =#{is_hai}
+        </if>
+        <if test="is_yun != null">
+            and is_yun =#{is_yun}
+        </if>
+        <if test="sale_num != null">
+            and goods_sale &gt;=#{sale_num}
+        </if>
+        <if test="start_price != null">
+            and after_coupon &gt;=#{start_price}
+        </if>
+        <if test="end_price != null">
+            and after_coupon &lt;=#{end_price}
+        </if>
+        <if test="sort != null and sort != 'all' and sort_word != null">
+            order by ${sort}
+        </if>
+        <if test="start_column != null and end_column != null">
+            limit #{start_column},#{end_column}
+        </if>
+    </select>
+
+    <!--获取商品详情-->
+    <select id="getGoodsDetail" resultType="goods">
+        select * from goods where goods_id = #{goods_id}
+    </select>
+
+    <!--获取当前分类商品的总数-->
+    <select id="getGoodsCountByCid" resultType="Integer">
+        select count(*) from goods where goods_cid = #{cid}
+    </select>
+
+    <!--获取推荐列表-->
+    <select id="getRecommendList" resultType="goods" resultMap="goodsMapper">
+        select * from goods where 1=1
+        <if test="goods_id != null and goods_id != ''" >
+            and goods_id != #{goods_id}
+        </if>
+        <if test="cid != null" >
+            and goods_cid = #{cid}
+        </if>
+        <if test="start != null and num !=null" >
+            limit #{start},#{num}
+        </if>
+    </select>
+
+</mapper>

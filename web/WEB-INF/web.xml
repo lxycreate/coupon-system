@@ -3,21 +3,76 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--设置首页-->
+    <welcome-file-list>
+        <welcome-file>start.html</welcome-file>
+    </welcome-file-list>
+    <!--设置首页-->
+
+    <!--配置文件加载监听器-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!--配置文件加载监听器-->
+
+    <!--字符编码过滤器-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <!--强制转码，不建议开启-->
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <!--强制转码-->
+    </filter>
+
+    <!--全局跨域-->
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>com.system.controller.CorsFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--全局跨域-->
+
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <!--这里不能留空或者直接写 ' / ' ，否则不起作用-->
+        <!--会匹配所有url-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--字符编码过滤器-->
+
+    <!-- 配置前端控制器 DispatcherServlet -->
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>DispatchServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springMvc.xml</param-value>
+        </init-param>
+        <!-- tomcat启动时，创建servlet -->
         <load-on-startup>1</load-on-startup>
+        <!-- tomcat启动时，创建servlet -->
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.form</url-pattern>
+        <servlet-name>DispatchServlet</servlet-name>
+        <!--监听所有请求-->
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!---->
+    <!-- 配置前端控制器 DispatcherServlet -->
 </web-app>
