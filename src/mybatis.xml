@@ -13,7 +13,7 @@
     <!-- 设置类型别名 -->
     <typeAliases>
         <!--<typeAlias type="com.system.entity.AjaxParameter" alias="pars" />-->
-        <!--<typeAlias type="com.system.entity.SqlGoods" alias="goods" />-->
+        <typeAlias type="com.system.entity.SqlGoods" alias="goods" />
     </typeAliases>
 
 
