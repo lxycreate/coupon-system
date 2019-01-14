@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 
-gulp.task('webserver-static', function () {
+gulp.task('webserver-static', gulp.series(function () {
     // 开发预览
     browserSync.init({
         port: 6088,
@@ -14,9 +14,6 @@ gulp.task('webserver-static', function () {
     // 监听文件变化自动刷新浏览器
     gulp.watch('images/*.*').on("change", browserSync.reload);;
     gulp.watch('static/*.*').on("change", browserSync.reload);;
-});
+}));
 
-// gulp.task('default', function () {
-//     gulp.run('webserver-static');
-// });
-gulp.task('default', ['webserver-static']);
+gulp.task('default', gulp.series('webserver-static'));
