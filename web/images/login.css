@@ -1,5 +1,9 @@
 @charset 'utf-8';
 
+[v-cloak] {
+    display: none !important;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -39,7 +43,7 @@ li {
 .main_body .logo_box {
     display: block;
     width: 300px;
-    margin: 40px auto auto auto;
+    margin: 60px auto auto auto;
     font-size: 0;
 }
 
@@ -62,7 +66,7 @@ li {
 
 .main_body .logo_box>.title {
     font-size: 35px;
-    color: #444e6a;
+    color: #525b77;
 }
 
 .main_body .login_box {
@@ -70,8 +74,8 @@ li {
     padding: 30px 30px;
     margin: 30px auto auto auto;
     border-radius: 8px;
-    /* background-color: #444e6a; */
-    border: 1px solid #444e6a;
+    background-color: #ffffff;
+    border: 1px solid #525b77;
 }
 
 .main_body .login_box>.title {
@@ -108,7 +112,7 @@ li {
     vertical-align: top;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    background-color: #444e6a;
+    background-color: #525b77;
 }
 
 .main_body .login_box .input_box>span>input {
@@ -119,13 +123,64 @@ li {
     font-size: 15px;
     text-indent: 60px;
     border-radius: 5px;
-    border: 1px solid #444e6a;
+    transition: all ease 0.5s;
+    border: 1px solid #525b77;
+}
+
+.main_body .login_box .input_box>span>input:focus {
+    box-shadow: 0 0 8px #323f63;
 }
 
 .main_body .login_box .input_box .password_box>i::before {
     padding-left: 8px;
 }
 
+/* 提示   start */
+.main_body .login_box .input_box .tip_box {
+    display: block;
+    margin-top: 10px;
+    font-size: 0;
+    color: #f6384a;
+}
+
+.main_body .login_box .input_box .tip_box>i {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.main_body .login_box .input_box .tip_box>span {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.error_tip-enter-active {
+    animation: error-in .3s;
+}
+
+.error_tip-leave-active {
+    animation: error-in .3s reverse;
+}
+
+@keyframes error-in {
+    0% {
+        opacity: 0;
+        margin-top: 0;
+    }
+
+    /* 50% {
+        transform: scale(1.5);
+    } */
+
+    100% {
+        opacity: 1;
+        margin-top: 10px;
+    }
+}
+
+/* 提示   end */
 .main_body .login_box .input_box .login_btn {
     height: 40px;
     margin-left: auto;
@@ -134,11 +189,12 @@ li {
     line-height: 40px;
     color: #ffffff;
     border-radius: 5px;
-    border: 1px solid #444e6a;
-    background-color: #444e6a;
+    border: 1px solid #525b77;
+    background-color: #525b77;
 }
 
 .main_body .login_box .input_box .login_btn:hover {
     cursor: pointer;
-    background-color: #323f63;
+    border-color: #405285;
+    background-color: #405285;
 }

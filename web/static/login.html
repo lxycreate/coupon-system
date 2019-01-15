@@ -19,39 +19,64 @@
 
     <!-- 内核设置 -->
     <meta name="renderer" content="webkit">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../images/favicon.png" type="image/x-icon" />
     <!-- 指定渲染引擎 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="../images/animate.css">
     <link rel="stylesheet" href="../images/login.css">
     <link rel="stylesheet" href="../images/iconfont/iconfont.css">
-
+    <script src="../images/velocity.min.js"></script>
+    <script src="../images/vue.js"></script>
 </head>
 
 <body>
     <div class="main_bg">
         <!-- <img src="../images/mainbg.png"> -->
     </div>
+    <!-- 内容主体   start -->
     <div class="main_body">
+        <!-- logo   start -->
         <span class="logo_box">
             <span class="img_box">
                 <img src="../images/logo.png">
             </span>
             <span class="title">淘助理</span>
         </span>
-        <div class="login_box">
+        <!-- logo   end -->
+        <!-- 登录   start -->
+        <div class="login_box js_login_box" v-cloak>
             <form class="input_box">
+                <!-- 用户名   start -->
                 <span class="user_box">
                     <i class="iconfont icon-user"></i>
                     <input type="text" placeholder="用户名">
+                    <transition name="error_tip" >
+                        <span class="tip_box" v-show="user_tip.is_show">
+                            <i class="iconfont icon-notification"></i>
+                            <span class="txt">{{user_tip.txt}}</span>
+                        </span>
+                    </transition>
                 </span>
+                <!-- 用户名   end -->
+                <!-- 密码   start -->
                 <span class="password_box">
                     <i class="iconfont icon-lock"></i>
                     <input type="password" placeholder="密码">
+                    <transition name="error_tip" enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
+                        <span class="tip_box" v-show="psd_tip.is_show">
+                            <i class="iconfont icon-notification"></i>
+                            <span class="txt">{{psd_tip.txt}}</span>
+                        </span>
+                    </transition>
                 </span>
-                <span class="login_btn">登录</span>
+                <!-- 密码   end -->
+                <span class="login_btn" @click="test">登录</span>
             </form>
         </div>
+        <!-- 登录   end -->
     </div>
+    <!-- 内容主体   end -->
+    <script src="../images/login.js"></script>
 </body>
 
 </html>
