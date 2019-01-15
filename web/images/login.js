@@ -20,7 +20,8 @@ function initLoginBox() {
             psd_tip: {
                 txt: '密码不能为空',
                 is_show: false
-            }
+            },
+            is_psd_error: false //用户名或密码错误
         },
         methods: {
             test: function () {
