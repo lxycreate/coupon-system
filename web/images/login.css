@@ -15,10 +15,6 @@ li {
     list-style: none;
 }
 
-body {
-    /* background-color: #30394b; */
-}
-
 .main_bg {
     position: absolute;
     top: 0;
@@ -176,30 +172,6 @@ body {
     margin-left: 5px;
     font-size: 15px;
     vertical-align: middle;
-}
-
-.error_tip-enter-active {
-    animation: error-in .3s;
-}
-
-.error_tip-leave-active {
-    animation: error-in .3s reverse;
-}
-
-@keyframes error-in {
-    0% {
-        opacity: 0;
-        margin-top: 0;
-    }
-
-    /* 50% {
-        transform: scale(1.5);
-    } */
-
-    100% {
-        opacity: 1;
-        margin-top: 10px;
-    }
 }
 
 /* 提示   end */
