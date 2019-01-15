@@ -143,9 +143,15 @@ li {
 /* 提示   start */
 .main_body .login_box .input_box .tip_box {
     display: block;
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 0;
+    opacity: 0;
+    overflow: hidden;
     color: #f6384a;
+}
+
+.height_zero {
+    height: 0 !important;
 }
 
 .main_body .login_box .input_box .tip_box>i {

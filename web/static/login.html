@@ -53,28 +53,24 @@
                     <!-- 用户名   start -->
                     <span class="user_box">
                         <i class="iconfont icon-user"></i>
-                        <input type="text" placeholder="用户名">
-                        <transition name="error_tip">
-                            <span class="tip_box" v-show="user_tip.is_show">
-                                <i class="iconfont icon-notification"></i>
-                                <span class="txt">{{user_tip.txt}}</span>
-                            </span>
-                        </transition>
+                        <input type="text" placeholder="用户名" v-model="username" @focus="hideErrorTip('user')">
+                        <span class="tip_box" ref="js_user_tip" v-bind:class="{height_zero:user_tip.is_height_zero}">
+                            <i class="iconfont icon-notification"></i>
+                            <span class="txt">{{user_tip.txt}}</span>
+                        </span>
                     </span>
                     <!-- 用户名   end -->
                     <!-- 密码   start -->
                     <span class="password_box">
                         <i class="iconfont icon-lock"></i>
-                        <input type="password" placeholder="密码">
-                        <transition name="error_tip">
-                            <span class="tip_box" v-show="psd_tip.is_show">
-                                <i class="iconfont icon-notification"></i>
-                                <span class="txt">{{psd_tip.txt}}</span>
-                            </span>
-                        </transition>
+                        <input type="password" placeholder="密码" v-model="password" @focus="hideErrorTip('psd')">
+                        <span class="tip_box" ref="js_psd_tip" v-bind:class="{height_zero:psd_tip.is_height_zero}">
+                            <i class="iconfont icon-notification"></i>
+                            <span class="txt">{{psd_tip.txt}}</span>
+                        </span>
                     </span>
                     <!-- 密码   end -->
-                    <span class="login_btn" @click="test">登录</span>
+                    <span class="login_btn" @click="checkInputIsEmpty">登录</span>
                 </form>
             </div>
             <!-- 登录   end -->
