@@ -151,7 +151,7 @@ li {
 }
 
 .height_zero {
-    height: 0 !important;
+    /* height: 0 !important; */
 }
 
 .main_body .login_box .input_box .tip_box>i {

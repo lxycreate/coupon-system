@@ -60,6 +60,7 @@ function initLoginBox() {
                 Velocity(el, 'stop');
                 Velocity(el, {
                     'margin-top': '10px',
+                    height: '20px',
                     opacity: '1'
                 }, {
                     duration: "fast",
@@ -70,6 +71,7 @@ function initLoginBox() {
                 Velocity(el, 'stop');
                 Velocity(el, {
                     'margin-top': '0px',
+                    height: '0px',
                     opacity: '0'
                 }, {
                     duration: "fast",
