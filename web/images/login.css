@@ -15,6 +15,10 @@ li {
     list-style: none;
 }
 
+body {
+    /* background-color: #30394b; */
+}
+
 .main_bg {
     position: absolute;
     top: 0;
@@ -22,7 +26,7 @@ li {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* background: url('../images/mainbg.png');
+    /* background: url('../images/mainbg.jpg');
     background-size: cover; */
     /* background-color: #efefef; */
 
@@ -40,42 +44,59 @@ li {
     max-width: 1280px;
 }
 
-.main_body .logo_box {
-    display: block;
-    width: 300px;
-    margin: 60px auto auto auto;
-    font-size: 0;
+.main_body>.cover {
+    width: 420px;
+    margin: auto;
+    margin-top: 60px;
+    border-radius: 10px;
+    background-color: #323f63;
+    box-shadow: 0 0 10px #323f63;
 }
 
-.main_body .logo_box>span {
-    display: inline-block;
-    width: 50%;
-    line-height: 1;
-    vertical-align: middle;
+.main_body .logo_box {
+    display: block;
+    margin-top: 0;
+    padding: 30px 0;
+    font-size: 0;
+    background-color: #323f63;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .main_body .logo_box>.img_box {
-    width: 90px;
-    margin-left: 40px;
+    display: block;
+    width: 100%;
+    font-size: 0;
     text-align: center;
 }
 
 .main_body .logo_box img {
+    display: inline-block;
     width: 80px;
+    vertical-align: middle;
 }
 
-.main_body .logo_box>.title {
+.main_body .logo_box .title {
+    display: inline-block;
+    width: 110px;
+    margin-left: 5px;
     font-size: 35px;
-    color: #525b77;
+    color: #ffffff;
+    vertical-align: middle;
 }
 
 .main_body .login_box {
     width: 300px;
-    padding: 30px 30px;
+    padding: 30px 60px;
     margin: 30px auto auto auto;
-    border-radius: 8px;
+    margin-top: 0px;
+    border-radius: 10px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
     background-color: #ffffff;
-    border: 1px solid #525b77;
+    /* border: 1px solid #4979af; */
+    /* border: 1px solid #596195; */
+    /* box-shadow: 0 0 8px #323f63; */
 }
 
 .main_body .login_box>.title {
@@ -112,7 +133,7 @@ li {
     vertical-align: top;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    background-color: #525b77;
+    background-color: #6a779c;
 }
 
 .main_body .login_box .input_box>span>input {
@@ -124,7 +145,8 @@ li {
     text-indent: 60px;
     border-radius: 5px;
     transition: all ease 0.5s;
-    border: 1px solid #525b77;
+    border: 1px solid #6a779c;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .main_body .login_box .input_box>span>input:focus {
@@ -182,6 +204,7 @@ li {
 
 /* 提示   end */
 .main_body .login_box .input_box .login_btn {
+    width: 100%;
     height: 40px;
     margin-left: auto;
     font-size: 18px;
@@ -189,8 +212,8 @@ li {
     line-height: 40px;
     color: #ffffff;
     border-radius: 5px;
-    border: 1px solid #525b77;
-    background-color: #525b77;
+    border: 1px solid #4962a0;
+    background-color: #4962a0;
 }
 
 .main_body .login_box .input_box .login_btn:hover {

@@ -35,45 +35,49 @@
     </div>
     <!-- 内容主体   start -->
     <div class="main_body">
-        <!-- logo   start -->
-        <span class="logo_box">
-            <span class="img_box">
-                <img src="../images/logo.png">
+        <div class="cover">
+            <!-- logo   start -->
+            <span class="logo_box">
+                <span class="img_box">
+                    <img src="../images/logo.png">
+                    <!-- <span class="title">淘助理</span> -->
+                    <img class="title" src="../images/title.png">
+                </span>
+                <!-- <span class="title">淘助理</span> -->
             </span>
-            <span class="title">淘助理</span>
-        </span>
-        <!-- logo   end -->
-        <!-- 登录   start -->
-        <div class="login_box js_login_box" v-cloak>
-            <form class="input_box">
-                <!-- 用户名   start -->
-                <span class="user_box">
-                    <i class="iconfont icon-user"></i>
-                    <input type="text" placeholder="用户名">
-                    <transition name="error_tip" >
-                        <span class="tip_box" v-show="user_tip.is_show">
-                            <i class="iconfont icon-notification"></i>
-                            <span class="txt">{{user_tip.txt}}</span>
-                        </span>
-                    </transition>
-                </span>
-                <!-- 用户名   end -->
-                <!-- 密码   start -->
-                <span class="password_box">
-                    <i class="iconfont icon-lock"></i>
-                    <input type="password" placeholder="密码">
-                    <transition name="error_tip" enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
-                        <span class="tip_box" v-show="psd_tip.is_show">
-                            <i class="iconfont icon-notification"></i>
-                            <span class="txt">{{psd_tip.txt}}</span>
-                        </span>
-                    </transition>
-                </span>
-                <!-- 密码   end -->
-                <span class="login_btn" @click="test">登录</span>
-            </form>
+            <!-- logo   end -->
+            <!-- 登录   start -->
+            <div class="login_box js_login_box" v-cloak>
+                <form class="input_box">
+                    <!-- 用户名   start -->
+                    <span class="user_box">
+                        <i class="iconfont icon-user"></i>
+                        <input type="text" placeholder="用户名">
+                        <transition name="error_tip">
+                            <span class="tip_box" v-show="user_tip.is_show">
+                                <i class="iconfont icon-notification"></i>
+                                <span class="txt">{{user_tip.txt}}</span>
+                            </span>
+                        </transition>
+                    </span>
+                    <!-- 用户名   end -->
+                    <!-- 密码   start -->
+                    <span class="password_box">
+                        <i class="iconfont icon-lock"></i>
+                        <input type="password" placeholder="密码">
+                        <transition name="error_tip" enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
+                            <span class="tip_box" v-show="psd_tip.is_show">
+                                <i class="iconfont icon-notification"></i>
+                                <span class="txt">{{psd_tip.txt}}</span>
+                            </span>
+                        </transition>
+                    </span>
+                    <!-- 密码   end -->
+                    <span class="login_btn" @click="test">登录</span>
+                </form>
+            </div>
+            <!-- 登录   end -->
         </div>
-        <!-- 登录   end -->
     </div>
     <!-- 内容主体   end -->
     <script src="../images/login.js"></script>
