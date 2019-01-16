@@ -111,6 +111,7 @@ function ajaxLogin(user, psd) {
     }).then(function (response) {
         if (response.data.is_login) {
             createCookie(user, psd);
+            window.location.href = 'assistant.html';
         } else {
             js_login_box.userOrPsdError();
         }
