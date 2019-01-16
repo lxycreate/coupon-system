@@ -150,9 +150,9 @@ li {
     color: #f6384a;
 }
 
-.height_zero {
-    /* height: 0 !important; */
-}
+/* .height_zero {
+    height: 0 !important;
+} */
 
 .main_body .login_box .input_box .tip_box>i {
     display: inline-block;

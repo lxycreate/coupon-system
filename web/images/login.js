@@ -17,10 +17,12 @@ function initLoginBox() {
             password: '',
             user_tip: {
                 txt: '用户名不能为空',
+                is_show: false,
                 is_height_zero: true
             },
             psd_tip: {
                 txt: '密码不能为空',
+                is_show: false,
                 is_height_zero: true
             },
             is_psd_error: false //用户名或密码错误
@@ -32,13 +34,11 @@ function initLoginBox() {
             checkInputIsEmpty: function () {
                 if (this.username == '' || this.username == null) {
                     this.user_tip.txt = '用户名不能为空';
-                    this.user_tip.is_height_zero = false;
-                    this.showTip(this.$refs.js_user_tip);
+                    this.user_tip.is_show = true;
                 }
                 if (this.password == '' || this.password == null) {
                     this.psd_tip.txt = '密码不能为空';
-                    this.psd_tip.is_height_zero = false;
-                    this.showTip(this.$refs.js_psd_tip);
+                    this.psd_tip.is_show = true;
                 }
                 if (this.username.length > 0 && this.password.length > 0) {
                     return true;
@@ -47,16 +47,14 @@ function initLoginBox() {
             },
             hideErrorTip: function (str) {
                 if (str == 'user') {
-                    this.hideTip(this.$refs.js_user_tip);
-                    this.user_tip.is_height_zero = true;
+                    this.user_tip.is_show = false;
                 }
                 if (str == 'psd') {
-                    this.hideTip(this.$refs.js_psd_tip);
-                    this.psd_tip.is_height_zero = true;
+                    this.psd_tip.is_show = false;
                 }
             },
             // 显示错误提示
-            showTip: function (el) {
+            showTip: function (el, done) {
                 Velocity(el, 'stop');
                 Velocity(el, {
                     'margin-top': '10px',
@@ -64,10 +62,11 @@ function initLoginBox() {
                     opacity: '1'
                 }, {
                     duration: "fast",
-                    easing: 'linear'
+                    easing: 'linear',
+                    complete: done
                 });
             },
-            hideTip: function (el) {
+            hideTip: function (el, done) {
                 Velocity(el, 'stop');
                 Velocity(el, {
                     'margin-top': '0px',
@@ -75,7 +74,8 @@ function initLoginBox() {
                     opacity: '0'
                 }, {
                     duration: "fast",
-                    easing: 'linear'
+                    easing: 'linear',
+                    complete: done
                 });
             }
             // 

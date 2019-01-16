@@ -54,20 +54,24 @@
                     <span class="user_box">
                         <i class="iconfont icon-user"></i>
                         <input type="text" placeholder="用户名" v-model="username" @focus="hideErrorTip('user')">
-                        <span class="tip_box" ref="js_user_tip" v-bind:class="{height_zero:user_tip.is_height_zero}">
-                            <i class="iconfont icon-notification"></i>
-                            <span class="txt">{{user_tip.txt}}</span>
-                        </span>
+                        <transition name="error_in" @enter="showTip" @leave="hideTip">
+                            <span class="tip_box" ref="js_user_tip" v-show="user_tip.is_show">
+                                <i class="iconfont icon-notification"></i>
+                                <span class="txt">{{user_tip.txt}}</span>
+                            </span>
+                        </transition>
                     </span>
                     <!-- 用户名   end -->
                     <!-- 密码   start -->
                     <span class="password_box">
                         <i class="iconfont icon-lock"></i>
                         <input type="password" placeholder="密码" v-model="password" @focus="hideErrorTip('psd')">
-                        <span class="tip_box" ref="js_psd_tip" v-bind:class="{height_zero:psd_tip.is_height_zero}">
-                            <i class="iconfont icon-notification"></i>
-                            <span class="txt">{{psd_tip.txt}}</span>
-                        </span>
+                        <transition name="error_in" @enter="showTip" @leave="hideTip">
+                            <span class="tip_box" ref="js_psd_tip" v-show="psd_tip.is_show">
+                                <i class="iconfont icon-notification"></i>
+                                <span class="txt">{{psd_tip.txt}}</span>
+                            </span>
+                        </transition>
                     </span>
                     <!-- 密码   end -->
                     <span class="login_btn" @click="checkInputIsEmpty">登录</span>
