@@ -2,8 +2,8 @@ package com.system.entity;
 
 public class User {
     private Integer id;
-    private String user;
-    private String psd;
+    private String user_name;
+    private String password;
 
     public User() {
     }
@@ -16,19 +16,19 @@ public class User {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getPsd() {
-        return psd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPsd(String psd) {
-        this.psd = psd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
