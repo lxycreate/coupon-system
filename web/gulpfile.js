@@ -12,8 +12,8 @@ gulp.task('webserver-static', gulp.series(function () {
     });
 
     // 监听文件变化自动刷新浏览器
-    gulp.watch('images/*.*').on("change", browserSync.reload);;
-    gulp.watch('static/*.*').on("change", browserSync.reload);;
+    gulp.watch('images/*.*').on("change", browserSync.reload);
+    gulp.watch('static/*.*').on("change", browserSync.reload);
 }));
 
 gulp.task('default', gulp.series('webserver-static'));

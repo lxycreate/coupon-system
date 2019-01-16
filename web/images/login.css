@@ -143,6 +143,7 @@ li {
 /* 提示   start */
 .main_body .login_box .input_box .tip_box {
     display: block;
+    height: 0;
     margin-top: 0px;
     font-size: 0;
     opacity: 0;
