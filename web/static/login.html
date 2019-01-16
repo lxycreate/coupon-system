@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../images/login.css">
     <link rel="stylesheet" href="../images/iconfont/iconfont.css">
 
+    <script src="../images/md5.js"></script>
     <script src="../images/polyfill.js"></script>
     <script src="../images/axios.js"></script>
     <script src="../images/velocity.min.js"></script>
@@ -65,7 +66,8 @@
                     <!-- 密码   start -->
                     <span class="password_box">
                         <i class="iconfont icon-lock"></i>
-                        <input type="password" placeholder="密码" v-model="password" @focus="hideErrorTip('psd')">
+                        <input type="password" placeholder="密码" v-model="password" @focus="hideErrorTip('psd')"
+                         @keyup.enter="login" oncopy="return false">
                         <transition name="error_in" @enter="showTip" @leave="hideTip">
                             <span class="tip_box" ref="js_psd_tip" v-show="psd_tip.is_show">
                                 <i class="iconfont icon-notification"></i>
@@ -74,7 +76,7 @@
                         </transition>
                     </span>
                     <!-- 密码   end -->
-                    <span class="login_btn" @click="checkInputIsEmpty">登录</span>
+                    <span class="login_btn" @click="login">登录</span>
                 </form>
             </div>
             <!-- 登录   end -->

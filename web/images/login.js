@@ -18,18 +18,19 @@ function initLoginBox() {
             user_tip: {
                 txt: '用户名不能为空',
                 is_show: false,
-                is_height_zero: true
+                // is_height_zero: true
             },
             psd_tip: {
                 txt: '密码不能为空',
                 is_show: false,
-                is_height_zero: true
+                // is_height_zero: true
             },
             is_psd_error: false //用户名或密码错误
         },
         methods: {
-            test: function () {
-                this.user_tip.is_show = !this.user_tip.is_show;
+            login: function () {
+                console.log(hex_md5("taoAdmin"));
+                console.log('login');
             },
             checkInputIsEmpty: function () {
                 if (this.username == '' || this.username == null) {
@@ -77,6 +78,9 @@ function initLoginBox() {
                     easing: 'linear',
                     complete: done
                 });
+            },
+            test: function () {
+                this.user_tip.is_show = !this.user_tip.is_show;
             }
             // 
         }
