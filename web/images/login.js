@@ -1,4 +1,4 @@
-var base_url = 'http://localhost:8088';
+var base_url = 'http://localhost:8066';
 
 // login_box对象
 var js_login_box;
@@ -89,3 +89,21 @@ function initLoginBox() {
     });
     // Vue app    end
 }
+
+function ajaxLogin() {
+    axios({
+        url: base_url + '/login',
+        method: 'post',
+        params: {
+            user: '123',
+            psd: '123'
+        }
+    }).then(function (response) {
+        if (response != null) {}
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+ajaxLogin();

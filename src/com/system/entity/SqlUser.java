@@ -1,11 +1,11 @@
 package com.system.entity;
 
-public class User {
+public class SqlUser {
     private Integer id;
     private String user_name;
     private String password;
 
-    public User() {
+    public SqlUser() {
     }
 
     public Integer getId() {

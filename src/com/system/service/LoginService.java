@@ -1,5 +1,7 @@
 package com.system.service;
 
+import com.system.entity.LoginJson;
+
 public interface LoginService{
-    public Boolean login(String user,String psd);
+    public LoginJson login(String user, String psd);
 }
