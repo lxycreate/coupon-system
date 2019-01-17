@@ -106,7 +106,41 @@ li {
 
 .main_body .right .container>.header {
     height: 60px;
-    background-color: #4d5b85;
+    box-shadow: 0 0 5px #323f63;
+    background-color: #ffffff;
+}
+
+.main_body .right .container>.header .btn_box {
+    padding: 0 20px;
+    height: 60px;
+    font-size: 0;
+    line-height: 60px;
+    text-align: left;
+}
+
+.main_body .right .container .header .btn_box>.btn {
+    display: inline-block;
+    margin-left: 30px;
+    vertical-align: middle;
+}
+
+.main_body .right .container .header .btn_box>.btn:first-child {
+    margin-left: 10px;
+}
+
+.main_body .right .container .header .btn_box .btn .container {
+    display: block;
+    height: 60px;
+}
+
+.main_body .right .container .header .btn_box .btn .container>i {
+    display: block;
+    font-size: 16px;
+    color: #4d5b85;
+}
+
+.main_body .right .container .header .btn_box .btn .container>i:hover {
+    cursor: pointer;
 }
 
 /* 右    end */

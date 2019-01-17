@@ -31,13 +31,13 @@ function initContent() {
                     'icon-statsbars2': true
                 }
             }, {
-                name: '更新日志',
+                name: '数据查看',
                 is_select: false,
                 icon_class: {
                     'icon-list2': true
                 }
             }, {
-                name: '数据来源',
+                name: '数据分析',
                 is_select: false,
                 icon_class: {
                     'icon-database': true
