@@ -33,7 +33,7 @@ li {
     margin-top: 60px;
     border-radius: 10px;
     background-color: #323f63;
-    box-shadow: 0 0 10px #323f63;
+    box-shadow: 1px 1px 50px rgba(50, 63, 99, 0.5);
 }
 
 .main_body .logo_box {

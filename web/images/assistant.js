@@ -60,7 +60,30 @@ function initContent() {
             ],
             sort_btns: [{
                 name: "时间"
-            }]
+            }],
+            update_origin: [{
+                    name: '全部',
+                    index: 0,
+                    is_select: false
+                }, {
+                    name: '淘客助手',
+                    index: 1,
+                    is_select: false
+                },
+                {
+                    name: '大淘客联盟',
+                    index: 2,
+                    is_select: false
+                }
+            ],
+            is_clean: false
+        },
+        // data  end
+        methods: {
+            test: function (index) {
+                console.log('111');
+                this.update_origin[index].is_select = true;
+            }
         }
     });
 }

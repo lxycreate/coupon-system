@@ -257,4 +257,119 @@ li {
     margin-left: 15px;
 }
 
+/* 更新任务弹窗   start */
+.main_body .right .container .update_box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -100px;
+    width: 300px;
+    min-height: 50px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+}
+
+.main_body .right .container .update_box>.title_box {
+    position: relative;
+    display: block;
+    padding: 0 15px;
+    font-size: 0;
+    text-align: right;
+    /* border-radius: 8px 8px 0 0; */
+    background-color: #323f63;
+}
+
+.main_body .right .container .update_box>.title_box .title {
+    display: inline-block;
+    width: 256px;
+    height: 50px;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: left;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.main_body .right .container .update_box>.title_box i {
+    display: inline-block;
+    height: 40px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: lighter;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.main_body .right .container .update_box>.title_box i:hover {
+    cursor: pointer;
+}
+
+.main_body .right .container .update_box .data_origin {
+    display: block;
+    margin: auto;
+    padding-top: 15px;
+    border-radius: 1px;
+}
+
+.main_body .right .container .update_box .data_origin .title {
+    display: block;
+    padding-left: 15px;
+    color: #666666;
+    font-size: 15px;
+}
+
+.main_body .right .container .update_box .data_origin .origin {
+    display: block;
+    margin-top: 10px;
+    padding: 0 15px;
+    font-size: 0;
+}
+
+.main_body .right .container .update_box .data_origin .origin>.origin_btn {
+    display: inline-block;
+    height: 30px;
+    margin-left: 15px;
+    font-size: 15px;
+    color: #323f63;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+    vertical-align: top;
+}
+
+.main_body .right .container .update_box .data_origin .origin>.origin_btn i {
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 14px;
+    color: #4d5b85;
+}
+
+.main_body .right .container .update_box .data_origin .origin>.origin_btn:hover {
+    cursor: pointer;
+}
+
+.main_body .right .container .update_box .data_origin .origin>.origin_btn:first-child {
+    margin-left: 0;
+}
+
+.update_origin_selected {
+    color: #ffffff !important;
+    background-color: #323c57 !important;
+}
+
+.main_body .right .container .update_box .clean {
+    display: block;
+    margin-top: 15px;
+    padding: 0 15px;
+}
+
+.main_body .right .container .update_box .clean i {
+    font-size: 14px;
+    color: #4d5b85;
+}
+
+/* 更新任务弹窗   end */
 /* 右    end */
