@@ -59,24 +59,51 @@
                 <!-- 商品管理  start -->
                 <div class="container" v-show="btns[0].is_select">
                     <div class="header">
+                        <span class="location">
+                            <i class="iconfont icon-statsbars2"></i>
+                            <span class="txt">{{btns[0].name}}</span>
+                        </span>
+                    </div>
+                    <div class="content">
                         <ul class="btn_box">
                             <li class="btn">
-                                <span class="container">
-                                    <i class="iconfont icon-spinner11"></i>
+                                <span class="cover">
+                                    <i class="iconfont icon-spinner11" title="新建更新任务"></i>
                                 </span>
                             </li>
                             <li class="btn">
-                                <span class="container">
-                                    <i class="iconfont icon-bin" style="font-size: 18px"></i>
+                                <span class="cover">
+                                    <i class="iconfont icon-bin" style="font-size: 18px" title="新建清理任务"></i>
+                                </span>
+                            </li>
+                            <li class="btn filter">
+                                <span class="filter_box">
+                                    <span class="title">筛选:</span>
+                                    <span class="filter_btn" v-for="filter_btn in filter_btns" v-bind:class="{filter_btn_selected:filter_btn.is_select}">
+                                        {{filter_btn.name}}
+                                    </span>
+                                </span>
+                            </li>
+                            <li class="btn sort">
+                                <span class="sort_box">
+                                    <span class="title">排序:</span>
+                                    <span class="sort_btn" v-for="sort_btn in sort_btns">
+                                        {{sort_btn.name}}
+                                    </span>
                                 </span>
                             </li>
                         </ul>
-                        
                     </div>
-                    <div class="content">
+                    <!-- 更新任务   start -->
+                    <div class="update_box"></div>
+                    <!-- 更新任务   end -->
+                    <!-- 清理任务   start -->
+                    <div class="">
 
                     </div>
-                </div> <!-- 商品管理 end -->
+                    <!-- 清理任务   end -->
+                </div>
+                <!-- 商品管理 end -->
                 <!-- 更新日志   start -->
                 <div class="container" v-show="btns[1].is_select">
                     <div class="header"></div>

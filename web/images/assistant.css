@@ -67,10 +67,11 @@ li {
 
 .main_body .left .btn_box .btn>.name {
     display: block;
-    padding: 10px;
+    height: 40px;
     font-size: 0;
     color: #ffffff;
     text-align: center;
+    line-height: 40px;
 }
 
 .main_body .left .btn_box .btn>.name:hover {
@@ -101,31 +102,38 @@ li {
 
 /* 右   start */
 .main_body .main_container>.right {
+    height: 100%;
     vertical-align: top;
 }
 
+.main_body .main_container>.right>.container {
+    height: 100%;
+}
+
 .main_body .right .container>.header {
+    position: relative;
+    z-index: 999;
     height: 60px;
-    box-shadow: 0 0 5px #323f63;
+    box-shadow: 0 0 5px #999999;
     background-color: #ffffff;
 }
 
-.main_body .right .container>.header .btn_box {
-    padding: 0 20px;
-    height: 60px;
-    font-size: 0;
-    line-height: 60px;
-    text-align: left;
-}
-
-.main_body .right .container .header .btn_box>.btn {
+.main_body .right .container>.header .location {
     display: inline-block;
-    margin-left: 30px;
-    vertical-align: middle;
+    margin-left: 20px;
+    height: 60px;
+    line-height: 60px;
 }
 
-.main_body .right .container .header .btn_box>.btn:first-child {
-    margin-left: 10px;
+.main_body .right .container>.header .location i {
+    font-size: 16px;
+    color: #323f63;
+}
+
+.main_body .right .container>.header .location .txt {
+    margin-left: 6px;
+    font-size: 16px;
+    color: #323f63;
 }
 
 .main_body .right .container .header .btn_box .btn .container {
@@ -141,6 +149,108 @@ li {
 
 .main_body .right .container .header .btn_box .btn .container>i:hover {
     cursor: pointer;
+}
+
+.main_body .right .container .content {
+    /* padding: 15px; */
+    height: calc(100% - 60px);
+    background-color: #f5f5f5;
+}
+
+.main_body .right .container .content .btn_box {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 0;
+    border-radius: 3px;
+    line-height: 40px;
+    background-color: #ffffff;
+}
+
+.main_body .right .container .content .btn {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+.main_body .right .container .content .btn:first-child {
+    margin-left: 0;
+}
+
+.main_body .right .container .content .btn>.cover {
+    display: block;
+    font-size: 0;
+}
+
+.main_body .right .container .content .btn>.cover i {
+    display: inline-block;
+    height: 40px;
+    color: #4d5b85;
+    line-height: 40px;
+}
+
+.main_body .right .container .content .filter {
+    margin-left: 50px;
+}
+
+.main_body .right .container .content .btn .filter_box {
+    display: block;
+    font-size: 0;
+}
+
+.main_body .right .container .content .btn .filter_box>span {
+    display: inline-block;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.main_body .right .container .content .btn .filter_box .title {
+    color: #666666;
+}
+
+.main_body .right .container .content .btn .filter_box .filter_btn {
+    margin-left: 5px;
+    padding: 0 10px;
+    color: #555555;
+    border-radius: 5px;
+}
+
+.main_body .right .container .content .btn .filter_box .filter_btn:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #323f63;
+}
+
+.filter_btn_selected {
+    color: #ffffff !important;
+    background-color: #323f63;
+}
+
+.main_body .right .container .content .sort {
+    margin-left: 50px;
+}
+
+.main_body .right .container .content .btn .sort_box {
+    display: block;
+    font-size: 0;
+}
+
+.main_body .right .container .content .btn .sort_box>span {
+    display: inline-block;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.main_body .right .container .content .btn .sort_box .title {
+    color: #666666;
+}
+
+.main_body .right .container .content .btn .sort_box .sort_btn {
+    color: #4d5b85;
+    margin-left: 15px;
 }
 
 /* 右    end */
