@@ -188,6 +188,10 @@ li {
     line-height: 40px;
 }
 
+.main_body .right .container .content .btn>.cover i:hover {
+    cursor: pointer;
+}
+
 .main_body .right .container .content .filter {
     margin-left: 50px;
 }
