@@ -37,7 +37,7 @@
 <body>
     <!-- 内容主体   start -->
     <div class="main_body">
-        <div class="main_container js_main_container">
+        <div class="main_container js_main_container" v-cloak>
             <!-- 左  start -->
             <div class="left">
                 <span class="logo_box">
@@ -45,13 +45,40 @@
                     <img class="txt" src="../images/title.png">
                 </span>
                 <ul class="btn_box">
-                    <li class="btn"></li>
+                    <li class="btn" v-for="btn in btns">
+                        <span class="name" v-bind:class="{btn_selected:btn.is_select}">
+                            <i class="iconfont" v-bind:class="btn.icon_class"></i>
+                            <span class="txt">{{btn.name}}</span>
+                        </span>
+                    </li>
                 </ul>
             </div>
             <!-- 左   end -->
             <!-- 右   start -->
             <div class="right">
+                <!-- 商品管理  start -->
+                <div class="container" v-show="btns[0].is_select">
+                    <div class="header"></div>
+                    <div class="content">
 
+                    </div>
+                </div> <!-- 商品管理 end -->
+                <!-- 更新日志   start -->
+                <div class="container" v-show="btns[1].is_select">
+                    <div class="header"></div>
+                    <div class="content">
+
+                    </div>
+                </div>
+                <!-- 更新日志   end -->
+                <!-- 数据来源   start -->
+                <div class="container" v-show="btns[2].is_select">
+                    <div class="header"></div>
+                    <div class="content">
+
+                    </div>
+                </div>
+                <!-- 数据来源   end -->
             </div>
             <!-- 右   end -->
         </div>

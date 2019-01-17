@@ -45,19 +45,19 @@ li {
 /* 左   start */
 .main_body .left .logo_box {
     display: block;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
 }
 
 .main_body .left .logo_box>.logo {
     display: inline-block;
-    width: 60px;
+    width: 50px;
     vertical-align: middle;
 }
 
 .main_body .left .logo_box>.txt {
     display: inline-block;
-    width: 80px;
+    width: 70px;
     vertical-align: middle;
 }
 
@@ -65,4 +65,48 @@ li {
     height: calc(100% - 80px);
 }
 
+.main_body .left .btn_box .btn>.name {
+    display: block;
+    padding: 10px;
+    font-size: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+.main_body .left .btn_box .btn>.name:hover {
+    cursor: pointer;
+    background-color: #4d5b85;
+}
+
+.main_body .left .btn_box .btn>.name i {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.main_body .left .btn_box .btn>.name .txt {
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 10px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.btn_selected {
+    background-color: #4d5b85;
+}
+
 /* 左   end */
+
+/* 右   start */
+.main_body .main_container>.right {
+    vertical-align: top;
+}
+
+.main_body .right .container>.header {
+    height: 60px;
+    background-color: #4d5b85;
+}
+
+/* 右    end */

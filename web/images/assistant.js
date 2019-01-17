@@ -8,6 +8,7 @@ var js_main_container;
 // 初始化
 window.onload = function () {
     initUserAndPsd();
+    initContent();
 }
 
 // 初始化姓名和密码
@@ -23,7 +24,25 @@ function initContent() {
     js_main_container = new Vue({
         el: '.js_main_container',
         data: {
-            btns: []
+            btns: [{
+                name: '数据管理',
+                is_select: true,
+                icon_class: {
+                    'icon-statsbars2': true
+                }
+            }, {
+                name: '更新日志',
+                is_select: false,
+                icon_class: {
+                    'icon-list2': true
+                }
+            }, {
+                name: '数据来源',
+                is_select: false,
+                icon_class: {
+                    'icon-database': true
+                }
+            }]
         }
     });
 }
