@@ -64,7 +64,7 @@ public class RequestHttpData {
 
                 } catch (Exception e) {
                     System.out.println("数据装载错误");
-                    goods_data.setStatusCode("none");
+                    goods_data.setStatusCode("parse error");
                     e.printStackTrace();
                 } finally {
                     //释放资源
@@ -76,7 +76,7 @@ public class RequestHttpData {
 
         } catch (Exception e) {
             System.out.println("连接出错");
-            goods_data.setStatusCode("none");
+            goods_data.setStatusCode("connection error");
             e.printStackTrace();
         } finally {
             //释放资源
