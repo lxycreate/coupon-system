@@ -1,8 +1,7 @@
 package com.system.controller;
 
-import com.system.entity.LoginJson;
+import com.system.entity.json.LoginJson;
 import com.system.service.LoginService;
-import com.system.service.impl.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

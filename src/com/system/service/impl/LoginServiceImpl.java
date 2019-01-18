@@ -1,7 +1,7 @@
 package com.system.service.impl;
 
 import com.system.dao.UserDao;
-import com.system.entity.LoginJson;
+import com.system.entity.json.LoginJson;
 import com.system.entity.SqlUser;
 import com.system.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;

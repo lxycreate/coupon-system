@@ -1,4 +1,4 @@
-package com.system.entity;
+package com.system.entity.json;
 
 public class LoginJson {
     private Boolean is_login;

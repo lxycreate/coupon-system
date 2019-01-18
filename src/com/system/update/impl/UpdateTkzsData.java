@@ -1,5 +1,6 @@
 package com.system.update.impl;
 
+import com.system.dao.GoodsDao;
 import com.system.entity.SqlGoods;
 import com.system.update.RequestHttpData;
 import com.system.update.UpdateGoodsData;
@@ -12,6 +13,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
     private Integer start_page;             //开始页码
     private String status_code;           //操作停止标志
     private RequestHttpData re_http_data;   //获取Json数据的对象
+    private GoodsDao dao;                   //用于进行数据库操作
 
     public UpdateTkzsData() {
         start_page = 1;
@@ -21,14 +23,20 @@ public class UpdateTkzsData implements UpdateGoodsData {
         System.out.println("初始化淘客助手");
     }
 
+    // 用于进行数据库操作
+    @Override
+    public void setGoodsDao(GoodsDao dao) {
+        this.dao = dao;
+    }
+
     //请求数据
     @Override
     public void runGetData() {
+        System.out.println("淘客助手页码: " + start_page);
         getGoodsData(start_page++);
     }
 
     //获取数据
-    @Override
     public void getGoodsData(int page_num) {
         String temp_api_url = api_url + "app_key=" + appkey + "&page=" + page_num;
         re_http_data = null;
@@ -45,7 +53,6 @@ public class UpdateTkzsData implements UpdateGoodsData {
     }
 
     //解析获取到的数据
-    @Override
     public void parseGoodsJson(JSONObject jsonObject) {
         JSONArray temp_array = jsonObject.getJSONArray("data");
         if (temp_array.size() > 0) {

@@ -1,5 +1,6 @@
 package com.system.update.impl;
 
+import com.system.dao.GoodsDao;
 import com.system.entity.SqlGoods;
 import com.system.update.RequestHttpData;
 import com.system.update.UpdateGoodsData;
@@ -16,6 +17,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
     private Integer start_page;             //开始页码
     private String status_code;           //操作停止标志
     private RequestHttpData re_http_data;   //获取Json数据的对象
+    private GoodsDao dao;
 
     public UpdateDtklmData() {
         start_page = 1;
@@ -25,12 +27,20 @@ public class UpdateDtklmData implements UpdateGoodsData {
         System.out.println("初始化大淘客联盟");
     }
 
+    // 用于进行数据库操作
+    @Override
+    public void setGoodsDao(GoodsDao dao) {
+        this.dao = dao;
+    }
+
+    // 开始获取数据
     @Override
     public void runGetData() {
+        System.out.println("大淘客联盟页码: " + start_page);
         getGoodsData(start_page++);
     }
 
-    @Override
+    // 获取第几页的数据
     public void getGoodsData(int page_num) {
         String temp_api_url = api_url + "&appkey=" + appkey + "&v=2&page=" + page_num;
         //存放返回的数据
@@ -45,7 +55,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
         }
     }
 
-    @Override
+    // 解析返回的Json
     public void parseGoodsJson(JSONObject jsonObject) {
         JSONArray temp_array = jsonObject.getJSONArray("result");
         List<SqlGoods> temp_list = new ArrayList<SqlGoods>();
@@ -96,16 +106,19 @@ public class UpdateDtklmData implements UpdateGoodsData {
         }
     }
 
+    // 获取执行状态码
     @Override
     public String getStatusCode() {
         return status_code;
     }
 
+    // 设置执行状态码
     @Override
     public void setStatusCode(String str) {
         this.status_code = str;
     }
 
+    // 目录ID转换
     public Integer changeCid(Integer org_cid) {
         int temp = 0;
         if (org_cid == 1)
