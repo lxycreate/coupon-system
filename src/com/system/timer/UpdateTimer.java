@@ -4,11 +4,11 @@ import com.system.manage.UpdateGoodsData;
 
 import java.util.TimerTask;
 
-public class TkzsTimer extends TimerTask {
+public class UpdateTimer extends TimerTask {
     private UpdateGoodsData goods_data;
     private Boolean start;
 
-    public TkzsTimer(UpdateGoodsData goods) {
+    public UpdateTimer(UpdateGoodsData goods) {
         this.goods_data = goods;
         this.start = false;
     }
