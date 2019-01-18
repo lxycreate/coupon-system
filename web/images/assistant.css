@@ -385,6 +385,10 @@ li {
     color: #323c57;
 }
 
+.main_body .right .container .update_box .clean .btn:hover {
+    cursor: pointer;
+}
+
 .main_body .right .container .update_box .confirm_box {
     display: block;
     margin-top: 30px;
@@ -405,10 +409,6 @@ li {
     border-radius: 5px;
     background-color: #4d5b85;
 }
-
-/* .main_body .right .container .update_box .confirm_box .btn:first-child {
-    margin-left: 0px;
-} */
 
 .main_body .right .container .update_box .confirm_box .btn:hover {
     cursor: pointer;
@@ -433,6 +433,14 @@ li {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+.cant_select_txt {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* 更新任务弹窗   end */

@@ -1482,7 +1482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	/**
-	 * A `Cancel` is an object that is thrown when an operation is canceled.
+	 * A `Cancel` is an object that is thrown when an update is canceled.
 	 *
 	 * @class
 	 * @param {string=} message The message.
@@ -1509,7 +1509,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Cancel = __webpack_require__(23);
 	
 	/**
-	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
+	 * A `CancelToken` is an object that can be used to request cancellation of an update.
 	 *
 	 * @class
 	 * @param {Function} executor The executor function.

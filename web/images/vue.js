@@ -252,7 +252,7 @@ function toObject (arr) {
 }
 
 /**
- * Perform no operation.
+ * Perform no update.
  * Stubbing args to make Flow happy without leaving useless transpiled code
  * with ...rest (https://flow.org/blog/2017/05/07/Strict-Function-Call-Arity/)
  */
@@ -3268,7 +3268,7 @@ Watcher.prototype.teardown = function teardown () {
 
   if (this.active) {
     // remove self from vm's watcher list
-    // this is a somewhat expensive operation so we skip it
+    // this is a somewhat expensive update so we skip it
     // if the vm is being destroyed.
     if (!this.vm._isBeingDestroyed) {
       remove(this.vm._watchers, this);

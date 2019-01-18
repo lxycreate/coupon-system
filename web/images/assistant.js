@@ -87,16 +87,36 @@ function initContent() {
                 }
             ],
             is_clean: false,
-            is_show_update_box: false
+            is_show_update_box: false,
             // 更新任务弹窗   end
+            //  清理任务弹窗  start
+            clean_origin: [{
+                    name: '全部',
+                    index: 0,
+                    is_select: false
+                }, {
+                    name: '淘客助手',
+                    index: 1,
+                    is_select: false
+                },
+                {
+                    name: '大淘客联盟',
+                    index: 2,
+                    is_select: false
+                }
+            ],
+            is_update: false,
+            is_show_clean_box: false
+            //  清理任务弹窗  end
         },
         // data  end
         methods: {
-            test: function (index) {
-                console.log('111');
-                this.update_origin[index].is_select = true;
+            test: function (temp, index) {
+
             },
+            // 更新弹窗 start
             showUpdateBox: function () {
+                this.cancelClean();
                 if (!this.is_show_update_box) {
                     this.is_show_update_box = true;
                 }
@@ -113,7 +133,70 @@ function initContent() {
                 for (var i = 0; i < this.update_origin.length; ++i) {
                     this.update_origin[i].is_select = false;
                 }
+            },
+            selectUpdateItem: function (index) {
+                this.selectItem(this.update_origin, index);
+            },
+            selectItem: function (temp, index) {
+                if (index == 0) {
+                    if (temp[0].is_select) {
+                        for (var i = 0; i < temp.length; ++i) {
+                            temp[i].is_select = false;
+                        }
+                    } else {
+                        for (var i = 0; i < temp.length; ++i) {
+                            temp[i].is_select = true;
+                        }
+                    }
+                } else {
+                    if (temp[index].is_select) {
+                        temp[index].is_select = false;
+                        temp[0].is_select = false;
+                    } else {
+                        temp[index].is_select = true;
+                        var flag = true;
+                        for (var i = 1; i < temp.length; ++i) {
+                            if (!temp[i].is_select) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) {
+                            temp[0].is_select = true;
+                        }
+                    }
+                }
+            },
+            cleanBeforeUpdate: function () {
+                this.is_clean = !this.is_clean;
+            },
+            // 更新弹窗 end
+            // 清理弹窗 start
+            showCleanBox: function () {
+                this.cancelUpdate();
+                if (!this.is_show_clean_box) {
+                    this.is_show_clean_box = true;
+                }
+            },
+            hideCleanBox: function () {
+                if (this.is_show_clean_box) {
+                    this.is_show_clean_box = false;
+                }
+            },
+            cancelClean: function () {
+                this.hideCleanBox();
+                this.is_update = false;
+                for (var i = 0; i < this.clean_origin.length; ++i) {
+                    this.clean_origin[i].is_select = false;
+                }
+            },
+            selectCleanItem: function (index) {
+                this.selectItem(this.clean_origin, index);
+            },
+            updateAfterClean: function () {
+                this.is_update = !this.is_update;
             }
+            // 清理弹窗 end
         }
         // 
     });
