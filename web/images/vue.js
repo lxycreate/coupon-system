@@ -252,7 +252,7 @@ function toObject (arr) {
 }
 
 /**
- * Perform no update.
+ * Perform no manage.
  * Stubbing args to make Flow happy without leaving useless transpiled code
  * with ...rest (https://flow.org/blog/2017/05/07/Strict-Function-Call-Arity/)
  */
@@ -858,7 +858,7 @@ var arrayKeys = Object.getOwnPropertyNames(arrayMethods);
 
 /**
  * In some cases we may want to disable observation inside a component's
- * update computation.
+ * manage computation.
  */
 var shouldObserve = true;
 
@@ -2670,14 +2670,14 @@ function lifecycleMixin (Vue) {
       vm.$el = vm.__patch__(prevVnode, vnode);
     }
     activeInstance = prevActiveInstance;
-    // update __vue__ reference
+    // manage __vue__ reference
     if (prevEl) {
       prevEl.__vue__ = null;
     }
     if (vm.$el) {
       vm.$el.__vue__ = vm;
     }
-    // if parent is an HOC, update its $el as well
+    // if parent is an HOC, manage its $el as well
     if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
       vm.$parent.$el = vm.$el;
     }
@@ -2825,20 +2825,20 @@ function updateChildComponent (
   );
 
   vm.$options._parentVnode = parentVnode;
-  vm.$vnode = parentVnode; // update vm's placeholder node without re-render
+  vm.$vnode = parentVnode; // manage vm's placeholder node without re-render
 
-  if (vm._vnode) { // update child tree's parent
+  if (vm._vnode) { // manage child tree's parent
     vm._vnode.parent = parentVnode;
   }
   vm.$options._renderChildren = renderChildren;
 
-  // update $attrs and $listeners hash
-  // these are also reactive so they may trigger child update if the child
+  // manage $attrs and $listeners hash
+  // these are also reactive so they may trigger child manage if the child
   // used them during render
   vm.$attrs = parentVnode.data.attrs || emptyObject;
   vm.$listeners = listeners || emptyObject;
 
-  // update props
+  // manage props
   if (propsData && vm.$options.props) {
     toggleObserving(false);
     var props = vm._props;
@@ -2853,13 +2853,13 @@ function updateChildComponent (
     vm.$options.propsData = propsData;
   }
 
-  // update listeners
+  // manage listeners
   listeners = listeners || emptyObject;
   var oldListeners = vm.$options._parentListeners;
   vm.$options._parentListeners = listeners;
   updateComponentListeners(vm, listeners, oldListeners);
 
-  // resolve slots + force update if has children
+  // resolve slots + force manage if has children
   if (hasChildren) {
     vm.$slots = resolveSlots(renderChildren, parentVnode.context);
     vm.$forceUpdate();
@@ -2984,7 +2984,7 @@ function flushSchedulerQueue () {
       circular[id] = (circular[id] || 0) + 1;
       if (circular[id] > MAX_UPDATE_COUNT) {
         warn(
-          'You may have an infinite update loop ' + (
+          'You may have an infinite manage loop ' + (
             watcher.user
               ? ("in watcher with expression \"" + (watcher.expression) + "\"")
               : "in a component render function."
@@ -3268,7 +3268,7 @@ Watcher.prototype.teardown = function teardown () {
 
   if (this.active) {
     // remove self from vm's watcher list
-    // this is a somewhat expensive update so we skip it
+    // this is a somewhat expensive manage so we skip it
     // if the vm is being destroyed.
     if (!this.vm._isBeingDestroyed) {
       remove(this.vm._watchers, this);
@@ -3848,7 +3848,7 @@ function bindObjectProps (
 
           if (isSync) {
             var on = data.on || (data.on = {});
-            on[("update:" + key)] = function ($event) {
+            on[("manage:" + key)] = function ($event) {
               value[key] = $event;
             };
           }
@@ -4661,7 +4661,7 @@ function resolveConstructorOptions (Ctor) {
       Ctor.superOptions = superOptions;
       // check if there are any late-modified/attached options (#4976)
       var modifiedOptions = resolveModifiedOptions(Ctor);
-      // update base extend options
+      // manage base extend options
       if (modifiedOptions) {
         extend(Ctor.extendOptions, modifiedOptions);
       }
@@ -5860,7 +5860,7 @@ function createPatchFunction (backend) {
       if (isDef(key)) {
         if (seenKeys[key]) {
           warn(
-            ("Duplicate keys detected: '" + key + "'. This may cause an update error."),
+            ("Duplicate keys detected: '" + key + "'. This may cause an manage error."),
             vnode.context
           );
         } else {
@@ -6124,7 +6124,7 @@ function createPatchFunction (backend) {
           nodeOps.nextSibling(oldElm)
         );
 
-        // update parent placeholder node element, recursively
+        // manage parent placeholder node element, recursively
         if (isDef(vnode.parent)) {
           var ancestor = vnode.parent;
           var patchable = isPatchable(vnode);
@@ -6204,7 +6204,7 @@ function _update (oldVnode, vnode) {
         dirsWithInsert.push(dir);
       }
     } else {
-      // existing directive, update
+      // existing directive, manage
       dir.oldValue = oldDir.value;
       callHook$1(dir, 'update', vnode, oldVnode);
       if (dir.def && dir.def.componentUpdated) {
@@ -8305,7 +8305,7 @@ var Transition = {
       var oldData = oldChild.data.transition = extend({}, data);
       // handle transition mode
       if (mode === 'out-in') {
-        // return placeholder node and queue update when leave finishes
+        // return placeholder node and queue manage when leave finishes
         this._leaving = true;
         mergeVNodeHook(oldData, 'afterLeave', function () {
           this$1._leaving = false;
@@ -8333,9 +8333,9 @@ var Transition = {
 // Provides transition support for list items.
 // supports move transitions using the FLIP technique.
 
-// Because the vdom's children update algorithm is "unstable" - i.e.
+// Because the vdom's children manage algorithm is "unstable" - i.e.
 // it doesn't guarantee the relative positioning of removed elements,
-// we force transition-group to update its children into two passes:
+// we force transition-group to manage its children into two passes:
 // in the first pass, we remove all nodes that need to be removed,
 // triggering their leaving transition; in the second pass, we insert/move
 // into the final desired state. This way in the second pass removed
@@ -9553,7 +9553,7 @@ function processAttrs (el) {
           if (modifiers.sync) {
             addHandler(
               el,
-              ("update:" + (camelize(name))),
+              ("manage:" + (camelize(name))),
               genAssignmentCode(value, "$event")
             );
           }
@@ -9595,7 +9595,7 @@ function processAttrs (el) {
         }
       }
       addAttr(el, name, JSON.stringify(value));
-      // #6887 firefox doesn't update muted state if set via attribute
+      // #6887 firefox doesn't manage muted state if set via attribute
       // even immediately after element creation
       if (!el.component &&
           name === 'muted' &&

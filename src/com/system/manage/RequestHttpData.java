@@ -1,4 +1,4 @@
-package com.system.update;
+package com.system.manage;
 
 import net.sf.json.JSONObject;
 

@@ -924,7 +924,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Update an Error with the specified config, error code, and response.
 	 *
-	 * @param {Error} error The error to update.
+	 * @param {Error} error The error to manage.
 	 * @param {Object} config The config.
 	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
 	 * @param {Object} [request] The request.
@@ -1482,7 +1482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	/**
-	 * A `Cancel` is an object that is thrown when an update is canceled.
+	 * A `Cancel` is an object that is thrown when an manage is canceled.
 	 *
 	 * @class
 	 * @param {string=} message The message.
@@ -1509,7 +1509,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Cancel = __webpack_require__(23);
 	
 	/**
-	 * A `CancelToken` is an object that can be used to request cancellation of an update.
+	 * A `CancelToken` is an object that can be used to request cancellation of an manage.
 	 *
 	 * @class
 	 * @param {Function} executor The executor function.

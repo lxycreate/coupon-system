@@ -1,6 +1,6 @@
 package com.system.timer;
 
-import com.system.update.UpdateGoodsData;
+import com.system.manage.UpdateGoodsData;
 
 import java.util.TimerTask;
 

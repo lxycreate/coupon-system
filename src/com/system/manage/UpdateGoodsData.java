@@ -1,7 +1,6 @@
-package com.system.update;
+package com.system.manage;
 
 import com.system.dao.GoodsDao;
-import net.sf.json.JSONObject;
 
 public interface UpdateGoodsData {
     // 开始执行

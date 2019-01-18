@@ -1,9 +1,9 @@
-package com.system.update.impl;
+package com.system.manage.impl;
 
 import com.system.dao.GoodsDao;
 import com.system.entity.SqlGoods;
-import com.system.update.RequestHttpData;
-import com.system.update.UpdateGoodsData;
+import com.system.manage.RequestHttpData;
+import com.system.manage.UpdateGoodsData;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
