@@ -260,6 +260,7 @@ li {
 /* 更新任务弹窗   start */
 .main_body .right .container .update_box {
     position: fixed;
+    z-index: 999;
     top: 50%;
     left: 50%;
     margin-left: -150px;
@@ -316,19 +317,22 @@ li {
 
 .main_body .right .container .update_box .data_origin .title {
     display: block;
-    padding-left: 15px;
     color: #666666;
     font-size: 15px;
 }
 
 .main_body .right .container .update_box .data_origin .origin {
     display: block;
-    margin-top: 10px;
     padding: 0 15px;
     font-size: 0;
 }
 
-.main_body .right .container .update_box .data_origin .origin>.origin_btn {
+.main_body .right .container .update_box .data_origin .btn_box {
+    display: block;
+    margin-top: 10px;
+}
+
+.main_body .right .container .update_box .data_origin .btn_box>.origin_btn {
     display: inline-block;
     height: 30px;
     margin-left: 15px;
@@ -340,18 +344,18 @@ li {
     vertical-align: top;
 }
 
-.main_body .right .container .update_box .data_origin .origin>.origin_btn i {
+.main_body .right .container .update_box .data_origin .btn_box>.origin_btn i {
     display: inline-block;
     margin-right: 3px;
     font-size: 14px;
     color: #4d5b85;
 }
 
-.main_body .right .container .update_box .data_origin .origin>.origin_btn:hover {
+.main_body .right .container .update_box .data_origin .btn_box>.origin_btn:hover {
     cursor: pointer;
 }
 
-.main_body .right .container .update_box .data_origin .origin>.origin_btn:first-child {
+.main_body .right .container .update_box .data_origin .btn_box>.origin_btn:first-child {
     margin-left: 0;
 }
 
@@ -366,10 +370,73 @@ li {
     padding: 0 15px;
 }
 
+.main_body .right .container .update_box .clean .btn_box {
+    display: block;
+    margin-top: 10px;
+}
+
 .main_body .right .container .update_box .clean i {
     font-size: 14px;
     color: #4d5b85;
 }
 
+.main_body .right .container .update_box .clean .btn {
+    font-size: 15px;
+    color: #323c57;
+}
+
+.main_body .right .container .update_box .confirm_box {
+    display: block;
+    margin-top: 30px;
+    font-size: 0;
+    padding-bottom: 10px;
+    text-align: right;
+}
+
+.main_body .right .container .update_box .confirm_box .btn {
+    display: inline-block;
+    width: 30%;
+    height: 35px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 35px;
+    border-radius: 5px;
+    background-color: #4d5b85;
+}
+
+/* .main_body .right .container .update_box .confirm_box .btn:first-child {
+    margin-left: 0px;
+} */
+
+.main_body .right .container .update_box .confirm_box .btn:hover {
+    cursor: pointer;
+    background-color: #323c57;
+}
+
+.show_layer-enter-active {
+    animation: layer-in .2s;
+}
+
+.show_layer-leave-active {
+    animation: layer-in .2s reverse;
+}
+
+@keyframes layer-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* 更新任务弹窗   end */
+/* 清理任务弹窗   start */
+
+/* 清理任务弹窗   end */
 /* 右    end */

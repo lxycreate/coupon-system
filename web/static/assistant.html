@@ -68,7 +68,7 @@
                         <ul class="btn_box">
                             <li class="btn">
                                 <span class="cover">
-                                    <i class="iconfont icon-plus" title="新建更新任务"></i>
+                                    <i class="iconfont icon-plus" title="新建更新任务" @click="showUpdateBox"></i>
                                 </span>
                             </li>
                             <li class="btn">
@@ -95,23 +95,37 @@
                         </ul>
                     </div>
                     <!-- 更新任务   start -->
-                    <div class="update_box">
-                        <span class="title_box">
-                            <span class="title">新建更新任务</span>
-                            <i class="iconfont icon-cross"></i>
-                        </span>
-                        <span class="data_origin">
-                            <span class="title">请选择数据源</span>
-                            <span class="origin">
-                                <span class="origin_btn" v-for="origin_btn in update_origin" @click="test(origin_btn.index)">
-                                    <i class="iconfont " v-bind:class="{'icon-checkboxunchecked':!origin_btn.is_select,'icon-checkboxchecked':origin_btn.is_select}"></i>{{origin_btn.name}}
+                    <transition name="show_layer">
+                        <div class="update_box" v-show="is_show_update_box">
+                            <span class="title_box">
+                                <span class="title">新建更新任务</span>
+                                <i class="iconfont icon-cross" @click="cancelUpdate"></i>
+                            </span>
+                            <span class="data_origin">
+                                <span class="origin">
+                                    <span class="title">请选择数据源</span>
+                                    <span class="btn_box">
+                                        <span class="origin_btn" v-for="origin_btn in update_origin" @click="test(origin_btn.index)">
+                                            <i class="iconfont " v-bind:class="{'icon-checkboxunchecked':!origin_btn.is_select,'icon-checkboxchecked':origin_btn.is_select}"></i>{{origin_btn.name}}
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="clean">
+                                    <span class="title">清理</span>
+                                    <span class="btn_box">
+                                        <span class="btn">
+                                            <i class="iconfont" v-bind:class="{'icon-checkboxunchecked':!is_clean,'icon-checkboxchecked':is_clean}"></i>
+                                            更新前首先清理数据
+                                        </span>
+                                    </span>
                                 </span>
                             </span>
-                            <span class="clean">
-                                <i class="iconfont" v-bind:class="{'icon-checkboxunchecked':!is_clean,'icon-checkboxchecked':is_clean}"></i>
+                            <span class="confirm_box">
+                                <span class="btn">确认</span>
+                                <span class="btn" @click="cancelUpdate">取消</span>
                             </span>
-                        </span>
-                    </div>
+                        </div>
+                    </transition>
                     <!-- 更新任务   end -->
                     <!-- 清理任务   start -->
                     <div class="clean_box">
