@@ -37,5 +37,300 @@
         <result property="is_hai" column="is_hai"/>
         <result property="dsr" column="dsr"/>
     </resultMap>
+    <!--检查是否存在商品-->
+    <select id="checkGoodsExist" resultType="java.lang.Integer">
+        select count(*) from goods_test where goods_id = #{goods_id}
+    </select>
+    <!--更新商品数据-->
+    <update id="updateGoodsData">
+        update goods_test
+        <trim prefix="set" suffixOverrides=",">
+            <if test="platform_id != null">
+                platform_id=#{platform_id},
+            </if>
+            <if test="seller_id != null and seller_id != ''">
+                seller_id=#{seller_id},
+            </if>
+            <if test="goods_title != null and goods_title != ''">
+                goods_title=#{goods_title},
+            </if>
+            <if test="goods_stitle != null and goods_stitle != ''">
+                goods_stitle=#{goods_stitle},
+            </if>
+            <if test="goods_pic != null and goods_pic != ''">
+                goods_pic=#{goods_pic},
+            </if>
+            <if test="goods_url != null and goods_url != ''">
+                goods_url=#{goods_url},
+            </if>
+            <if test="goods_intro != null and goods_intro != ''">
+                goods_intro=#{goods_intro},
+            </if>
+            <if test="goods_price != null">
+                goods_price=#{goods_price},
+            </if>
+            <if test="goods_sale != null">
+                goods_sale=#{goods_sale},
+            </if>
+            <if test="goods_cid != null">
+                goods_cid=#{goods_cid},
+            </if>
+            <if test="commission_rate != null">
+                commission_rate=#{commission_rate},
+            </if>
+            <if test="commission_type != null">
+                commission_type=#{commission_type},
+            </if>
+            <if test="coupon_id != null">
+                coupon_id=#{coupon_id},
+            </if>
+            <if test="coupon_url != null">
+                coupon_url=#{coupon_url},
+            </if>
+            <if test="coupon_price != null">
+                coupon_price=#{coupon_price},
+            </if>
+            <if test="after_coupon != null">
+                after_coupon=#{after_coupon},
+            </if>
+            <if test="coupon_condition != null">
+                coupon_condition=#{coupon_condition},
+            </if>
+            <if test="coupon_total != null">
+                coupon_total=#{coupon_total},
+            </if>
+            <if test="coupon_rest != null">
+                coupon_rest=#{coupon_rest},
+            </if>
+            <if test="coupon_use != null">
+                coupon_use=#{coupon_use},
+            </if>
+            <if test="coupon_start != null">
+                coupon_start=#{coupon_start},
+            </if>
+            <if test="coupon_end != null">
+                coupon_end=#{coupon_end},
+            </if>
+            <if test="is_tmall != null">
+                is_tmall=#{is_tmall},
+            </if>
+            <if test="is_ju != null">
+                is_ju=#{is_ju},
+            </if>
+            <if test="is_qiang != null">
+                is_qiang=#{is_qiang},
+            </if>
+            <if test="is_yun != null">
+                is_yun=#{is_yun},
+            </if>
+            <if test="is_gold != null">
+                is_gold=#{is_gold},
+            </if>
+            <if test="is_ji != null">
+                is_ji=#{is_ji},
+            </if>
+            <if test="is_hai != null">
+                is_hai=#{is_hai},
+            </if>
+            <if test="dsr != null">
+                dsr=#{dsr}
+            </if>
+        </trim>
+        where goods_id=#{goods_id}
+    </update>
+    <!--插入商品数据-->
+    <insert id="insertGoodsData">
+        insert into goods_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goods_id != null">
+                goods_id,
+            </if>
+            <if test="platform_id != null">
+                platform_id,
+            </if>
+            <if test="seller_id != null">
+                seller_id,
+            </if>
+            <if test="goods_title != null">
+                goods_title,
+            </if>
+            <if test="goods_stitle != null">
+                goods_stitle,
+            </if>
+            <if test="goods_pic != null">
+                goods_pic,
+            </if>
+            <if test="goods_url != null">
+                goods_url,
+            </if>
+            <if test="goods_intro != null">
+                goods_intro,
+            </if>
+            <if test="goods_price != null">
+                goods_price,
+            </if>
+            <if test="goods_sale != null">
+                goods_sale,
+            </if>
+            <if test="goods_cid != null">
+                goods_cid,
+            </if>
+            <if test="commission_rate != null">
+                commission_rate,
+            </if>
+            <if test="commission_type != null">
+                commission_type,
+            </if>
+            <if test="coupon_id != null">
+                coupon_id,
+            </if>
+            <if test="coupon_url != null">
+                coupon_url,
+            </if>
+            <if test="coupon_price != null">
+                coupon_price,
+            </if>
+            <if test="after_coupon != null">
+                after_coupon,
+            </if>
+            <if test="coupon_condition != null">
+                coupon_condition,
+            </if>
+            <if test="coupon_total != null">
+                coupon_total,
+            </if>
+            <if test="coupon_rest != null">
+                coupon_rest,
+            </if>
+            <if test="coupon_use != null">
+                coupon_use,
+            </if>
+            <if test="coupon_start != null">
+                coupon_start,
+            </if>
+            <if test="coupon_end != null">
+                coupon_end,
+            </if>
+            <if test="is_tmall != null">
+                is_tmall,
+            </if>
+            <if test="is_ju != null">
+                is_ju,
+            </if>
+            <if test="is_qiang != null">
+                is_qiang,
+            </if>
+            <if test="is_yun != null">
+                is_yun,
+            </if>
+            <if test="is_gold != null">
+                is_gold,
+            </if>
+            <if test="is_ji != null">
+                is_ji,
+            </if>
+            <if test="is_hai != null">
+                is_hai,
+            </if>
+            <if test="dsr != null">
+                dsr,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goods_id != null">
+                #{goods_id},
+            </if>
+            <if test="platform_id != null">
+                #{platform_id},
+            </if>
+            <if test="seller_id != null">
+                #{seller_id},
+            </if>
+            <if test="goods_title != null">
+                #{goods_title},
+            </if>
+            <if test="goods_stitle != null">
+                #{goods_stitle},
+            </if>
+            <if test="goods_pic != null">
+                #{goods_pic},
+            </if>
+            <if test="goods_url != null">
+                #{goods_url},
+            </if>
+            <if test="goods_intro != null">
+                #{goods_intro},
+            </if>
+            <if test="goods_price != null">
+                #{goods_price},
+            </if>
+            <if test="goods_sale != null">
+                #{goods_sale},
+            </if>
+            <if test="goods_cid != null">
+                #{goods_cid},
+            </if>
+            <if test="commission_rate != null">
+                #{commission_rate},
+            </if>
+            <if test="commission_type != null">
+                #{commission_type},
+            </if>
+            <if test="coupon_id != null">
+                #{coupon_id},
+            </if>
+            <if test="coupon_url != null">
+                #{coupon_url},
+            </if>
+            <if test="coupon_price != null">
+                #{coupon_price},
+            </if>
+            <if test="after_coupon != null">
+                #{after_coupon},
+            </if>
+            <if test="coupon_condition != null">
+                #{coupon_condition},
+            </if>
+            <if test="coupon_total != null">
+                #{coupon_total},
+            </if>
+            <if test="coupon_rest != null">
+                #{coupon_rest},
+            </if>
+            <if test="coupon_use != null">
+                #{coupon_use},
+            </if>
+            <if test="coupon_start != null">
+                #{coupon_start},
+            </if>
+            <if test="coupon_end != null">
+                #{coupon_end},
+            </if>
+            <if test="is_tmall != null">
+                #{is_tmall},
+            </if>
+            <if test="is_ju != null">
+                #{is_ju},
+            </if>
+            <if test="is_qiang != null">
+                #{is_qiang},
+            </if>
+            <if test="is_yun != null">
+                #{is_yun},
+            </if>
+            <if test="is_gold != null">
+                #{is_gold},
+            </if>
+            <if test="is_ji != null">
+                #{is_ji},
+            </if>
+            <if test="is_hai != null">
+                #{is_hai},
+            </if>
+            <if test="dsr != null">
+                #{dsr},
+            </if>
+        </trim>
+    </insert>
 
 </mapper>
