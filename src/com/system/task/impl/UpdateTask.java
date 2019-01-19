@@ -9,23 +9,23 @@ import com.system.service.DataManageService;
 import com.system.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class UpdateTask implements Task {
     @Autowired
     LogDao dao;
 
-    private String id;    //任务id
+    private Integer id;    //任务id
     private SqlLog log;   //log
     private DataManageService service;  //service
     private UpdateGoodsData update_data;  //
     private String obj;     // 更新的对象
 
-    public UpdateTask(String obj) {
-        this.init(obj);
-    }
-
     // 初始化
     @Override
     public void init(String obj) {
+        this.obj = obj;
         System.out.println("初始化更新任务");
         if (obj.equals("tkzs")) {
             update_data = new UpdateTkzsData();
@@ -35,9 +35,18 @@ public class UpdateTask implements Task {
         }
     }
 
-    // 创建日志
+    // 创建并插入日志
     public void createLog() {
-
+        id = dao.getLogNum() + 1;
+        log = new SqlLog();
+        log.setId(id);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String now_time = df.format(new Date()).toString();
+        log.setCreate_time(now_time);
+        log.setObj(obj);
+        log.setStatus("wait");
+        log.setCode("wait");
+        dao.insertLog(log);
     }
 
     // 执行任务
@@ -65,7 +74,7 @@ public class UpdateTask implements Task {
     }
 
     @Override
-    public void setLog(SqlLog log){
+    public void setLog(SqlLog log) {
         this.log = log;
     }
 

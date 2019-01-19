@@ -18,4 +18,61 @@
     <select id="getLogNnum" resultType="java.lang.Integer">
         select count(*) from log
     </select>
+
+    <!--插入日志数据-->
+    <insert id="insertLog">
+        insert into log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="obj != null">
+                obj,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="start_time != null">
+                start_time,
+            </if>
+            <if test="end_time != null">
+                end_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="type != null">
+                #{type},
+            </if>
+            <if test="obj != null">
+                #{obj},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="code != null">
+                #{code},
+            </if>
+            <if test="create_time != null">
+                #{create_time},
+            </if>
+            <if test="start_time != null">
+                #{start_time},
+            </if>
+            <if test="end_time != null">
+                #{end_time},
+            </if>
+        </trim>
+    </insert>
 </mapper>
