@@ -13,10 +13,10 @@ import com.system.task.impl.UpdateTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 @Service
 public class DataManageServiceImpl implements DataManageService {
@@ -27,14 +27,15 @@ public class DataManageServiceImpl implements DataManageService {
     @Autowired
     LogDao log_dao;
 
-    private static List<Task> task_list;
+    private static BlockingQueue<Task> queue;
 
     // 初始化静态变量
     @Override
     public void initTaskList() {
-        if (task_list == null) {
-            task_list = new ArrayList<Task>();
+        if (queue == null) {
+            queue = new LinkedBlockingQueue<Task>();
         }
+
         List<SqlLog> temp = log_dao.getUnFinishWork();
         for (int i = 0; i < temp.size(); ++i) {
             SqlLog m = temp.get(i);
@@ -42,7 +43,7 @@ public class DataManageServiceImpl implements DataManageService {
                 Task t = new UpdateTask();
                 t.setLog(m);
                 t.setService(this);
-                task_list.add(t);
+                queue.add(t);
             }
         }
         scanTask();
@@ -75,24 +76,18 @@ public class DataManageServiceImpl implements DataManageService {
         t.setService(this);
         t.init(obj);
         t.createLog();
-        task_list.add(t);
+        queue.add(t);
     }
 
     @Override
     // 扫描任务数组
     public void scanTask() {
-        int i = 0;
-        int size = task_list.size();
-        while (i < size) {
-            Task t = task_list.get(i);
-            if (t.getStatus().equals("wait")) {
+        while (queue.peek() != null) {
+            Task t = queue.poll();
+            if(t.getStatus().equals("wait")){
                 t.run();
                 break;
             }
-            if (t.getStatus().equals("success")) {
-                task_list.remove(i);
-            }
-            ++i;
         }
     }
 }

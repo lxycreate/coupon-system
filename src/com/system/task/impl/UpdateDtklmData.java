@@ -35,6 +35,9 @@ public class UpdateDtklmData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("大淘客联盟页码: " + start_page);
         getGoodsData(start_page++);
+        if (start_page > 10) {
+            setStatusCode("success");
+        }
     }
 
     // 获取第几页的数据
@@ -176,9 +179,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
 
     // 插入数据库
     public void addToDataBase(SqlGoods temp) {
-        if (checkGoodsExist(temp.getGoods_id())) {
-            dao.updateGoodsData(temp);
-        } else {
+        if (!checkGoodsExist(temp.getGoods_id())) {
             dao.insertGoodsData(temp);
         }
     }

@@ -62,7 +62,7 @@ public class UpdateTask implements Task {
         timer.setLog(log);
         timer.setTask(this);
         Timer temp_timer = new Timer();
-        temp_timer.scheduleAtFixedRate(timer, 0, 3000);
+        temp_timer.scheduleAtFixedRate(timer, 0, 1000);
     }
 
     // 任务结束执行操作

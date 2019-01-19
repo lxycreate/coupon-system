@@ -32,7 +32,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("淘客助手页码: " + start_page);
         getGoodsData(start_page++);
-        if (start_page > 1) {
+        if (start_page > 10) {
             setStatusCode("success");
         }
     }
@@ -127,9 +127,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
 
     // 插入数据库
     public void addToDataBase(SqlGoods temp) {
-        if (checkGoodsExist(temp.getGoods_id())) {
-            dao.updateGoodsData(temp);
-        } else {
+        if (!checkGoodsExist(temp.getGoods_id())) {
             dao.insertGoodsData(temp);
         }
     }
