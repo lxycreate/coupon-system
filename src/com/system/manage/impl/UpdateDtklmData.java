@@ -6,16 +6,16 @@ import com.system.manage.RequestHttpData;
 import com.system.manage.UpdateGoodsData;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateDtklmData implements UpdateGoodsData {
-    @Autowired
-    GoodsDao dao;
 
+    private GoodsDao dao;
     private String appkey;                  //AppKey
     private String api_url;                 //接口地址
     private Integer start_page;             //开始页码
@@ -23,6 +23,8 @@ public class UpdateDtklmData implements UpdateGoodsData {
     private RequestHttpData re_http_data;   //获取Json数据的对象
 
     public UpdateDtklmData() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        dao = (GoodsDao) ctx.getBean("goodsDao");
         start_page = 1;
         status_code = "";
         appkey = "82af2ba264";
@@ -103,6 +105,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
             }
         } else {
             setStatusCode("success");
+            dao = null;
         }
     }
 
@@ -175,10 +178,9 @@ public class UpdateDtklmData implements UpdateGoodsData {
 
     // 插入数据库
     public void addToDataBase(SqlGoods temp) {
-        if(checkGoodsExist(temp.getGoods_id())){
+        if (checkGoodsExist(temp.getGoods_id())) {
             dao.updateGoodsData(temp);
-        }
-        else{
+        } else {
             dao.insertGoodsData(temp);
         }
     }

@@ -3,16 +3,16 @@ package com.system.task;
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
 import com.system.manage.UpdateGoodsData;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimerTask;
 
 public class UpdateTimer extends TimerTask {
-    @Autowired
-    LogDao dao;
 
+    private LogDao dao;
     private UpdateGoodsData goods_data;
     private Boolean start;   // 开始标志
     private Boolean end;     // 结束标志
@@ -23,6 +23,8 @@ public class UpdateTimer extends TimerTask {
         this.goods_data = goods;
         this.start = false;
         this.end = false;
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        dao = (LogDao) ctx.getBean("logDao");
     }
 
     //开始任务
@@ -50,6 +52,7 @@ public class UpdateTimer extends TimerTask {
             log.setCode("success");
             dao.updateLog(log);
             task.end();
+            dao = null;
         }
 //        if (goods_data.getStatusCode() == "parse error") {
 //            this.cancel();
@@ -67,12 +70,12 @@ public class UpdateTimer extends TimerTask {
     }
 
     // 设置日志类
-    public void setLog(SqlLog log){
+    public void setLog(SqlLog log) {
         this.log = log;
     }
 
     // 设置任务类
-    public void setTask(Task task){
+    public void setTask(Task task) {
         this.task = task;
     }
 }

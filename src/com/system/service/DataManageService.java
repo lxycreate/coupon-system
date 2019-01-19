@@ -5,4 +5,6 @@ import com.system.entity.json.DataManageJson;
 
 public interface DataManageService {
    public DataManageJson updateData(AjaxDataManage par);
+
+   public void scanTask();
 }

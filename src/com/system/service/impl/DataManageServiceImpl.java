@@ -38,7 +38,7 @@ public class DataManageServiceImpl implements DataManageService {
         List<SqlLog> temp = log_dao.getUnFinishWork();
         for (int i = 0; i < temp.size(); ++i) {
             SqlLog m = temp.get(i);
-            if (m.getType() == "update") {
+            if (m.getType().equals("update")) {
                 Task t = new UpdateTask();
                 t.setLog(m);
                 t.setService(this);
@@ -75,21 +75,24 @@ public class DataManageServiceImpl implements DataManageService {
         t.init(obj);
         t.createLog();
         task_list.add(t);
-        System.out.println(t.getStatus()+"状态码");
     }
 
+    @Override
     // 扫描任务数组
     public void scanTask() {
+        System.out.println("扫描任务列表");
         int i = 0;
+        System.out.println(task_list.size()+"大小");
         while (i < task_list.size()) {
             Task t = task_list.get(i);
-            if (t.getStatus() == "wait") {
+            if (t.getStatus().equals("wait")) {
                 t.run();
                 break;
             }
-            if (t.getStatus() == "success") {
+            if (t.getStatus().equals("success")) {
                 task_list.remove(i);
             }
+            System.out.println(t.getStatus());
             ++i;
         }
     }

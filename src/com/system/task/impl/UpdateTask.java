@@ -8,16 +8,16 @@ import com.system.manage.impl.UpdateTkzsData;
 import com.system.service.DataManageService;
 import com.system.task.Task;
 import com.system.task.UpdateTimer;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 
 public class UpdateTask implements Task {
-    @Autowired
-    LogDao dao;
 
+    private LogDao dao;
     private Integer id;    //任务id
     private SqlLog log;   //log
     private DataManageService service;  //service
@@ -28,6 +28,7 @@ public class UpdateTask implements Task {
     // 初始化
     @Override
     public void init(String obj) {
+        initLogDao();
         this.obj = obj;
         System.out.println("初始化更新任务");
         if (obj.equals("tkzs")) {
@@ -38,10 +39,15 @@ public class UpdateTask implements Task {
         }
     }
 
+    // 初始化LogDao
+    public void initLogDao() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        dao = (LogDao) ctx.getBean("logDao");
+    }
+
     @Override
     // 创建并插入日志
     public void createLog() {
-        System.out.println(dao.getLogNum());
         id = dao.getLogNum() + 1;
         log = new SqlLog();
         log.setId(id);
@@ -54,6 +60,7 @@ public class UpdateTask implements Task {
         log.setCode("wait");
         // 插入日志
         dao.insertLog(log);
+        dao = null;
         System.out.println("插入日志");
     }
 
@@ -64,13 +71,13 @@ public class UpdateTask implements Task {
         timer.setLog(log);
         timer.setTask(this);
         Timer temp_timer = new Timer();
-        temp_timer.scheduleAtFixedRate(timer,0,3000);
+        temp_timer.scheduleAtFixedRate(timer, 0, 3000);
     }
 
     // 任务结束执行操作
     @Override
     public void end() {
-
+        service.scanTask();
     }
 
     // 设置服务类

@@ -6,12 +6,12 @@ import com.system.manage.RequestHttpData;
 import com.system.manage.UpdateGoodsData;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class UpdateTkzsData implements UpdateGoodsData {
-    @Autowired
-    GoodsDao dao;
 
+    private GoodsDao dao;
     private String appkey;                  //AppKey
     private String api_url;                 //接口地址
     private Integer start_page;             //开始页码
@@ -19,6 +19,8 @@ public class UpdateTkzsData implements UpdateGoodsData {
     private RequestHttpData re_http_data;   //获取Json数据的对象
 
     public UpdateTkzsData() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        dao = (GoodsDao) ctx.getBean("goodsDao");
         start_page = 1;
         status_code = "";
         appkey = "e962172ec1fed525";
@@ -31,6 +33,9 @@ public class UpdateTkzsData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("淘客助手页码: " + start_page);
         getGoodsData(start_page++);
+        if(start_page>1){
+            setStatusCode("success");
+        }
     }
 
     //获取数据
@@ -97,6 +102,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
 
         } else {
             setStatusCode("success");
+            dao = null;
         }
     }
 
@@ -122,10 +128,9 @@ public class UpdateTkzsData implements UpdateGoodsData {
 
     // 插入数据库
     public void addToDataBase(SqlGoods temp) {
-        if(checkGoodsExist(temp.getGoods_id())){
+        if (checkGoodsExist(temp.getGoods_id())) {
             dao.updateGoodsData(temp);
-        }
-        else{
+        } else {
             dao.insertGoodsData(temp);
         }
     }
