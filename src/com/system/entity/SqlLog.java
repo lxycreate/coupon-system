@@ -6,6 +6,7 @@ public class SqlLog {
     private String obj;       //任务对象
     private String status;    //任务状态
     private String code;      //任务代码
+    private String create_time;  //创建时间
     private String start_time;  //开始时间
     private String end_time;    //结束时间
 
@@ -51,6 +52,14 @@ public class SqlLog {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
     }
 
     public String getStart_time() {

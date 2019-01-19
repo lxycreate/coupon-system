@@ -1,4 +1,4 @@
-package com.system.timer;
+package com.system.task;
 
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
@@ -12,13 +12,15 @@ public class UpdateTimer extends TimerTask {
     LogDao dao;
 
     private UpdateGoodsData goods_data;
-    private Boolean start;
-    private SqlLog log;      //日志
+    private Boolean start;   // 开始标志
+    private Boolean end;     // 结束标志
+    private SqlLog log;      // 日志
 
 
     public UpdateTimer(UpdateGoodsData goods) {
         this.goods_data = goods;
         this.start = false;
+        this.end = false;
     }
 
     //定时任务
@@ -31,12 +33,15 @@ public class UpdateTimer extends TimerTask {
         //没有更多数据可以读取
         if (goods_data.getStatusCode() == "success") {
             this.cancel();
+            end = true;
         }
         if (goods_data.getStatusCode() == "parse error") {
             this.cancel();
+            end = true;
         }
         if (goods_data.getStatusCode() == "connection error") {
             this.cancel();
+            end = true;
         }
     }
 
