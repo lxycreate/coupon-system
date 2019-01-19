@@ -1,5 +1,7 @@
 package com.system.timer;
 
+import com.system.dao.LogDao;
+import com.system.entity.SqlLog;
 import com.system.manage.UpdateGoodsData;
 
 import java.util.TimerTask;
@@ -7,6 +9,9 @@ import java.util.TimerTask;
 public class UpdateTimer extends TimerTask {
     private UpdateGoodsData goods_data;
     private Boolean start;
+    private LogDao  dao;      //用于写日志
+    private SqlLog log;      //日志
+
 
     public UpdateTimer(UpdateGoodsData goods) {
         this.goods_data = goods;
@@ -35,4 +40,6 @@ public class UpdateTimer extends TimerTask {
     public void setGoods_data(UpdateGoodsData goods) {
         this.goods_data = goods;
     }
+
+
 }

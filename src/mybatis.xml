@@ -14,6 +14,7 @@
     <typeAliases>
         <typeAlias type="com.system.entity.SqlUser" alias="user" />
         <typeAlias type="com.system.entity.SqlGoods" alias="goods" />
+        <typeAlias type="com.system.entity.SqlLog" alias="log" />
     </typeAliases>
 
 

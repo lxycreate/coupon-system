@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DataManageController {
     @Autowired
     DataManageService service;
+
     @Autowired
     HttpServletRequest request;
 
