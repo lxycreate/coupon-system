@@ -91,6 +91,8 @@ public class UpdateTkzsData implements UpdateGoodsData {
                 temp_goods.setIs_ji(good.getInt("jiyoujia"));
                 temp_goods.setIs_hai(good.getInt("haitao"));
                 temp_goods.setDsr(good.getDouble("dsr"));
+                // 插入数据库
+                addToDataBase(temp_goods);
             }
 
         } else {
@@ -108,6 +110,24 @@ public class UpdateTkzsData implements UpdateGoodsData {
     @Override
     public void setStatusCode(String str) {
         this.status_code = str;
+    }
+
+    // 检查商品是否已经存在
+    public Boolean checkGoodsExist(String goods_id) {
+        if (dao.checkGoodsExist(goods_id) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    // 插入数据库
+    public void addToDataBase(SqlGoods temp) {
+        if(checkGoodsExist(temp.getGoods_id())){
+            dao.updateGoodsData(temp);
+        }
+        else{
+            dao.insertGoodsData(temp);
+        }
     }
 }
 

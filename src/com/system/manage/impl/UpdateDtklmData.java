@@ -29,7 +29,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
         api_url = "http://api.dataoke.com/index.php?r=Port/index&type=total";
         System.out.println("初始化大淘客联盟");
     }
-    
+
     // 开始获取数据
     @Override
     public void runGetData() {
@@ -97,6 +97,9 @@ public class UpdateDtklmData implements UpdateGoodsData {
                 temp_goods.setIs_ji(-1);
                 temp_goods.setIs_hai(-1);
                 temp_goods.setDsr(good.getDouble("Dsr"));
+
+                // 插入数据库
+                addToDataBase(temp_goods);
             }
         } else {
             setStatusCode("success");
@@ -160,6 +163,24 @@ public class UpdateDtklmData implements UpdateGoodsData {
             temp = 9;
         }
         return temp;
+    }
+
+    // 检查商品是否已经存在
+    public Boolean checkGoodsExist(String goods_id) {
+        if (dao.checkGoodsExist(goods_id) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    // 插入数据库
+    public void addToDataBase(SqlGoods temp) {
+        if(checkGoodsExist(temp.getGoods_id())){
+            dao.updateGoodsData(temp);
+        }
+        else{
+            dao.insertGoodsData(temp);
+        }
     }
 
 }
