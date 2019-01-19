@@ -2,22 +2,23 @@ package com.system.task.impl;
 
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
-import com.system.manage.impl.UpdateDtklmData;
-import com.system.manage.UpdateGoodsData;
-import com.system.manage.impl.UpdateTkzsData;
+import com.system.task.UpdateGoodsData;
 import com.system.service.DataManageService;
 import com.system.task.Task;
 import com.system.task.UpdateTimer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 
+@Component
 public class UpdateTask implements Task {
 
-    private LogDao dao;
+    @Autowired
+    LogDao dao;
+
     private Integer id;    //任务id
     private SqlLog log;   //log
     private DataManageService service;  //service
@@ -41,8 +42,8 @@ public class UpdateTask implements Task {
 
     // 初始化LogDao
     public void initLogDao() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-        dao = (LogDao) ctx.getBean("logDao");
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        dao = (LogDao) ctx.getBean("logDao");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.system.manage;
+package com.system.task;
 
 
 public interface UpdateGoodsData {

@@ -1,21 +1,23 @@
-package com.system.manage.impl;
+package com.system.task.impl;
 
 import com.system.dao.GoodsDao;
 import com.system.entity.SqlGoods;
-import com.system.manage.RequestHttpData;
-import com.system.manage.UpdateGoodsData;
+import com.system.task.RequestHttpData;
+import com.system.task.UpdateGoodsData;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class UpdateDtklmData implements UpdateGoodsData {
 
-    private GoodsDao dao;
+    @Autowired
+    GoodsDao dao;
     private String appkey;                  //AppKey
     private String api_url;                 //接口地址
     private Integer start_page;             //开始页码
@@ -23,8 +25,8 @@ public class UpdateDtklmData implements UpdateGoodsData {
     private RequestHttpData re_http_data;   //获取Json数据的对象
 
     public UpdateDtklmData() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-        dao = (GoodsDao) ctx.getBean("goodsDao");
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        dao = (GoodsDao) ctx.getBean("goodsDao");
         start_page = 1;
         status_code = "";
         appkey = "82af2ba264";
