@@ -30,7 +30,7 @@ public class DataManageServiceImpl implements DataManageService {
     private static List<Task> task_list;
 
     // 初始化静态变量
-    @PostConstruct
+    @Override
     public void initTaskList() {
         if (task_list == null) {
             task_list = new ArrayList<Task>();
@@ -45,6 +45,7 @@ public class DataManageServiceImpl implements DataManageService {
                 task_list.add(t);
             }
         }
+        scanTask();
     }
 
     // 检查用户名和密码
@@ -80,10 +81,9 @@ public class DataManageServiceImpl implements DataManageService {
     @Override
     // 扫描任务数组
     public void scanTask() {
-        System.out.println("扫描任务列表");
         int i = 0;
-        System.out.println(task_list.size()+"大小");
-        while (i < task_list.size()) {
+        int size = task_list.size();
+        while (i < size) {
             Task t = task_list.get(i);
             if (t.getStatus().equals("wait")) {
                 t.run();
@@ -92,7 +92,6 @@ public class DataManageServiceImpl implements DataManageService {
             if (t.getStatus().equals("success")) {
                 task_list.remove(i);
             }
-            System.out.println(t.getStatus());
             ++i;
         }
     }

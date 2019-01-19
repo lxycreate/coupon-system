@@ -7,4 +7,6 @@ public interface DataManageService {
    public DataManageJson updateData(AjaxDataManage par);
 
    public void scanTask();
+
+   public void initTaskList();
 }

@@ -7,8 +7,6 @@ import com.system.task.UpdateGoodsData;
 import com.system.service.DataManageService;
 import com.system.task.Task;
 import com.system.task.UpdateTimer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +25,7 @@ public class UpdateTask implements Task {
     // 初始化
     @Override
     public void init(String obj) {
-        initLogDao();
+        dao = (LogDao) SpringTool.getBean("logDao");
         this.obj = obj;
         System.out.println("初始化更新任务");
         if (obj.equals("tkzs")) {
@@ -36,11 +34,6 @@ public class UpdateTask implements Task {
         if (obj.equals("dtklm")) {
             update_data = new UpdateDtklmData();
         }
-    }
-
-    // 初始化LogDao
-    public void initLogDao() {
-        dao = (LogDao) SpringTool.getBean("logDao");
     }
 
     @Override

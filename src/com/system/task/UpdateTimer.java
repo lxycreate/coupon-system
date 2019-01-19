@@ -22,7 +22,7 @@ public class UpdateTimer extends TimerTask {
         this.goods_data = goods;
         this.start = false;
         this.end = false;
-        dao = (LogDao) SpringTool.getBean("logDao");
+        dao = (LogDao)SpringTool.getBean("logDao");
     }
 
     //开始任务

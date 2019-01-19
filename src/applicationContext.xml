@@ -33,7 +33,7 @@
         <!-- 加载mybatis主配置文件 -->
         <property name="configLocation" value="classpath:mybatis.xml"/>
         <!-- 加载映射文件 -->
-        <property name="mapperLocations" value="classpath:mapper/*.xml" />
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
     <!-- 创建mybatis的会话工厂对象  结束-->
 
@@ -52,11 +52,11 @@
     <!-- 2配置事务的特性 -->
     <tx:advice id="txAdvice" transaction-manager="txManage">
         <tx:attributes>
-            <tx:method name="add*" read-only="false" propagation="REQUIRED" />
-            <tx:method name="find*" read-only="true" propagation="REQUIRED" />
-            <tx:method name="update*" read-only="false" propagation="REQUIRED" />
-            <tx:method name="delete*" read-only="false" propagation="REQUIRED" />
-            <tx:method name="get*" read-only="false" propagation="NOT_SUPPORTED" />
+            <tx:method name="add*" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="find*" read-only="true" propagation="REQUIRED"/>
+            <tx:method name="update*" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="delete*" read-only="false" propagation="REQUIRED"/>
+            <tx:method name="get*" read-only="false" propagation="NOT_SUPPORTED"/>
         </tx:attributes>
     </tx:advice>
 
@@ -64,9 +64,9 @@
     <aop:config>
         <!-- 切入点 -->
         <aop:pointcut expression="execution(* com.system.service.impl.*.*(..))"
-                      id="pc" />
+                      id="pc"/>
         <!-- 通知 -->
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
     </aop:config>
 
 
