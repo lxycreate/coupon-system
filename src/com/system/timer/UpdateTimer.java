@@ -21,7 +21,7 @@ public class UpdateTimer extends TimerTask {
         }
         goods_data.runGetData();
         //没有更多数据可以读取
-        if (goods_data.getStatusCode() == "none") {
+        if (goods_data.getStatusCode() == "success") {
             this.cancel();
         }
         if (goods_data.getStatusCode() == "parse error") {

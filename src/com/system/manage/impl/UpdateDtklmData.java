@@ -51,7 +51,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
             parseGoodsJson(temp);
         } else {
             System.out.println("无数据");
-            setStatusCode("none");
+            setStatusCode("success");
         }
     }
 
@@ -102,7 +102,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
                 temp_goods.setDsr(good.getDouble("Dsr"));
             }
         } else {
-            setStatusCode("none");
+            setStatusCode("success");
         }
     }
 

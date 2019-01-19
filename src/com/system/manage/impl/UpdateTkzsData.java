@@ -48,7 +48,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
             parseGoodsJson(temp);
         } else {
             System.out.println("无数据");
-            setStatusCode("none");
+            setStatusCode("success");
         }
     }
 
@@ -97,7 +97,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
             }
 
         } else {
-            setStatusCode("none");
+            setStatusCode("success");
         }
     }
 
