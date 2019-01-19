@@ -2,20 +2,16 @@ package com.system.task;
 
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
-import com.system.task.UpdateGoodsData;
-import com.system.task.Task;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.system.spring.SpringTool;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimerTask;
 
-@Component
 public class UpdateTimer extends TimerTask {
 
-    @Autowired
-    LogDao dao;
+    private LogDao dao;
     private UpdateGoodsData goods_data;
     private Boolean start;   // 开始标志
     private Boolean end;     // 结束标志
@@ -26,8 +22,7 @@ public class UpdateTimer extends TimerTask {
         this.goods_data = goods;
         this.start = false;
         this.end = false;
-//        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        dao = (LogDao) ctx.getBean("logDao");
+        dao = (LogDao) SpringTool.getBean("logDao");
     }
 
     //开始任务

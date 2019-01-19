@@ -1,6 +1,5 @@
 package com.system.task;
 
-import com.system.task.UpdateGoodsData;
 import net.sf.json.JSONObject;
 
 import java.io.BufferedReader;

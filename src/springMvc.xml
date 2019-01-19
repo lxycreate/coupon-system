@@ -19,7 +19,9 @@
         <!--<property name="prefix" value="/static/"/>-->
         <property name="suffix" value=".html"/>
     </bean>
-
+    <!--普通类使用获取bean-->
+    <bean class="com.system.spring.SpringTool">
+    </bean>
     <!--Spring 3.0.x中使用了annotation-driven后，缺省使用DefaultAnnotationHandlerMapping 来注册handler method和request的mapping关系-->
     <mvc:annotation-driven>
         <!-- 使后缀匹配失效 -->
