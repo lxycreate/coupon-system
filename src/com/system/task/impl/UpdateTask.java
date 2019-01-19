@@ -2,8 +2,8 @@ package com.system.task.impl;
 
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
-import com.system.manage.UpdateGoodsData;
 import com.system.manage.impl.UpdateDtklmData;
+import com.system.manage.UpdateGoodsData;
 import com.system.manage.impl.UpdateTkzsData;
 import com.system.service.DataManageService;
 import com.system.task.Task;
@@ -41,6 +41,7 @@ public class UpdateTask implements Task {
     @Override
     // 创建并插入日志
     public void createLog() {
+        System.out.println(dao.getLogNum());
         id = dao.getLogNum() + 1;
         log = new SqlLog();
         log.setId(id);
@@ -53,6 +54,7 @@ public class UpdateTask implements Task {
         log.setCode("wait");
         // 插入日志
         dao.insertLog(log);
+        System.out.println("插入日志");
     }
 
     // 执行任务
@@ -79,8 +81,8 @@ public class UpdateTask implements Task {
 
     // 检查是否正在执行
     @Override
-    public String getCode() {
-        return log.getCode();
+    public String getStatus() {
+        return log.getStatus();
     }
 
     @Override

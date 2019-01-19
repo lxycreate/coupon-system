@@ -1,6 +1,5 @@
 package com.system.manage;
 
-import com.system.dao.GoodsDao;
 
 public interface UpdateGoodsData {
     // 开始执行

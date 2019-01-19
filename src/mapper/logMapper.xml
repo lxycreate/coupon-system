@@ -15,7 +15,7 @@
         <result property="end_time" column="end_time"/>
     </resultMap>
 
-    <select id="getLogNnum" resultType="java.lang.Integer">
+    <select id="getLogNum" resultType="java.lang.Integer">
         select count(*) from log
     </select>
 

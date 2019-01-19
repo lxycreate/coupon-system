@@ -201,3 +201,22 @@ function initContent() {
         // 
     });
 }
+
+
+function testUpdate(){
+    var temp = {};
+    temp['is_update_tkzs'] = true;
+    temp['is_update_dtklm'] = true;
+    axios({
+        url: base_url + '/manage/data',
+        method: 'post',
+        params: temp
+    }).then(function (response) {
+    
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+testUpdate();

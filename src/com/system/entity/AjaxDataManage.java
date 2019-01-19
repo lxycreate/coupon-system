@@ -18,32 +18,33 @@ public class AjaxDataManage {
         this.request = request;
         username = "";
         password = "";
+        init();
     }
 
     // 初始化
     public void init() {
-        if (request.getParameter("is_update_tkzs") == "true") {
+        if (request.getParameter("is_update_tkzs") != null && request.getParameter("is_update_tkzs").equals("true")) {
             is_update_tkzs = true;
             is_update = true;
         } else {
             is_update_tkzs = false;
             is_update = false;
         }
-        if (request.getParameter("is_update_dtklm") == "true") {
+        if (request.getParameter("is_update_dtklm") != null && request.getParameter("is_update_dtklm").equals("true")) {
             is_update_dtklm = true;
             is_update = true;
         } else {
             is_update_dtklm = false;
             is_update = false;
         }
-        if (request.getParameter("is_clean_tkzs") == "true") {
+        if (request.getParameter("is_clean_tkzs") != null && request.getParameter("is_clean_tkzs").equals("true")) {
             is_clean_tkzs = true;
             is_clean = true;
         } else {
             is_clean_tkzs = false;
             is_clean = false;
         }
-        if (request.getParameter("is_clean_dtklm") == "true") {
+        if (request.getParameter("is_clean_dtklm") != null && request.getParameter("is_clean_dtklm").equals("true")) {
             is_clean_dtklm = true;
             is_clean = true;
         } else {

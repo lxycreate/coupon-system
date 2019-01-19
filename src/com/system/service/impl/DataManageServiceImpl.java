@@ -75,6 +75,7 @@ public class DataManageServiceImpl implements DataManageService {
         t.init(obj);
         t.createLog();
         task_list.add(t);
+        System.out.println(t.getStatus()+"状态码");
     }
 
     // 扫描任务数组
@@ -82,11 +83,11 @@ public class DataManageServiceImpl implements DataManageService {
         int i = 0;
         while (i < task_list.size()) {
             Task t = task_list.get(i);
-            if (t.getCode() == "wait") {
+            if (t.getStatus() == "wait") {
                 t.run();
                 break;
             }
-            if (t.getCode() == "success") {
+            if (t.getStatus() == "success") {
                 task_list.remove(i);
             }
             ++i;
