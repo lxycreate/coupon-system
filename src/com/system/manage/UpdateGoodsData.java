@@ -12,7 +12,4 @@ public interface UpdateGoodsData {
     // 设置执行状态码
     public void setStatusCode(String str);
 
-    // 用于操作数据库
-    public void setGoodsDao(GoodsDao dao);
-
 }

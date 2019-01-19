@@ -6,14 +6,17 @@ import com.system.manage.RequestHttpData;
 import com.system.manage.UpdateGoodsData;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class UpdateTkzsData implements UpdateGoodsData {
+    @Autowired
+    GoodsDao dao;
+
     private String appkey;                  //AppKey
     private String api_url;                 //接口地址
     private Integer start_page;             //开始页码
     private String status_code;           //操作停止标志
     private RequestHttpData re_http_data;   //获取Json数据的对象
-    private GoodsDao dao;                   //用于进行数据库操作
 
     public UpdateTkzsData() {
         start_page = 1;
@@ -21,12 +24,6 @@ public class UpdateTkzsData implements UpdateGoodsData {
         appkey = "e962172ec1fed525";
         api_url = "http://api.taokezhushou.com/api/v1/all?";
         System.out.println("初始化淘客助手");
-    }
-
-    // 用于进行数据库操作
-    @Override
-    public void setGoodsDao(GoodsDao dao) {
-        this.dao = dao;
     }
 
     //请求数据
