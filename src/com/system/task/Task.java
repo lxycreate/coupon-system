@@ -17,9 +17,10 @@ public interface Task {
    // 设置service
    public void setService(DataManageService service);
 
-   // 获取是否正在执行
+   // 获取执行状态码
     public String getCode();
 
-    // 设置日志
+    // 读取日志
     public void setLog(SqlLog log);
+
 }

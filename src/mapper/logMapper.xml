@@ -75,4 +75,24 @@
             </if>
         </trim>
     </insert>
+
+    <!--更新日志-->
+    <update id="updateGoodsData">
+        update log
+        <trim prefix="set" suffixOverrides=",">
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="code != null">
+                code=#{code},
+            </if>
+            <if test="start_time != null">
+                start_time=#{start_time},
+            </if>
+            <if test="end_time != null">
+                end_time=#{end_time},
+            </if>
+        </trim>
+        where id=#{id}
+    </update>
 </mapper>
