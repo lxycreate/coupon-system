@@ -19,6 +19,7 @@ public class DataManageServiceImpl implements DataManageService {
     @Autowired
     LogDao log_dao;
 
+
     // 检查用户名和密码
     public Boolean checkUserPsd(String username, String password) {
         LoginJson temp_json = login.login(username, password);

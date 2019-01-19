@@ -77,7 +77,7 @@
     </insert>
 
     <!--更新日志-->
-    <update id="updateGoodsData">
+    <update id="updateLog">
         update log
         <trim prefix="set" suffixOverrides=",">
             <if test="status != null">
@@ -95,4 +95,9 @@
         </trim>
         where id=#{id}
     </update>
+
+    <!--获取未完成任务日志-->
+    <select id="getUnFinishWork" resultType="log" resultMap="logMapper">
+       select * from log where status='wait' or end_time = ''
+    </select>
 </mapper>

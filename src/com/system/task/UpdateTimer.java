@@ -35,6 +35,7 @@ public class UpdateTimer extends TimerTask {
             log.setStart_time(now_time);
             log.setStatus("running");
             log.setCode("running");
+            dao.updateLog(log);
         }
 
         goods_data.runGetData();
@@ -42,15 +43,22 @@ public class UpdateTimer extends TimerTask {
         if (goods_data.getStatusCode() == "success") {
             this.cancel();
             end = true;
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String now_time = df.format(new Date()).toString();
+            log.setEnd_time(now_time);
+            log.setStatus("success");
+            log.setCode("success");
+            dao.updateLog(log);
+            task.end();
         }
-        if (goods_data.getStatusCode() == "parse error") {
-            this.cancel();
-            end = true;
-        }
-        if (goods_data.getStatusCode() == "connection error") {
-            this.cancel();
-            end = true;
-        }
+//        if (goods_data.getStatusCode() == "parse error") {
+//            this.cancel();
+//            end = true;
+//        }
+//        if (goods_data.getStatusCode() == "connection error") {
+//            this.cancel();
+//            end = true;
+//        }
     }
 
     // 设置获取商品数据类

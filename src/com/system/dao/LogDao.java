@@ -2,8 +2,10 @@ package com.system.dao;
 
 import com.system.entity.SqlLog;
 
+import java.util.List;
+
 public interface LogDao {
-    //获取日志总数
+    // 获取日志总数
     public Integer getLogNum();
 
     // 插入日志
@@ -11,4 +13,7 @@ public interface LogDao {
 
     // 更新日志
     public void updateLog(SqlLog log);
+
+    // 获取未完成任务日志
+    public List<SqlLog> getUnFinishWork();
 }
