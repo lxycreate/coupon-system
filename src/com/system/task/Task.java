@@ -23,4 +23,7 @@ public interface Task {
     // 读取日志
     public void setLog(SqlLog log);
 
+    // 创建日志
+    public void createLog();
+
 }

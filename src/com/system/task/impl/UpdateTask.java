@@ -38,11 +38,13 @@ public class UpdateTask implements Task {
         }
     }
 
+    @Override
     // 创建并插入日志
     public void createLog() {
         id = dao.getLogNum() + 1;
         log = new SqlLog();
         log.setId(id);
+        log.setType("update");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String now_time = df.format(new Date()).toString();
         log.setCreate_time(now_time);
@@ -84,6 +86,7 @@ public class UpdateTask implements Task {
     @Override
     public void setLog(SqlLog log) {
         this.log = log;
+        init(log.getObj());
     }
 
 }

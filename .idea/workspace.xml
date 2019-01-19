@@ -7,11 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede64fec-2273-4389-8d62-e90de1bbd7d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/system/dao/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/dao/LogDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/system/task/UpdateTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/task/UpdateTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/logMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/logMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/system/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/task/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +37,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
-          <entry key="java" value="89" />
+          <entry key="java" value="92" />
           <entry key="md" value="1" />
           <entry key="xml" value="31" />
         </counts>
@@ -46,7 +45,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="89" />
+          <entry key="JAVA" value="92" />
           <entry key="Markdown" value="1" />
           <entry key="XML" value="31" />
         </counts>
@@ -54,13 +53,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="17" />
-          <entry key="java" value="5285" />
+          <entry key="java" value="6247" />
           <entry key="xml" value="865" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5285" />
+          <entry key="JAVA" value="6247" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="72" />
           <entry key="XML" value="793" />
@@ -100,20 +99,62 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mapper/logMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="100" column="60" selection-start-line="100" selection-start-column="60" selection-end-line="100" selection-end-column="60" />
+            <state relative-caret-position="151">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="171">
+              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+              <folding>
+                <element signature="e#1936#1937#0" expanded="true" />
+                <element signature="e#1987#1988#0" expanded="true" />
+                <element signature="e#2029#2030#0" expanded="true" />
+                <element signature="e#2065#2066#0" expanded="true" />
+                <element signature="e#2096#2097#0" expanded="true" />
+                <element signature="e#2145#2146#0" expanded="true" />
+                <element signature="e#2185#2186#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/system/task/Task.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/com/system/update/impl/UpdateDtklmData.java" />
         <option value="$PROJECT_DIR$/src/com/system/update/UpdateGoodsData.java" />
         <option value="$PROJECT_DIR$/src/com/system/service/DataManageService.java" />
-        <option value="$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java" />
         <option value="$PROJECT_DIR$/src/com/system/timer/TkzsTimer.java" />
         <option value="$PROJECT_DIR$/src/mybatis.xml" />
         <option value="$PROJECT_DIR$/src/com/system/controller/DataManageController.java" />
@@ -197,13 +237,14 @@
         <option value="$PROJECT_DIR$/src/com/system/entity/SqlLog.java" />
         <option value="$PROJECT_DIR$/src/com/system/manage/impl/UpdateTkzsData.java" />
         <option value="$PROJECT_DIR$/src/com/system/manage/impl/UpdateDtklmData.java" />
-        <option value="$PROJECT_DIR$/src/com/system/task/Task.java" />
-        <option value="$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java" />
         <option value="$PROJECT_DIR$/src/com/system/manage/RequestHttpData.java" />
         <option value="$PROJECT_DIR$/src/com/system/task/UpdateTimer.java" />
-        <option value="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/com/system/dao/LogDao.java" />
         <option value="$PROJECT_DIR$/src/mapper/logMapper.xml" />
+        <option value="$PROJECT_DIR$/src/com/system/task/Task.java" />
+        <option value="$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java" />
+        <option value="$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java" />
+        <option value="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -829,6 +870,14 @@
               <item name="TaoQuanSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="TaoQuanSystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TaoQuanSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TaoQuanSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -842,7 +891,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547881442011" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547882975628" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../GoodsData" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1019,12 +1068,12 @@
       <workItem from="1547694189586" duration="3040000" />
       <workItem from="1547786710891" duration="595000" />
       <workItem from="1547799336247" duration="13114000" />
-      <workItem from="1547860489384" duration="11518000" />
+      <workItem from="1547860489384" duration="13035000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47062000" />
+    <option name="totallyTimeSpent" value="48579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -1214,13 +1263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/system/entity/SqlGoods.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1260,32 +1302,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#runGetData#0;class#UpdateDtklmData#0" />
             <element signature="method#changeCid#0;class#UpdateDtklmData#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="46" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-            <element signature="e#660#661#0" expanded="true" />
-            <element signature="e#412#413#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#1469#1470#0" expanded="true" />
-            <element signature="e#1499#1500#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/system/task/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1340,16 +1356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/system/dao/LogDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1369,8 +1375,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapper/logMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="100" column="60" selection-start-line="100" selection-start-column="60" selection-end-line="100" selection-end-column="60" />
+        <state relative-caret-position="151">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/system/task/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/system/task/impl/UpdateTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/system/entity/AjaxDataManage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+          <folding>
+            <element signature="e#1936#1937#0" expanded="true" />
+            <element signature="e#1987#1988#0" expanded="true" />
+            <element signature="e#2029#2030#0" expanded="true" />
+            <element signature="e#2065#2066#0" expanded="true" />
+            <element signature="e#2096#2097#0" expanded="true" />
+            <element signature="e#2145#2146#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -10,6 +10,8 @@ public class AjaxDataManage {
     private Boolean is_update_dtklm;     // 是否更新大淘客联盟
     private Boolean is_clean_tkzs;       // 是否清理淘客助手
     private Boolean is_clean_dtklm;      // 是否清理大淘客联盟
+    private Boolean is_update;
+    private Boolean is_clean;
     private HttpServletRequest request;  // 获取Ajax参数
 
     public AjaxDataManage(HttpServletRequest request) {
@@ -22,23 +24,31 @@ public class AjaxDataManage {
     public void init() {
         if (request.getParameter("is_update_tkzs") == "true") {
             is_update_tkzs = true;
+            is_update = true;
         } else {
             is_update_tkzs = false;
+            is_update = false;
         }
         if (request.getParameter("is_update_dtklm") == "true") {
             is_update_dtklm = true;
+            is_update = true;
         } else {
             is_update_dtklm = false;
+            is_update = false;
         }
         if (request.getParameter("is_clean_tkzs") == "true") {
             is_clean_tkzs = true;
+            is_clean = true;
         } else {
             is_clean_tkzs = false;
+            is_clean = false;
         }
         if (request.getParameter("is_clean_dtklm") == "true") {
             is_clean_dtklm = true;
+            is_clean = true;
         } else {
             is_clean_dtklm = false;
+            is_clean = false;
         }
         if (request.getParameter("username") != null) {
             username = request.getParameter("username");
@@ -46,6 +56,22 @@ public class AjaxDataManage {
         if (request.getParameter("password") != null) {
             password = request.getParameter("password");
         }
+    }
+
+    public Boolean getIs_update() {
+        return is_update;
+    }
+
+    public void setIs_update(Boolean is_update) {
+        this.is_update = is_update;
+    }
+
+    public Boolean getIs_clean() {
+        return is_clean;
+    }
+
+    public void setIs_clean(Boolean is_clean) {
+        this.is_clean = is_clean;
     }
 
     public String getUsername() {
