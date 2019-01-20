@@ -333,4 +333,8 @@
         </trim>
     </insert>
 
+    <!--清理商品数据-->
+    <delete id="cleanGoodsData">
+          delete from goods_test where platform_id = #{platform_id} and coupon_end &lt;=#{date}
+    </delete>
 </mapper>

@@ -92,7 +92,7 @@ public class DataManageServiceImpl implements DataManageService {
 //        }
         if (log_dao.getRunningWorkNum() == 0) {
             SqlLog temp = log_dao.getWaitWork();
-            Task t = null;
+            Task t;
             if (temp.getType().equals("update")) {
                 t = new UpdateTask();
             }

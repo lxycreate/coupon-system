@@ -9,6 +9,8 @@ import com.system.task.Task;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CleanTask implements Task {
     private GoodsDao goods_dao;  // 用于清理数据库
@@ -36,10 +38,18 @@ public class CleanTask implements Task {
         log.setCode("running");
         dao.updateLog(log);
         if (obj.equals("tkzs")) {
-
+            Map<String, Object> temp_map = new HashMap<String, Object>();
+            temp_map.put("platform_id", 1);
+            now_time = df.format(new Date());
+            temp_map.put("date", now_time);
+            goods_dao.cleanGoodsData(temp_map);
         }
         if (obj.equals("dtklm")) {
-
+            Map<String, Object> temp_map = new HashMap<String, Object>();
+            temp_map.put("platform_id", 2);
+            now_time = df.format(new Date());
+            temp_map.put("date", now_time);
+            goods_dao.cleanGoodsData(temp_map);
         }
         now_time = df.format(new Date());
         log.setStatus("success");
