@@ -97,7 +97,7 @@ public class DataManageServiceImpl implements DataManageService {
     @Override
     public LogJson getLogList(AjaxLogParameter ajax) {
         LogJson json = new LogJson();
-        List<SqlLog> temp = getLogListFromDataBase(ajax.getPage_num(), ajax.getPage_size());
+        List<SqlLog> temp = getLogListFromDataBase(ajax);
         json.setLog_list(temp);
 //        if (checkUserPsd(ajax.getUsername(), ajax.getPassword())) {
 //            json.setSuccess(true);
@@ -110,8 +110,9 @@ public class DataManageServiceImpl implements DataManageService {
     }
 
     // 获取日志页码总数
-    public Integer getPageCount(Integer page_size) {
-        Integer log_count = log_dao.getLogNum();
+    public Integer getPageCount(AjaxLogParameter ajax) {
+        Integer log_count = log_dao.getLogNum(ajax);
+        Integer page_size = ajax.getPage_size();
         Integer page_count = log_count / page_size;
         if (log_count % page_size != 0) {
             page_count = page_count + 1;
@@ -120,15 +121,13 @@ public class DataManageServiceImpl implements DataManageService {
     }
 
     // 获取第几页日志
-    public List<SqlLog> getLogListFromDataBase(Integer page_num, Integer page_size) {
-        Integer page_count = getPageCount(page_size);
+    public List<SqlLog> getLogListFromDataBase(AjaxLogParameter ajax) {
+        Integer page_size = ajax.getPage_size();
+        Integer page_num = ajax.getPage_num();
+        Integer page_count = getPageCount(ajax);
         List<SqlLog> temp = new ArrayList<SqlLog>();
         if (page_num <= page_count) {
-            Integer start = (page_num - 1) * page_size;
-            Map<String, Object> my_map = new HashMap<String, Object>();
-            my_map.put("start", start);
-            my_map.put("num", page_size);
-            temp = log_dao.getLogList(my_map);
+            temp = log_dao.getLogList(ajax);
         }
         return temp;
     }

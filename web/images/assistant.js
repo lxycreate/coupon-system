@@ -108,8 +108,9 @@ function initContent() {
                 }
             ],
             is_update: false,
-            is_show_clean_box: false
+            is_show_clean_box: false,
             //  清理任务弹窗  end
+            log_list:[]
         },
         // data  end
         methods: {

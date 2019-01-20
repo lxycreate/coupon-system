@@ -7,6 +7,9 @@ public class AjaxLogParameter {
     private String password;    // 密码
     private Integer page_num;    // 第几页
     private Integer page_size;   // 每页大小
+    private String type;         // 日志类型
+    private String order;        // 排序方式
+    private Integer start;       // 开始行数
     private HttpServletRequest request;  // 获取Ajax参数
 
     public AjaxLogParameter(HttpServletRequest request) {
@@ -15,6 +18,9 @@ public class AjaxLogParameter {
         password = "";
         page_num = 1;
         page_size = 10;
+        type = "all";
+        order = "asc";
+        start = 0;
         init();
     }
 
@@ -34,6 +40,15 @@ public class AjaxLogParameter {
         }
         if (request.getParameter("page_num") != null) {
             page_num = Integer.parseInt(request.getParameter("page_num"));
+            if (page_num > 0) {
+                start = (page_num - 1) * page_size;
+            }
+        }
+        if (request.getParameter("type") != null) {
+            type = request.getParameter("type");
+        }
+        if (request.getParameter("order") != null) {
+            order = request.getParameter("order");
         }
     }
 
@@ -67,5 +82,29 @@ public class AjaxLogParameter {
 
     public void setPage_size(Integer page_size) {
         this.page_size = page_size;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
+
+    public Integer getStart() {
+        return start;
+    }
+
+    public void setStart(Integer start) {
+        this.start = start;
     }
 }

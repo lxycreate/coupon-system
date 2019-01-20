@@ -1,5 +1,6 @@
 package com.system.dao;
 
+import com.system.entity.AjaxLogParameter;
 import com.system.entity.SqlLog;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Map;
 
 public interface LogDao {
     // 获取日志总数
-    public Integer getLogNum();
+    public Integer getLogNum(AjaxLogParameter ajax);
 
     // 插入日志
     public void insertLog(SqlLog log);
@@ -25,5 +26,5 @@ public interface LogDao {
     public List<SqlLog> getWaitWork();
 
     // 获取第几页数据
-    public List<SqlLog> getLogList(Map<String,Object> my_map);
+    public List<SqlLog> getLogList(AjaxLogParameter ajax);
 }

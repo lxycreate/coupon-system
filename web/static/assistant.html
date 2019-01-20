@@ -103,97 +103,28 @@
                             <span class="create_time">完成时间</span>
                         </span>
                         <ul class="log_list">
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                            </li>
-                            <li class="item">
-                                <span class="id">1</span>
-                                <span class="type">更新</span>
-                                <span class="obj">淘客助手</span>
-                                <span class="status">成功</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
-                                <span class="create_time">2019-01-20 15:13:20</span>
+                            <li class="item" v-for="item in log_list">
+                                <span class="id">{{item.id}}</span>
+                                <span class="type">{{item.type}}</span>
+                                <span class="obj">{{item.obj}}</span>
+                                <span class="status">{{item.status}}</span>
+                                <span class="create_time">{{item.create_time}}</span>
+                                <span class="create_time">{{item.start_time}}</span>
+                                <span class="create_time">{{item.end_time}}</span>
                             </li>
                         </ul>
+                        <span class="log_pager cant_select_txt">
+                            <span class="home_page btn">首页</span>
+                            <span class="pre_page btn">上一页</span>
+                            <span class="txt">1</span>
+                            <span class="next_page btn">下一页</span>
+                            <span class="end_page btn">尾页</span>
+                            <form class="form">
+                                <input class="input" type="text">
+                            </form>
+                            <span class="jump btn">跳转</span>
+                            <span class="total">共{{}}页</span>
+                        </span>
                     </div>
                     <!-- 更新任务   start -->
                     <transition name="show_layer">

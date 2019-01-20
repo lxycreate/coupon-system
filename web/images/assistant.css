@@ -152,8 +152,9 @@ li {
 }
 
 .main_body .right .container .content {
+    position: relative;
     /* padding: 15px; */
-    height: calc(100% - 60px);
+    /* height: calc(100% - 60px); */
     /* background-color: #f5f5f5; */
 }
 
@@ -481,7 +482,7 @@ li {
 }
 
 .main_body .right .container .log_list {
-    min-height: 400px;
+    min-height: 410px;
 }
 
 .main_body .right .container .log_list>.item {
@@ -499,4 +500,50 @@ li {
 }
 
 /* 日志列表   end */
+/* 日志分页   start*/
+.main_body .right .container .log_pager {
+    display: block;
+    height: 38px;
+    font-size: 0;
+    text-align: center;
+    line-height: 39px;
+    /* background-color: #4d5b85; */
+    border-top: 1px solid #f4f5fc;
+}
+
+.main_body .right .container .log_pager>span {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 30px;
+    color: #323c57;
+    line-height: 39px;
+    vertical-align: top;
+}
+
+.main_body .right .container .log_pager>span:first-child {
+    margin-left: 0;
+}
+
+.main_body .right .container .log_pager>.btn:hover {
+    cursor: pointer;
+}
+
+.main_body .right .container .log_pager .form {
+    display: inline-block;
+    line-height: 40px;
+    vertical-align: top;
+}
+
+.main_body .right .container .log_pager .input {
+    display: inline-block;
+    width: 50px;
+    margin-left: 30px;
+    vertical-align: middle;
+}
+
+.main_body .right .container .log_pager .jump {
+    margin-left: 10px;
+}
+
+/* 日志分页   end*/
 /* 右    end */

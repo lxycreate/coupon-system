@@ -16,7 +16,10 @@
     </resultMap>
 
     <select id="getLogNum" resultType="java.lang.Integer">
-        select count(*) from log
+        select count(*) from log where 1 = 1
+        <if test="type != null and type != 'all'">
+            and type = #{type}
+        </if>
     </select>
 
     <!--插入日志数据-->
@@ -113,6 +116,15 @@
 
     <!--获取第几页日志-->
     <select id="getLogList" resultType="log">
-       select * from log  limit #{start},#{num}
+        select * from log where 1 = 1
+        <if test="type != null and type != 'all'">
+            and type = #{type}
+        </if>
+        <if test="order != null">
+            order by ${order}
+        </if>
+        <if test="start != null and page_size != null">
+            limit #{start},#{page_size}
+        </if>
     </select>
 </mapper>
