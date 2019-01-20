@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UpdateDtklmData implements UpdateGoodsData {
 
-    private GoodsDao dao;
+    private GoodsDao dao;                   // 用于插入数据
     private String appkey;                  //AppKey
     private String api_url;                 //接口地址
     private Integer start_page;             //开始页码
@@ -106,7 +106,6 @@ public class UpdateDtklmData implements UpdateGoodsData {
             }
         } else {
             setStatusCode("success");
-            dao = null;
         }
     }
 

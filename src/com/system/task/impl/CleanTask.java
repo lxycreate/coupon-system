@@ -90,6 +90,5 @@ public class CleanTask implements Task {
         log.setCode("wait");
         // 插入日志
         dao.insertLog(log);
-        dao = null;
     }
 }

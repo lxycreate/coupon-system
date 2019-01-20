@@ -50,7 +50,6 @@ public class UpdateTimer extends TimerTask {
             log.setCode("success");
             dao.updateLog(log);
             task.end();
-            dao = null;
         }
 //        if (goods_data.getStatusCode() == "parse error") {
 //            this.cancel();

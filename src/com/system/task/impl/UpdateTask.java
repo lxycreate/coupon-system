@@ -50,7 +50,6 @@ public class UpdateTask implements Task {
         log.setCode("wait");
         // 插入日志
         dao.insertLog(log);
-        dao = null;
         System.out.println("插入日志");
     }
 
