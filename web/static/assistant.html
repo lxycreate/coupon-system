@@ -56,7 +56,7 @@
             <!-- 左   end -->
             <!-- 右   start -->
             <div class="right">
-                <!-- 商品管理  start -->
+                <!-- 数据管理  start -->
                 <div class="container" v-show="btns[0].is_select">
                     <div class="header">
                         <span class="location">
@@ -91,6 +91,107 @@
                                         {{sort_btn.name}}
                                     </span>
                                 </span>
+                            </li>
+                        </ul>
+                        <span class="bar">
+                            <span class="id">任务ID</span>
+                            <span class="type">类型</span>
+                            <span class="obj">对象</span>
+                            <span class="status">状态</span>
+                            <span class="create_time">创建时间</span>
+                            <span class="create_time">开始时间</span>
+                            <span class="create_time">完成时间</span>
+                        </span>
+                        <ul class="log_list">
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                            </li>
+                            <li class="item">
+                                <span class="id">1</span>
+                                <span class="type">更新</span>
+                                <span class="obj">淘客助手</span>
+                                <span class="status">成功</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
+                                <span class="create_time">2019-01-20 15:13:20</span>
                             </li>
                         </ul>
                     </div>
@@ -144,7 +245,7 @@
                                     </span>
                                 </span>
                                 <span class="clean">
-                                    <span class="title">清理</span>
+                                    <span class="title">更新</span>
                                     <span class="btn_box">
                                         <span class="btn" @click="updateAfterClean">
                                             <i class="iconfont" v-bind:class="{'icon-checkboxunchecked':!is_update,'icon-checkboxchecked':is_update}"></i>
@@ -161,23 +262,23 @@
                     </transition>
                     <!-- 清理任务   end -->
                 </div>
-                <!-- 商品管理 end -->
-                <!-- 更新日志   start -->
+                <!-- 数据管理 end -->
+                <!-- 商品数据查看   start -->
                 <div class="container" v-show="btns[1].is_select">
                     <div class="header"></div>
                     <div class="content">
 
                     </div>
                 </div>
-                <!-- 更新日志   end -->
-                <!-- 数据来源   start -->
+                <!-- 商品数据查看   end -->
+                <!-- 数据分析   start -->
                 <div class="container" v-show="btns[2].is_select">
                     <div class="header"></div>
                     <div class="content">
 
                     </div>
                 </div>
-                <!-- 数据来源   end -->
+                <!-- 数据分析   end -->
             </div>
             <!-- 右   end -->
         </div>

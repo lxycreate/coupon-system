@@ -20,7 +20,9 @@ function initUserAndPsd() {
     if (temp != undefined) {
         username = temp.username;
         password = temp.password;
-    } else {}
+    } else {
+        // window.location.href = "login.html";
+    }
     //这里应该删除Cookie,开发过程为了方便先不删
 }
 
@@ -203,7 +205,7 @@ function initContent() {
 }
 
 
-function testUpdate(){
+function testUpdate() {
     var temp = {};
     temp['is_update_tkzs'] = true;
     temp['is_update_dtklm'] = true;
@@ -212,11 +214,11 @@ function testUpdate(){
         method: 'post',
         params: temp
     }).then(function (response) {
-    
+
         console.log(response);
     }).catch(function (error) {
         console.log(error);
     });
 }
 
-testUpdate();
+// testUpdate();

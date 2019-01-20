@@ -67,7 +67,7 @@ public class DataManageServiceImpl implements DataManageService {
         if (par.getIs_update_dtklm()) {
             createUpdateTask("dtklm");
         }
-        scanTask();
+//        scanTask();
         return null;
     }
 

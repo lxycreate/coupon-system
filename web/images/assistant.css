@@ -114,7 +114,7 @@ li {
     position: relative;
     z-index: 999;
     height: 60px;
-    box-shadow: 0 0 5px #999999;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
 }
 
@@ -154,7 +154,7 @@ li {
 .main_body .right .container .content {
     /* padding: 15px; */
     height: calc(100% - 60px);
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
 }
 
 .main_body .right .container .content .btn_box {
@@ -203,9 +203,9 @@ li {
 
 .main_body .right .container .content .btn .filter_box>span {
     display: inline-block;
-    height: 30px;
+    height: 25px;
     font-size: 15px;
-    line-height: 30px;
+    line-height: 25px;
     vertical-align: middle;
 }
 
@@ -436,7 +436,6 @@ li {
 }
 
 .cant_select_txt {
-    -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -444,7 +443,60 @@ li {
 }
 
 /* 更新任务弹窗   end */
-/* 清理任务弹窗   start */
+/* 日志列表   start */
+.main_body .right .container .content .bar {
+    display: block;
+    font-size: 0;
+    background-color: #f4f5fc;
+    /* border-top: 1px solid #98a3c2; */
+}
 
-/* 清理任务弹窗   end */
+.main_body .right .container .content .bar>span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #323c57;
+}
+
+.main_body .right .container .content .id {
+    width: 10%;
+}
+
+.main_body .right .container .content .type {
+    width: 8%;
+}
+
+.main_body .right .container .content .obj {
+    width: 12%;
+}
+
+.main_body .right .container .content .status {
+    width: 8%;
+}
+
+.main_body .right .container .content .create_time {
+    width: 20%;
+}
+
+.main_body .right .container .log_list {
+    min-height: 400px;
+}
+
+.main_body .right .container .log_list>.item {
+    font-size: 0;
+    border-top: 1px solid #f4f5fc;
+}
+
+.main_body .right .container .log_list .item>span {
+    display: inline-block;
+    height: 40px;
+    font-size: 14px;
+    color: #323f63;
+    text-align: center;
+    line-height: 40px;
+}
+
+/* 日志列表   end */
 /* 右    end */

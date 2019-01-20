@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DataManageJson {
     private Boolean success;    // 是否成功
+    private String code;        // 执行代码
     private Integer page_num;   // 第几页
     private Integer page_size;  // 每页数据量
     private List<SqlLog> log_list;  // 日志数组
