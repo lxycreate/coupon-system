@@ -38,7 +38,7 @@ public class UpdateTask implements Task {
     @Override
     // 创建并插入日志
     public void createLog() {
-        id = dao.getLogNum() + 1;
+        id = dao.getAllLogNum() + 1;
         log = new SqlLog();
         log.setId(id);
         log.setType("update");

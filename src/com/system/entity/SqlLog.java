@@ -2,7 +2,7 @@ package com.system.entity;
 
 public class SqlLog {
     private Integer id;       //任务ID
-    private String type;      //任务类型
+    private String task_type;      //任务类型
     private String obj;       //任务对象
     private String status;    //任务状态
     private String code;      //任务代码
@@ -23,11 +23,11 @@ public class SqlLog {
     }
 
     public String getType() {
-        return type;
+        return task_type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.task_type = type;
     }
 
     public String getObj() {

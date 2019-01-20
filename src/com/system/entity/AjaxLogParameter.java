@@ -19,7 +19,7 @@ public class AjaxLogParameter {
         page_num = 1;
         page_size = 10;
         type = "all";
-        order = "asc";
+        order = "create_time asc";
         start = 0;
         init();
     }
@@ -48,7 +48,7 @@ public class AjaxLogParameter {
             type = request.getParameter("type");
         }
         if (request.getParameter("order") != null) {
-            order = request.getParameter("order");
+            order = "create_time "+request.getParameter("order");
         }
     }
 

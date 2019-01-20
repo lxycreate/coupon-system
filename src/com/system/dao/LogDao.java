@@ -4,9 +4,11 @@ import com.system.entity.AjaxLogParameter;
 import com.system.entity.SqlLog;
 
 import java.util.List;
-import java.util.Map;
 
 public interface LogDao {
+    // 获取日志总数
+    public Integer getAllLogNum();
+
     // 获取日志总数
     public Integer getLogNum(AjaxLogParameter ajax);
 

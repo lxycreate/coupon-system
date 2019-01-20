@@ -88,7 +88,7 @@ public class CleanTask implements Task {
     // 生成日志
     @Override
     public void createLog() {
-        id = dao.getLogNum() + 1;
+        id = dao.getAllLogNum() + 1;
         log = new SqlLog();
         log.setId(id);
         log.setType("clean");
