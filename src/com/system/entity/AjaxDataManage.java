@@ -64,6 +64,14 @@ public class AjaxDataManage {
         }
     }
 
+    public Integer getPage_size() {
+        return page_size;
+    }
+
+    public void setPage_size(Integer page_size) {
+        this.page_size = page_size;
+    }
+
     public Boolean getIs_update() {
         return is_update;
     }

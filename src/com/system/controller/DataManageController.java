@@ -24,6 +24,6 @@ public class DataManageController {
     public @ResponseBody
     DataManageJson DataManage() {
         AjaxDataManage temp = new AjaxDataManage(request);
-        return service.updateData(temp);
+        return service.updateOrClean(temp);
     }
 }

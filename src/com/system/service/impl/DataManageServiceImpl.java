@@ -50,6 +50,12 @@ public class DataManageServiceImpl implements DataManageService {
         scanTask();
     }
 
+    // 获取日志列表
+    @Override
+    public DataManageJson getLogList() {
+        return null;
+    }
+
     // 检查用户名和密码
     public Boolean checkUserPsd(String username, String password) {
         LoginJson temp_json = login.login(username, password);
@@ -60,7 +66,7 @@ public class DataManageServiceImpl implements DataManageService {
     }
 
     @Override
-    public DataManageJson updateData(AjaxDataManage par) {
+    public DataManageJson updateOrClean(AjaxDataManage par) {
         if (par.getIs_update_tkzs()) {
             createUpdateTask("tkzs");
         }
@@ -104,4 +110,6 @@ public class DataManageServiceImpl implements DataManageService {
             t.run();
         }
     }
+
+
 }
