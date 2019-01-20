@@ -3,6 +3,7 @@ package com.system.dao;
 import com.system.entity.SqlLog;
 
 import java.util.List;
+import java.util.Map;
 
 public interface LogDao {
     // 获取日志总数
@@ -21,5 +22,8 @@ public interface LogDao {
     public Integer getRunningWorkNum();
 
     // 获取ID值最小并且处于等待状态的任务
-    public SqlLog getWaitWork();
+    public List<SqlLog> getWaitWork();
+
+    // 获取第几页数据
+    public List<SqlLog> getLogList(Map<String,Object> my_map);
 }

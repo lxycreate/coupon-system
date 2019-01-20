@@ -207,10 +207,10 @@ function initContent() {
 
 function testUpdate() {
     var temp = {};
-    temp['is_update_tkzs'] = true;
-    temp['is_update_dtklm'] = true;
+    temp['page_size'] = 10;
+    temp['page_num'] = 1;
     axios({
-        url: base_url + '/manage/data',
+        url: base_url + '/getLogList',
         method: 'post',
         params: temp
     }).then(function (response) {
@@ -221,4 +221,4 @@ function testUpdate() {
     });
 }
 
-// testUpdate();
+testUpdate();

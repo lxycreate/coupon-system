@@ -11,6 +11,30 @@ public class AjaxLogParameter {
 
     public AjaxLogParameter(HttpServletRequest request) {
         this.request = request;
+        username = "";
+        password = "";
+        page_num = 1;
+        page_size = 10;
+        init();
+    }
+
+    // 初始化
+    public void init() {
+        if (request.getParameter("username") != null) {
+            username = request.getParameter("username");
+        }
+        if (request.getParameter("password") != null) {
+            password = request.getParameter("password");
+        }
+        if (request.getParameter("page_size") != null) {
+            page_size = Integer.parseInt(request.getParameter("page_size"));
+            if (page_size == 0) {
+                page_size = 10;
+            }
+        }
+        if (request.getParameter("page_num") != null) {
+            page_num = Integer.parseInt(request.getParameter("page_num"));
+        }
     }
 
     public String getUsername() {

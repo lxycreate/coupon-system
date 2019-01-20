@@ -110,4 +110,9 @@
     <select id="getWaitWork" resultType="java.lang.Integer">
        select * from log where status='wait' order by id asc limit 1
     </select>
+
+    <!--获取第几页日志-->
+    <select id="getLogList" resultType="log">
+       select * from log  limit #{start},#{num}
+    </select>
 </mapper>
