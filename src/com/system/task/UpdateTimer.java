@@ -44,7 +44,7 @@ public class UpdateTimer extends TimerTask {
             this.cancel();
             end = true;
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String now_time = df.format(new Date()).toString();
+            String now_time = df.format(new Date());
             log.setEnd_time(now_time);
             log.setStatus("success");
             log.setCode("success");

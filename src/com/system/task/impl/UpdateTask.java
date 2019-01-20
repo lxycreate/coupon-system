@@ -44,7 +44,7 @@ public class UpdateTask implements Task {
         log.setId(id);
         log.setType("update");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String now_time = df.format(new Date()).toString();
+        String now_time = df.format(new Date());
         log.setCreate_time(now_time);
         log.setObj(obj);
         log.setStatus("wait");
