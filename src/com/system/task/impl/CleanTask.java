@@ -29,7 +29,25 @@ public class CleanTask implements Task {
     // 执行
     @Override
     public void run() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String now_time = df.format(new Date());
+        log.setStart_time(now_time);
+        log.setStatus("running");
+        log.setCode("running");
+        dao.updateLog(log);
+        if (obj.equals("tkzs")) {
 
+        }
+        if (obj.equals("dtklm")) {
+
+        }
+        now_time = df.format(new Date());
+        log.setStatus("success");
+        log.setCode("success");
+        log.setEnd_time(now_time);
+        dao.updateLog(log);
+        // 调用结束函数
+        end();
     }
 
     // 结束

@@ -27,7 +27,6 @@ public class UpdateTask implements Task {
     public void init(String obj) {
         dao = (LogDao) SpringTool.getBean("logDao");
         this.obj = obj;
-        System.out.println("初始化更新任务");
         if (obj.equals("tkzs")) {
             update_data = new UpdateTkzsData();
         }

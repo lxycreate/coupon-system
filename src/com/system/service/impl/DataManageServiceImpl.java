@@ -9,6 +9,7 @@ import com.system.entity.json.LoginJson;
 import com.system.service.DataManageService;
 import com.system.service.LoginService;
 import com.system.task.Task;
+import com.system.task.impl.CleanTask;
 import com.system.task.impl.UpdateTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,6 +95,9 @@ public class DataManageServiceImpl implements DataManageService {
             Task t = null;
             if (temp.getType().equals("update")) {
                 t = new UpdateTask();
+            }
+            else{
+                t = new CleanTask();
             }
             t.setLog(temp);
             t.setService(this);

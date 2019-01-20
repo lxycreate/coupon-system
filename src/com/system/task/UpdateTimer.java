@@ -31,7 +31,7 @@ public class UpdateTimer extends TimerTask {
         if (!start) {
             start = true;
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String now_time = df.format(new Date()).toString();
+            String now_time = df.format(new Date());
             log.setStart_time(now_time);
             log.setStatus("running");
             log.setCode("running");
