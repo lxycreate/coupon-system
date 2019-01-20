@@ -12,12 +12,14 @@ public class AjaxDataManage {
     private Boolean is_clean_dtklm;      // 是否清理大淘客联盟
     private Boolean is_update;
     private Boolean is_clean;
+    private Integer page_size;           // 每页大小
     private HttpServletRequest request;  // 获取Ajax参数
 
     public AjaxDataManage(HttpServletRequest request) {
         this.request = request;
         username = "";
         password = "";
+        page_size = 10;
         init();
     }
 
@@ -56,6 +58,9 @@ public class AjaxDataManage {
         }
         if (request.getParameter("password") != null) {
             password = request.getParameter("password");
+        }
+        if(request.getParameter("page_size")!=null){
+            page_size = Integer.parseInt(request.getParameter("page_size"));
         }
     }
 

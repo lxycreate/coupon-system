@@ -100,4 +100,14 @@
     <select id="getUnFinishWork" resultType="log" resultMap="logMapper">
        select * from log where status='wait' or end_time = ''
     </select>
+
+    <!--获取正在运行的任务数量-->
+    <select id="getRunningWorkNum" resultType="java.lang.Integer">
+       select count(*) from log where status='running'
+    </select>
+
+    <!--获取正在等待执行的且ID最小的任务-->
+    <select id="getWaitWork" resultType="java.lang.Integer">
+       select * from log where status='wait' order by id asc limit 1
+    </select>
 </mapper>

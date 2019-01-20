@@ -32,20 +32,20 @@ public class DataManageServiceImpl implements DataManageService {
     // 初始化静态变量
     @Override
     public void initTaskList() {
-        if (queue == null) {
-            queue = new LinkedBlockingQueue<Task>();
-        }
-
-        List<SqlLog> temp = log_dao.getUnFinishWork();
-        for (int i = 0; i < temp.size(); ++i) {
-            SqlLog m = temp.get(i);
-            if (m.getType().equals("update")) {
-                Task t = new UpdateTask();
-                t.setLog(m);
-                t.setService(this);
-                queue.add(t);
-            }
-        }
+//        if (queue == null) {
+//            queue = new LinkedBlockingQueue<Task>();
+//        }
+//
+//        List<SqlLog> temp = log_dao.getUnFinishWork();
+//        for (int i = 0; i < temp.size(); ++i) {
+//            SqlLog m = temp.get(i);
+//            if (m.getType().equals("update")) {
+//                Task t = new UpdateTask();
+//                t.setLog(m);
+//                t.setService(this);
+//                queue.add(t);
+//            }
+//        }
         scanTask();
     }
 
@@ -76,18 +76,28 @@ public class DataManageServiceImpl implements DataManageService {
         t.setService(this);
         t.init(obj);
         t.createLog();
-        queue.add(t);
+//        queue.add(t);
     }
 
     @Override
     // 扫描任务数组
     public void scanTask() {
-        while (queue.peek() != null) {
-            Task t = queue.poll();
-            if(t.getStatus().equals("wait")){
-                t.run();
-                break;
+//        while (queue.peek() != null) {
+//            Task t = queue.poll();
+//            if(t.getStatus().equals("wait")){
+//                t.run();
+//                break;
+//            }
+//        }
+        if (log_dao.getRunningWorkNum() == 0) {
+            SqlLog temp = log_dao.getWaitWork();
+            Task t = null;
+            if (temp.getType().equals("update")) {
+                t = new UpdateTask();
             }
+            t.setLog(temp);
+            t.setService(this);
+            t.run();
         }
     }
 }

@@ -16,4 +16,10 @@ public interface LogDao {
 
     // 获取未完成任务日志
     public List<SqlLog> getUnFinishWork();
+
+    // 获取正在执行的任务的数量
+    public Integer getRunningWorkNum();
+
+    // 获取ID值最小并且处于等待状态的任务
+    public SqlLog getWaitWork();
 }
