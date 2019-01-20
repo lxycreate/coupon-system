@@ -12,6 +12,8 @@ var js_main_container;
 window.onload = function () {
     initUserAndPsd();
     initContent();
+    initLogObj();
+    ajaxGetLogList();
 }
 
 // 初始化姓名和密码
@@ -110,20 +112,18 @@ function initContent() {
             is_update: false,
             is_show_clean_box: false,
             //  清理任务弹窗  end
-            log_list:[]
+            log_list: [], //日志列表
+            log_page_num: 1, //第几页日志
+            log_page_count: 0, //日志总数
         },
         // data  end
         methods: {
-            test: function (temp, index) {
-
-            },
             // 更新弹窗 start
             showUpdateBox: function () {
                 this.cancelClean();
                 if (!this.is_show_update_box) {
                     this.is_show_update_box = true;
                 }
-                console.log('showUpdateBox');
             },
             hideUpdateBox: function () {
                 if (this.is_show_update_box) {
@@ -205,6 +205,69 @@ function initContent() {
     });
 }
 
+// 初始化log_obj
+function initLogObj() {
+    log_obj = {};
+    log_obj['username'] = "admin";
+    log_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
+    log_obj['page_num'] = 1;
+    log_obj['page_size'] = 10;
+}
+
+// 获取日志
+function ajaxGetLogList() {
+    console.log(log_obj);
+    axios({
+        url: base_url + '/getLogList',
+        method: 'post',
+        params: log_obj
+    }).then(function (response) {
+        if (response.data.success) {
+            parseLogList(response.data);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+// 解析日志列表
+function parseLogList(data) {
+    if (data.page_count != null) {
+        js_main_container.log_page_count = data.page_count;
+    }
+    if (data.page_num != null) {
+        js_main_container.log_page_num = data.page_num;
+    }
+    if (data.log_list != null) {
+        var temp_list = [];
+        for (var i = 0; i < data.log_list.length; ++i) {
+            var temp_log = data.log_list[i];
+            if (temp_log.status == "wait") {
+                temp_log.status = "待执行";
+            }
+            if (temp_log.status == "running") {
+                temp_log.status = "正在执行";
+            }
+            if (temp_log.status == "success") {
+                temp_log.status = "成功";
+            }
+            if (temp_log.type == "update") {
+                temp_log.type = "更新";
+            }
+            if (temp_log.type == "clean") {
+                temp_log.type = "清理";
+            }
+            if (temp_log.obj == "tkzs") {
+                temp_log.obj = "淘客助手";
+            }
+            if (temp_log.obj == "dtklm") {
+                temp_log.obj = "大淘客联盟";
+            }
+            temp_list.push(temp_log);
+        }
+        js_main_container.log_list = temp_list;
+    }
+}
 
 function testUpdate() {
     var temp = {};
@@ -222,4 +285,4 @@ function testUpdate() {
     });
 }
 
-testUpdate();
+// testUpdate();

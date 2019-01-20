@@ -41,7 +41,7 @@ public class DataManageServiceImpl implements DataManageService {
 
     // 检查用户名和密码
     public Boolean checkUserPsd(String username, String password) {
-        if (username == null || password == null || username.equals("") || password.equals("")) {
+        if (username == null || password == null || username.length()==0|| password.length()==0) {
             return false;
         }
         LoginJson temp_json = login.login(username, password);
@@ -97,15 +97,16 @@ public class DataManageServiceImpl implements DataManageService {
     @Override
     public LogJson getLogList(AjaxLogParameter ajax) {
         LogJson json = new LogJson();
-        List<SqlLog> temp = getLogListFromDataBase(ajax);
-        json.setLog_list(temp);
-//        if (checkUserPsd(ajax.getUsername(), ajax.getPassword())) {
-//            json.setSuccess(true);
-//            json.setCode("success");
-//        } else {
-//            json.setSuccess(false);
-//            json.setCode("verify error");
-//        }
+        if (checkUserPsd(ajax.getUsername(), ajax.getPassword())) {
+            List<SqlLog> temp = getLogListFromDataBase(ajax);
+            json.setPage_count(log_dao.getLogNum(ajax));
+            json.setSuccess(true);
+            json.setCode("success");
+            json.setLog_list(temp);
+        } else {
+            json.setSuccess(false);
+            json.setCode("verify error");
+        }
         return json;
     }
 
