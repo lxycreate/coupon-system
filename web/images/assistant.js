@@ -75,11 +75,7 @@ function initContent() {
                 }
             ],
             // "数据管理"下的按钮   end
-            // "数据管理"下的排序按钮   start
-            sort_btns: [{
-                name: "时间"
-            }],
-            // "数据管理"下的排序按钮   end
+            is_log_asc: true, // 当前日志排序方式是升序
             // 更新任务弹窗   start
             update_origin: [{
                     name: '全部',
@@ -123,7 +119,7 @@ function initContent() {
             log_page_count: '?', //日志总数
             is_first_log_page: false, // 是否是第一页日志
             is_last_log_page: false, // 是否是最后一页日志
-            log_input: ''
+            log_page_input: ''
         },
         created: function () {
             this.log_page_num = 1;
@@ -151,6 +147,10 @@ function initContent() {
         },
         // data  end
         methods: {
+            init: function () {
+                this.resetLogType();
+                this.changeLogSortWay(true);
+            },
             // 更新弹窗 start
             showUpdateBox: function () {
                 this.cancelClean();
@@ -242,6 +242,31 @@ function initContent() {
                 this.filter_btns[index].is_select = true;
                 addToLogObj('type', this.filter_btns[index].value);
             },
+            // 重置筛选日志
+            resetLogType: function () {
+                for (var i = 0; i < this.filter_btns.length; ++i) {
+                    this.filter_btns[i].is_select = false;
+                }
+                this.filter_btns[0].is_select = true;
+            },
+            // 改变日志排序方式
+            changeLogSortWay: function (flag) {
+                Velocity(this.$refs.js_sort_btn, 'stop');
+                if (flag) {
+                    Velocity(this.$refs.js_sort_btn, {
+                        'margin-top': '8px',
+                        rotateZ: '0deg'
+                    });
+                    addToLogObj('order', 'create_time asc');
+                } else {
+                    Velocity(this.$refs.js_sort_btn, {
+                        'margin-top': '13px',
+                        rotateZ: '180deg'
+                    });
+                    addToLogObj('order', 'create_time desc');
+                }
+                this.is_log_asc = flag;
+            },
             // 首页
             firstLogPage: function () {
                 addToLogObj('page_num', 1);
@@ -260,6 +285,15 @@ function initContent() {
             preLogPage: function () {
                 if (this.log_page_num > 1) {
                     addToLogObj('page_num', this.log_page_num - 1);
+                }
+            },
+            // 日志跳转
+            jumpLog: function () {
+                if (this.log_page_input != '') {
+                    var e = parseInt(this.log_page_input);
+                    if (e <= this.log_page_count) {
+                        addToLogObj('page_num', e);
+                    }
                 }
             }
         }

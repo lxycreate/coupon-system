@@ -88,8 +88,9 @@
                             <li class="btn sort">
                                 <span class="sort_box">
                                     <span class="title">排序:</span>
-                                    <span class="sort_btn" v-for="sort_btn in sort_btns">
-                                        {{sort_btn.name}}
+                                    <span class="sort_btn" @click="changeLogSortWay(!is_log_asc)">
+                                        创建时间
+                                        <img src="../images/up_tri.png" ref="js_sort_btn">
                                     </span>
                                 </span>
                             </li>
@@ -121,9 +122,9 @@
                             <span class="next_page btn" v-show="!is_last_log_page" @click="nextLogPage">下一页</span>
                             <span class="end_page btn" v-show="!is_last_log_page" @click="lastLogPage">尾页</span>
                             <form class="form">
-                                <input class="input" type="text" onkeyup="limitInput(this)">
+                                <input class="input" type="text" onkeyup="limitInput(this)" v-model="log_page_input">
                             </form>
-                            <span class="jump btn">跳转</span>
+                            <span class="jump btn" @click="jumpLog">跳转</span>
                             <span class="total">共 {{log_page_count}} 页</span>
                         </span>
                     </div>

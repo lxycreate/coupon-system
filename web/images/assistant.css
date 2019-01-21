@@ -258,6 +258,18 @@ li {
     margin-left: 15px;
 }
 
+.main_body .right .container .content .btn .sort_box .sort_btn:hover {
+    cursor: pointer;
+}
+
+.main_body .right .container .content .btn .sort_box .sort_btn>img {
+    display: inline-block;
+    margin-left: 3px;
+    margin-top: 8px;
+    width: 10px;
+    vertical-align: top;
+}
+
 /* 更新任务弹窗   start */
 .main_body .right .container .update_box {
     position: fixed;
