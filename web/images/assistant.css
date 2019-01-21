@@ -598,36 +598,56 @@ li {
     vertical-align: top;
 }
 
-.main_body .right .container .content .goods_bar .pic {
+.main_body .right .container .content .pic {
     width: 10%;
 }
 
-.main_body .right .container .content .goods_bar .stitle {
+.main_body .right .container .content .stitle {
     width: 15%;
 }
 
-.main_body .right .container .content .goods_bar .data_origin {
+.main_body .right .container .content .data_origin {
     width: 10%;
 }
 
-.main_body .right .container .content .goods_bar .tmall {
+.main_body .right .container .content .tmall {
     width: 10%;
 }
 
-.main_body .right .container .content .goods_bar .price {
+.main_body .right .container .content .price {
     width: 10%;
 }
 
-.main_body .right .container .content .goods_bar .coupon_price {
+.main_body .right .container .content .coupon_price {
     width: 10%;
 }
 
-.main_body .right .container .content .goods_bar .end_time {
+.main_body .right .container .content .end_time {
     width: 20%;
 }
 
-.main_body .right .container .content .goods_bar .dsr {
+.main_body .right .container .content .dsr {
     width: 10%;
+}
+
+.main_body .right .container .content .goods_list {
+    height: 410px;
+    overflow: auto;
+}
+
+.main_body .right .container .content .goods_list li {
+    font-size: 0;
+    border-bottom: 1px solid #f4f5fc;
+}
+
+.main_body .right .container .content .goods_list li>span {
+    display: inline-block;
+    height: 80px;
+    font-size: 14px;
+    color: #323f63;
+    text-align: center;
+    line-height: 80px;
+    vertical-align: middle;
 }
 
 /* =================  商品  end   ==================*/

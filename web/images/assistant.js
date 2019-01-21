@@ -35,13 +35,13 @@ function initContent() {
             // 左侧按钮   start
             btns: [{
                 name: '数据管理',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-statsbars2': true
                 }
             }, {
                 name: '数据查看',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-list2': true
                 }
@@ -121,7 +121,13 @@ function initContent() {
             }, {
                 name: '大淘客联盟',
                 is_select: false
-            }]
+            }],
+            goods_list: [], //日志列表
+            goods_page_num: 0, //第几页日志
+            goods_page_count: '?', //日志总数
+            is_first_goods_page: false, // 是否是第一页日志
+            is_last_goods_page: false, // 是否是最后一页日志
+            goods_page_input: '',
             // ==================================  商品区域   end  ==================================  //
         },
         created: function () {
