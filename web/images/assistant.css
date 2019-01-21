@@ -487,7 +487,7 @@ li {
 
 .main_body .right .container .log_list>.item {
     font-size: 0;
-    border-top: 1px solid #f4f5fc;
+    border-bottom: 1px solid #f4f5fc;
 }
 
 .main_body .right .container .log_list .item>span {
@@ -497,6 +497,7 @@ li {
     color: #323f63;
     text-align: center;
     line-height: 40px;
+    vertical-align: top;
 }
 
 /* 日志列表   end */
@@ -538,7 +539,16 @@ li {
     display: inline-block;
     width: 50px;
     margin-left: 30px;
+    outline: none;
+    border: 1px solid #4d5b85;
     vertical-align: middle;
+    border-radius: 3px;
+    text-align: center;
+    transition: all ease 0.3s;
+}
+
+.main_body .right .container .log_pager .input:focus {
+    box-shadow: 0 0 5px #323f63;
 }
 
 .main_body .right .container .log_pager .jump {

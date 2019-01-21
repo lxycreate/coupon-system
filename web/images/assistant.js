@@ -57,14 +57,20 @@ function initContent() {
             // "数据管理"下的按钮   start
             filter_btns: [{
                     name: '全部',
+                    index: 0,
+                    value: 'all',
                     is_select: true
                 },
                 {
                     name: "更新日志",
+                    index: 1,
+                    value: 'update',
                     is_select: false
                 },
                 {
                     name: "清理日志",
+                    index: 2,
+                    value: 'clean',
                     is_select: false
                 }
             ],
@@ -113,8 +119,36 @@ function initContent() {
             is_show_clean_box: false,
             //  清理任务弹窗  end
             log_list: [], //日志列表
-            log_page_num: 1, //第几页日志
-            log_page_count: 0, //日志总数
+            log_page_num: 0, //第几页日志
+            log_page_count: '?', //日志总数
+            is_first_log_page: false, // 是否是第一页日志
+            is_last_log_page: false // 是否是最后一页日志
+        },
+        created: function () {
+            this.log_page_num = 1;
+        },
+        watch: {
+            log_page_num: function () {
+                if (this.log_page_num == 1) {
+                    this.is_first_log_page = true;
+                } else {
+                    this.is_first_log_page = false;
+                }
+                if (this.log_page_num == this.log_page_count) {
+                    this.is_last_log_page = true;
+                }
+                else{
+                    this.is_last_log_page = false;
+                }
+            },
+            log_page_count:function(){
+                if (this.log_page_num == this.log_page_count) {
+                    this.is_last_log_page = true;
+                }
+                else{
+                    this.is_last_log_page = false;
+                }
+            }
         },
         // data  end
         methods: {
@@ -198,8 +232,29 @@ function initContent() {
             },
             updateAfterClean: function () {
                 this.is_update = !this.is_update;
-            }
+            },
             // 清理弹窗 end
+            // 筛选日志类型
+            filterLogType: function (index) {
+                log_obj['page_num'] = 1;
+                for (var i = 0; i < this.filter_btns.length; ++i) {
+                    this.filter_btns[i].is_select = false;
+                }
+                this.filter_btns[index].is_select = true;
+                addToLogObj('type', this.filter_btns[index].value);
+            },
+            // 下一页
+            nextLogPage: function () {
+                if (this.log_page_num < this.log_page_count) {
+                    addToLogObj('page_num', this.log_page_num + 1);
+                }
+            },
+            // 上一页
+            preLogPage: function () {
+                if (this.log_page_num > 1) {
+                    addToLogObj('page_num', this.log_page_num - 1);
+                }
+            }
         }
         // 
     });
@@ -212,6 +267,13 @@ function initLogObj() {
     log_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
     log_obj['page_num'] = 1;
     log_obj['page_size'] = 10;
+    log_obj['order'] = 'create_time desc';
+}
+
+// 添加参数
+function addToLogObj(name, value) {
+    log_obj[name] = value;
+    ajaxGetLogList();
 }
 
 // 获取日志
@@ -224,6 +286,7 @@ function ajaxGetLogList() {
     }).then(function (response) {
         if (response.data.success) {
             parseLogList(response.data);
+            console.log(response);
         }
     }).catch(function (error) {
         console.log(error);
@@ -267,6 +330,11 @@ function parseLogList(data) {
         }
         js_main_container.log_list = temp_list;
     }
+}
+
+// 限制跳转输入框
+function limitInput(event) {
+    event.value = event.value.replace(/\D/g, '')
 }
 
 function testUpdate() {
