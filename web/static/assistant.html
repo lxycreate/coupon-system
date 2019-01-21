@@ -229,30 +229,31 @@
                             <span class="end_time">结束时间</span>
                         </span>
                         <ul class="goods_list">
-                            <li class="item">
+                            <li class="item" v-for="goods_item in goods_list">
                                 <span class="pic">
-                                    <img src="../images/test.jpg">
+                                    <img v-bind:src="goods_item.goods_pic">
                                 </span>
-                                <span class="stitle">测试测试测试</span>
-                                <span class="data_origin">淘客助手</span>
-                                <span class="tmall">天猫</span>
-                                <span class="dsr">4.8</span>
-                                <span class="price">￥60</span>
-                                <span class="coupon_price">￥20</span>
-                                <span class="end_time">2019-1-21 23:59:59</span>
+                                <span class="stitle" v-bind:title="goods_item.goods_stitle">{{goods_item.goods_stitle}}</span>
+                                <span class="data_origin">{{goods_item.platform_id}}</span>
+                                <span class="tmall" v-if="goods_item.is_tmall">天猫</span>
+                                <span class="tmall" v-if="!goods_item.is_tmall">淘宝</span>
+                                <span class="dsr">{{goods_item.dsr}}</span>
+                                <span class="price">￥{{goods_item.goods_price}}</span>
+                                <span class="coupon_price">￥{{goods_item.coupon_price}}</span>
+                                <span class="end_time">{{goods_item.coupon_end}}</span>
                             </li>
                         </ul>
                         <span class="log_pager cant_select_txt">
-                            <span class="home_page btn">首页</span>
-                            <span class="pre_page btn">上一页</span>
-                            <span class="txt">{{log_page_num}}</span>
-                            <span class="next_page btn">下一页</span>
-                            <span class="end_page btn">尾页</span>
+                            <span class="home_page btn" v-show="!is_first_goods_page">首页</span>
+                            <span class="pre_page btn" v-show="!is_first_goods_page">上一页</span>
+                            <span class="txt">{{goods_page_num}}</span>
+                            <span class="next_page btn" v-show="!is_last_goods_page">下一页</span>
+                            <span class="end_page btn" v-show="!is_last_goods_page">尾页</span>
                             <form class="form">
                                 <input class="input" type="text" onkeyup="limitInput(this)">
                             </form>
                             <span class="jump btn">跳转</span>
-                            <span class="total">共 {{log_page_count}} 页</span>
+                            <span class="total">共 {{goods_page_count}} 页</span>
                         </span>
                     </div>
                 </div>

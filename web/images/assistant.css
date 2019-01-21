@@ -604,7 +604,10 @@ li {
 }
 
 .main_body .right .container .content .stitle {
-    width: 15%;
+    width: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .main_body .right .container .content .data_origin {

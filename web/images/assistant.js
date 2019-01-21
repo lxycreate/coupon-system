@@ -39,13 +39,13 @@ function initContent() {
             // 左侧按钮   start
             btns: [{
                 name: '数据管理',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-statsbars2': true
                 }
             }, {
                 name: '数据查看',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-list2': true
                 }
@@ -136,7 +136,6 @@ function initContent() {
         },
         created: function () {
             this.log_page_num = 1;
-            this.initDataManage();
         },
         watch: {
             log_page_num: function () {
@@ -156,6 +155,25 @@ function initContent() {
                     this.is_last_log_page = true;
                 } else {
                     this.is_last_log_page = false;
+                }
+            },
+            goods_page_num: function () {
+                if (this.goods_page_num == 1) {
+                    this.is_first_goods_page = true;
+                } else {
+                    this.is_first_goods_page = false;
+                }
+                if (this.goods_page_num == this.goods_page_count) {
+                    this.is_last_goods_page = true;
+                } else {
+                    this.is_last_goods_page = false;
+                }
+            },
+            goods_page_count: function () {
+                if (this.goods_page_num == this.goods_page_count) {
+                    this.is_last_goods_page = true;
+                } else {
+                    this.is_last_goods_page = false;
                 }
             }
         },
@@ -418,8 +436,8 @@ function ajaxGetGoodsList() {
         method: 'post',
         params: goods_obj
     }).then(function (response) {
-        if (response != null && response.data.success) {
-            // parseLogList(response.data);
+        if (response != null && response.data != null && response.data.success) {
+            parseGoodsList(response.data);
             console.log(response);
         }
     }).catch(function (error) {
@@ -429,7 +447,26 @@ function ajaxGetGoodsList() {
 
 // 解析商品列表
 function parseGoodsList(data) {
-
+    if (data.page_count != null) {
+        js_main_container.goods_page_count = data.page_count;
+    }
+    if (data.page_num != null) {
+        js_main_container.goods_page_num = data.page_num;
+    }
+    if (data.goods_list != null) {
+        var temp_list = [];
+        for (var i = 0; i < data.goods_list.length; ++i) {
+            var temp = data.goods_list[i];
+            if (temp.platform_id == '1') {
+                temp.platform_id = '淘客助手';
+            }
+            if (temp.platform_id == '2') {
+                temp.platform_id = '大淘客联盟';
+            }
+            temp_list.push(temp);
+        }
+        js_main_container.goods_list = temp_list;
+    }
 }
 
 function testUpdate() {
