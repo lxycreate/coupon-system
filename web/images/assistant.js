@@ -14,6 +14,8 @@ var js_main_container;
 window.onload = function () {
     initUserAndPsd();
     initContent();
+    initGoodsObj();
+    ajaxGetGoodsList();
 }
 
 // 初始化姓名和密码
