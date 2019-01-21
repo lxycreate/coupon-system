@@ -12,8 +12,6 @@ var js_main_container;
 window.onload = function () {
     initUserAndPsd();
     initContent();
-    initLogObj();
-    ajaxGetLogList();
 }
 
 // 初始化姓名和密码
@@ -123,6 +121,7 @@ function initContent() {
         },
         created: function () {
             this.log_page_num = 1;
+            this.initDataManage();
         },
         watch: {
             log_page_num: function () {
@@ -147,9 +146,12 @@ function initContent() {
         },
         // data  end
         methods: {
-            init: function () {
+            // 初始化数据管理页
+            initDataManage: function () {
                 this.resetLogType();
                 this.changeLogSortWay(true);
+                initLogObj();
+                ajaxGetLogList();
             },
             // 更新弹窗 start
             showUpdateBox: function () {
@@ -319,7 +321,6 @@ function addToLogObj(name, value) {
 
 // 获取日志
 function ajaxGetLogList() {
-    console.log(log_obj);
     axios({
         url: base_url + '/getLogList',
         method: 'post',
