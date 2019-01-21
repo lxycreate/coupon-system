@@ -16,9 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -129,7 +127,8 @@ public class DataManageServiceImpl implements DataManageService {
         LogJson json = new LogJson();
         if (checkUserPsd(ajax.getUsername(), ajax.getPassword())) {
             List<SqlLog> temp = getLogListFromDataBase(ajax);
-            json.setPage_count(log_dao.getLogNum(ajax));
+            json.setPage_num(ajax.getPage_num());
+            json.setPage_count(getPageCount(ajax));
             json.setSuccess(true);
             json.setCode("success");
             json.setLog_list(temp);

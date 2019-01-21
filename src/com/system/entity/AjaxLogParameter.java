@@ -19,7 +19,7 @@ public class AjaxLogParameter {
         page_num = 1;
         page_size = 10;
         type = "all";
-        order = "create_time asc";
+        order = "create_time asc,id asc";
         start = 0;
         init();
     }
@@ -51,8 +51,11 @@ public class AjaxLogParameter {
                 }
             }
             if (request.getParameter("order") != null) {
-                if (request.getParameter("order").equals("asc") || request.getParameter("order").equals("desc")) {
-                    order = "create_time " + request.getParameter("order");
+                if (request.getParameter("order").equals("create_time asc")) {
+                    order = request.getParameter("order")+", id asc";
+                }
+                if (request.getParameter("order").equals("create_time desc")) {
+                    order = request.getParameter("order")+", id desc";
                 }
             }
         }

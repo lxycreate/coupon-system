@@ -35,7 +35,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("大淘客联盟页码: " + start_page);
         getGoodsData(start_page++);
-        if (start_page > 10) {
+        if (start_page > 3) {
             setStatusCode("success");
         }
     }
