@@ -26,32 +26,34 @@ public class AjaxLogParameter {
 
     // 初始化
     public void init() {
-        if (request.getParameter("username") != null) {
-            username = request.getParameter("username");
-        }
-        if (request.getParameter("password") != null) {
-            password = request.getParameter("password");
-        }
-        if (request.getParameter("page_size") != null && checkIsInt(request.getParameter("page_size"))) {
-            page_size = Integer.parseInt(request.getParameter("page_size"));
-            if (page_size < 0 || page_size > 10) {
-                page_size = 10;
+        if (request != null) {
+            if (request.getParameter("username") != null) {
+                username = request.getParameter("username");
             }
-        }
-        if (request.getParameter("page_num") != null && checkIsInt(request.getParameter("page_num"))) {
-            page_num = Integer.parseInt(request.getParameter("page_num"));
-            if (page_num > 0) {
-                start = (page_num - 1) * page_size;
+            if (request.getParameter("password") != null) {
+                password = request.getParameter("password");
             }
-        }
-        if (request.getParameter("type") != null) {
-            if (request.getParameter("type").equals("update") || request.getParameter("type").equals("clean")) {
-                type = request.getParameter("type");
+            if (request.getParameter("page_size") != null && checkIsInt(request.getParameter("page_size"))) {
+                page_size = Integer.parseInt(request.getParameter("page_size"));
+                if (page_size < 0 || page_size > 10) {
+                    page_size = 10;
+                }
             }
-        }
-        if (request.getParameter("order") != null) {
-            if (request.getParameter("order").equals("asc") || request.getParameter("order").equals("desc")) {
-                order = "create_time " + request.getParameter("order");
+            if (request.getParameter("page_num") != null && checkIsInt(request.getParameter("page_num"))) {
+                page_num = Integer.parseInt(request.getParameter("page_num"));
+                if (page_num > 0) {
+                    start = (page_num - 1) * page_size;
+                }
+            }
+            if (request.getParameter("type") != null) {
+                if (request.getParameter("type").equals("update") || request.getParameter("type").equals("clean")) {
+                    type = request.getParameter("type");
+                }
+            }
+            if (request.getParameter("order") != null) {
+                if (request.getParameter("order").equals("asc") || request.getParameter("order").equals("desc")) {
+                    order = "create_time " + request.getParameter("order");
+                }
             }
         }
     }

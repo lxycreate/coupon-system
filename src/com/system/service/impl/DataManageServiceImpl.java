@@ -41,7 +41,7 @@ public class DataManageServiceImpl implements DataManageService {
 
     // 检查用户名和密码
     public Boolean checkUserPsd(String username, String password) {
-        if (username == null || password == null || username.length()==0|| password.length()==0) {
+        if (username == null || password == null || username.length() == 0 || password.length() == 0) {
             return false;
         }
         LoginJson temp_json = login.login(username, password);
@@ -54,13 +54,34 @@ public class DataManageServiceImpl implements DataManageService {
     // 新建更新或者清理任务
     @Override
     public LogJson updateOrClean(AjaxDataManage par) {
-        if (par.getIs_update_tkzs()) {
-            createUpdateTask("tkzs");
+        if (checkUserPsd(par.getUsername(), par.getPassword())) {
+            Boolean flag = false;
+            if (par.getIs_update_tkzs()) {
+                createUpdateTask("tkzs");
+                flag = true;
+            }
+            if (par.getIs_update_dtklm()) {
+                createUpdateTask("dtklm");
+                flag = true;
+            }
+            if (par.getIs_clean_tkzs()) {
+                createCleanTask("tkzs");
+                flag = true;
+            }
+            if (par.getIs_clean_dtklm()) {
+                createCleanTask("dtklm");
+                flag = true;
+            }
+            if (flag) {
+                scanTask();
+                AjaxLogParameter logParameter = new AjaxLogParameter(null);
+                Integer page_count = getPageCount(logParameter);
+                logParameter.setPage_num(page_count);
+                logParameter.setUsername(par.getUsername());
+                logParameter.setPassword(par.getPassword());
+                return getLogList(logParameter);
+            }
         }
-        if (par.getIs_update_dtklm()) {
-            createUpdateTask("dtklm");
-        }
-        // scanTask();
         return null;
     }
 
@@ -73,6 +94,14 @@ public class DataManageServiceImpl implements DataManageService {
         // queue.add(t);
     }
 
+    // 创建清理任务
+    public void createCleanTask(String obj) {
+        Task t = new CleanTask();
+        t.setService(this);
+        t.init(obj);
+        t.createLog();
+    }
+
     @Override
     // 扫描任务数组
     public void scanTask() {
@@ -80,10 +109,11 @@ public class DataManageServiceImpl implements DataManageService {
             List<SqlLog> my_log = log_dao.getWaitWork();
             if (my_log.size() > 0) {
                 SqlLog temp = my_log.get(0);
-                Task t;
+                Task t = null;
                 if (temp.getType().equals("update")) {
                     t = new UpdateTask();
-                } else {
+                }
+                if (temp.getType().equals("clean")) {
                     t = new CleanTask();
                 }
                 t.setLog(temp);
@@ -123,7 +153,6 @@ public class DataManageServiceImpl implements DataManageService {
 
     // 获取第几页日志
     public List<SqlLog> getLogListFromDataBase(AjaxLogParameter ajax) {
-        Integer page_size = ajax.getPage_size();
         Integer page_num = ajax.getPage_num();
         Integer page_count = getPageCount(ajax);
         List<SqlLog> temp = new ArrayList<SqlLog>();
