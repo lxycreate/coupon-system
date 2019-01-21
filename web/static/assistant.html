@@ -109,7 +109,7 @@
                                 <span class="id">{{item.id}}</span>
                                 <span class="type">{{item.type}}</span>
                                 <span class="obj">{{item.obj}}</span>
-                                <span class="status">{{item.status}}</span>
+                                <span class="status" v-bind:class="{wait:item.is_wait,running:item.is_running,success:item.is_success}">{{item.status}}</span>
                                 <span class="create_time">{{item.create_time}}</span>
                                 <span class="create_time">{{item.start_time}}</span>
                                 <span class="create_time">{{item.end_time}}</span>
@@ -210,15 +210,36 @@
                             <li class="btn filter">
                                 <span class="filter_box">
                                     <span class="title">筛选:</span>
-                                    <span class="filter_btn" v-for="(goods_filter_btn,index) in goods_filter_btns" v-bind:class="{filter_btn_selected:goods_filter_btn.is_select}"
-                                        @click="">
+                                    <span class="filter_btn" v-for="(goods_filter_btn,index) in goods_filter_btns"
+                                        v-bind:class="{filter_btn_selected:goods_filter_btn.is_select}" @click="">
                                         {{goods_filter_btn.name}}
                                     </span>
                                 </span>
                             </li>
                         </ul>
                         <!--  -->
-                        <span class="goods_bar"></span>
+                        <span class="goods_bar">
+                            <span class="pic">图片</span>
+                            <span class="stitle">名称</span>
+                            <span class="data_origin">数据来源</span>
+                            <span class="tmall">平台</span>
+                            <span class="dsr">评分</span>
+                            <span class="price">价格</span>
+                            <span class="coupon_price">券值</span>
+                            <span class="end_time">结束时间</span>
+                        </span>
+                        <span class="log_pager cant_select_txt">
+                            <span class="home_page btn">首页</span>
+                            <span class="pre_page btn">上一页</span>
+                            <span class="txt">{{log_page_num}}</span>
+                            <span class="next_page btn">下一页</span>
+                            <span class="end_page btn">尾页</span>
+                            <form class="form">
+                                <input class="input" type="text" onkeyup="limitInput(this)">
+                            </form>
+                            <span class="jump btn">跳转</span>
+                            <span class="total">共 {{log_page_count}} 页</span>
+                        </span>
                     </div>
                 </div>
                 <!-- 商品数据查看   end -->

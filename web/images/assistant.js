@@ -35,13 +35,13 @@ function initContent() {
             // 左侧按钮   start
             btns: [{
                 name: '数据管理',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-statsbars2': true
                 }
             }, {
                 name: '数据查看',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-list2': true
                 }
@@ -354,14 +354,20 @@ function parseLogList(data) {
         var temp_list = [];
         for (var i = 0; i < data.log_list.length; ++i) {
             var temp_log = data.log_list[i];
+            temp_log.is_wait = false;
+            temp_log.is_running = false;
+            temp_log.is_success = false;
             if (temp_log.status == "wait") {
                 temp_log.status = "待执行";
+                temp_log.is_wait = true;
             }
             if (temp_log.status == "running") {
                 temp_log.status = "正在执行";
+                temp_log.is_running = true;
             }
             if (temp_log.status == "success") {
                 temp_log.status = "成功";
+                temp_log.is_success = true;
             }
             if (temp_log.type == "update") {
                 temp_log.type = "更新";

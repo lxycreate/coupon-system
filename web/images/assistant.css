@@ -462,7 +462,6 @@ li {
     display: block;
     font-size: 0;
     background-color: #f4f5fc;
-    /* border-top: 1px solid #98a3c2; */
 }
 
 .main_body .right .container .content .bar>span {
@@ -472,6 +471,7 @@ li {
     text-align: center;
     font-size: 14px;
     color: #323c57;
+    vertical-align: top;
 }
 
 .main_body .right .container .content .id {
@@ -513,6 +513,19 @@ li {
     vertical-align: top;
 }
 
+/* 等待执行 */
+.wait {
+    color: #a08648 !important;
+}
+
+.running {
+    color: #4099e5 !important;
+}
+
+.success {
+    color: #418a4c !important;
+}
+
 /* 日志列表   end */
 /* 日志分页   start*/
 .main_body .right .container .log_pager {
@@ -521,8 +534,6 @@ li {
     font-size: 0;
     text-align: center;
     line-height: 39px;
-    /* background-color: #4d5b85; */
-    /* border-top: 1px solid #f4f5fc; */
 }
 
 .main_body .right .container .log_pager>span {
@@ -570,4 +581,54 @@ li {
 
 /* 日志分页   end*/
 /* =================  日志  end   ==================*/
+/* =================  商品  start   ==================*/
+.main_body .right .container .content .goods_bar {
+    display: block;
+    font-size: 0;
+    background-color: #f4f5fc;
+}
+
+.main_body .right .container .content .goods_bar>span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #323c57;
+    vertical-align: top;
+}
+
+.main_body .right .container .content .goods_bar .pic {
+    width: 10%;
+}
+
+.main_body .right .container .content .goods_bar .stitle {
+    width: 15%;
+}
+
+.main_body .right .container .content .goods_bar .data_origin {
+    width: 10%;
+}
+
+.main_body .right .container .content .goods_bar .tmall {
+    width: 10%;
+}
+
+.main_body .right .container .content .goods_bar .price {
+    width: 10%;
+}
+
+.main_body .right .container .content .goods_bar .coupon_price {
+    width: 10%;
+}
+
+.main_body .right .container .content .goods_bar .end_time {
+    width: 20%;
+}
+
+.main_body .right .container .content .goods_bar .dsr {
+    width: 10%;
+}
+
+/* =================  商品  end   ==================*/
 /* ===================================  右 end  ======================================= */
