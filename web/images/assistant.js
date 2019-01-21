@@ -122,7 +122,8 @@ function initContent() {
             log_page_num: 0, //第几页日志
             log_page_count: '?', //日志总数
             is_first_log_page: false, // 是否是第一页日志
-            is_last_log_page: false // 是否是最后一页日志
+            is_last_log_page: false, // 是否是最后一页日志
+            log_input: ''           
         },
         created: function () {
             this.log_page_num = 1;
@@ -284,7 +285,7 @@ function ajaxGetLogList() {
         method: 'post',
         params: log_obj
     }).then(function (response) {
-        if (response.data.success) {
+        if (response!=null&&response.data.success) {
             parseLogList(response.data);
             console.log(response);
         }

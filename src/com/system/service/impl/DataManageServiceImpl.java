@@ -54,14 +54,6 @@ public class DataManageServiceImpl implements DataManageService {
     public LogJson updateOrClean(AjaxDataManage par) {
         if (checkUserPsd(par.getUsername(), par.getPassword())) {
             Boolean flag = false;
-            if (par.getIs_update_tkzs()) {
-                createUpdateTask("tkzs");
-                flag = true;
-            }
-            if (par.getIs_update_dtklm()) {
-                createUpdateTask("dtklm");
-                flag = true;
-            }
             if (par.getIs_clean_tkzs()) {
                 createCleanTask("tkzs");
                 flag = true;
@@ -70,8 +62,16 @@ public class DataManageServiceImpl implements DataManageService {
                 createCleanTask("dtklm");
                 flag = true;
             }
+            if (par.getIs_update_tkzs()) {
+                createUpdateTask("tkzs");
+                flag = true;
+            }
+            if (par.getIs_update_dtklm()) {
+                createUpdateTask("dtklm");
+                flag = true;
+            }
             if (flag) {
-                scanTask();
+//                scanTask();
                 AjaxLogParameter logParameter = new AjaxLogParameter(null);
                 Integer page_count = getPageCount(logParameter);
                 logParameter.setPage_num(page_count);
