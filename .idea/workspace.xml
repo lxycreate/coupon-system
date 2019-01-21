@@ -9,6 +9,7 @@
     <list default="true" id="ede64fec-2273-4389-8d62-e90de1bbd7d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/mapper/goodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/goodsMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/images/assistant.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/images/assistant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/assistant.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/assistant.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +38,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
-          <entry key="java" value="325" />
+          <entry key="java" value="326" />
           <entry key="md" value="1" />
           <entry key="properties" value="2" />
           <entry key="txt" value="3" />
@@ -47,7 +48,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="325" />
+          <entry key="JAVA" value="326" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="2" />
@@ -58,7 +59,7 @@
         <counts>
           <entry key="dummy" value="36" />
           <entry key="java" value="13336" />
-          <entry key="xml" value="1616" />
+          <entry key="xml" value="1618" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -66,7 +67,7 @@
           <entry key="JAVA" value="13336" />
           <entry key="PLAIN_TEXT" value="36" />
           <entry key="SQL" value="82" />
-          <entry key="XML" value="1534" />
+          <entry key="XML" value="1536" />
         </counts>
       </usages-collector>
     </session>
@@ -79,11 +80,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapper/goodsMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="349" column="47" selection-start-line="349" selection-start-column="47" selection-end-line="349" selection-end-column="47" />
+            <state relative-caret-position="70">
+              <caret line="351" column="24" lean-forward="true" selection-start-line="351" selection-start-column="24" selection-end-line="351" selection-end-column="24" />
               <folding>
                 <element signature="e#11630#11634#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/system/entity/AjaxGoodsParameter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -798,7 +808,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548071077712" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548079043827" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -981,18 +991,18 @@
       <workItem from="1547894101976" duration="498000" />
       <workItem from="1547894739683" duration="11997000" />
       <workItem from="1547955526799" duration="18887000" />
-      <workItem from="1548038998199" duration="13274000" />
+      <workItem from="1548038998199" duration="14968000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102550000" />
+    <option name="totallyTimeSpent" value="104244000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4979253" visible="true" weight="0.30800325" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4979253" visible="true" weight="0.30800325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -1002,7 +1012,7 @@
       <window_info id="设计师" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3291815" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4987874" visible="true" weight="0.33274022" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4987874" visible="true" weight="0.4430605" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1431,13 +1441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/system/entity/AjaxGoodsParameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1445,6 +1448,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/system/entity/AjaxGoodsParameter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1457,8 +1467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapper/goodsMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="349" column="47" selection-start-line="349" selection-start-column="47" selection-end-line="349" selection-end-column="47" />
+        <state relative-caret-position="70">
+          <caret line="351" column="24" lean-forward="true" selection-start-line="351" selection-start-column="24" selection-end-line="351" selection-end-column="24" />
           <folding>
             <element signature="e#11630#11634#0" expanded="true" />
           </folding>

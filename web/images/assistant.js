@@ -118,12 +118,15 @@ function initContent() {
             // ==================================  商品区域   start  ==================================  //
             goods_filter_btns: [{
                 name: '全部',
+                value: '0',
                 is_select: true
             }, {
                 name: '淘客助手',
+                value: '1',
                 is_select: false
             }, {
                 name: '大淘客联盟',
+                value: '2',
                 is_select: false
             }],
             goods_list: [], //日志列表
@@ -331,8 +334,59 @@ function initContent() {
                         addToLogObj('page_num', e);
                     }
                 }
-            }
+            },
             //  ======================================= 日志区域 =================================//
+            //  ======================================= 商品区域 =================================//
+            // 初始化商品区域
+            initGoodsArea: function () {
+
+            },
+            // 重置platform
+            resetPlatform: function () {
+                for (var i = 0; i < this.goods_filter_btns.length; ++i) {
+                    this.goods_filter_btns[i].is_select = false;
+                }
+                this.goods_filter_btns[0].is_select = true;
+            },
+            // 切换数据来源
+            changePlatform: function (index) {
+                goods_obj['page_num'] = 1;
+                for (var i = 0; i < this.goods_filter_btns.length; ++i) {
+                    this.goods_filter_btns[i].is_select = false;
+                }
+                this.goods_filter_btns[index].is_select = true;
+                addToGoodsObj('platform_id', this.goods_filter_btns[index].value);
+            },
+            // 上一页
+            preGoodsPage: function () {
+                if (this.goods_page_num > 1) {
+                    addToGoodsObj('page_num', this.goods_page_num - 1);
+                }
+            },
+            // 下一页
+            nextGoodsPage: function () {
+                if (this.goods_page_num < this.goods_page_count) {
+                    addToGoodsObj('page_num', this.goods_page_num + 1);
+                }
+            },
+            // 首页
+            firstGoodsPage: function () {
+                addToGoodsObj('page_num', 1);
+            },
+            // 尾页
+            lastGoodsPage: function () {
+                addToGoodsObj('page_num', this.goods_page_count);
+            },
+            // 跳转
+            jumpGoods: function () {
+                if (this.goods_page_input != '') {
+                    var e = parseInt(this.goods_page_input);
+                    if (e <= this.goods_page_count) {
+                        addToGoodsObj('page_num', e);
+                    }
+                }
+            }
+            //  ======================================= 商品区域 =================================//
         }
         // 
     });
@@ -427,6 +481,12 @@ function initGoodsObj() {
     goods_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
     goods_obj['page_num'] = 1;
     goods_obj['page_size'] = 10;
+}
+
+// 向goods_obj中添加参数
+function addToGoodsObj(name, value) {
+    goods_obj[name] = value;
+    ajaxGetGoodsList();
 }
 
 // 获取商品列表
