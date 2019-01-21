@@ -339,7 +339,9 @@ function initContent() {
             //  ======================================= 商品区域 =================================//
             // 初始化商品区域
             initGoodsArea: function () {
-
+                this.resetPlatform();
+                initGoodsObj();
+                ajaxGetGoodsList();
             },
             // 重置platform
             resetPlatform: function () {
