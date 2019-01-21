@@ -59,8 +59,16 @@ public class AjaxDataManage {
         if (request.getParameter("password") != null) {
             password = request.getParameter("password");
         }
-        if(request.getParameter("page_size")!=null){
-            page_size = Integer.parseInt(request.getParameter("page_size"));
+        if (request.getParameter("page_size") != null) {
+            try {
+                page_size = Integer.parseInt(request.getParameter("page_size"));
+                if(page_size>10||page_size<0){
+                    page_size = 10;
+                }
+            }
+            catch(NumberFormatException e){
+                page_size = 10;
+            }
         }
     }
 
