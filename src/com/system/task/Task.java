@@ -6,24 +6,24 @@ import com.system.service.DataManageService;
 
 public interface Task {
     // 初始化
-   public void init(String obj);
+    void init(String obj);
 
-   // 执行任务
-   public void run();
+    // 执行任务
+    void run();
 
-   // 结束任务
-   public void end();
+    // 结束任务
+    void end();
 
-   // 设置service
-   public void setService(DataManageService service);
+    // 设置service
+    void setService(DataManageService service);
 
-   // 获取执行状态码
-    public String getStatus();
+    // 获取执行状态码
+    String getStatus();
 
     // 读取日志
-    public void setLog(SqlLog log);
+    void setLog(SqlLog log);
 
     // 创建日志
-    public void createLog();
+    void createLog();
 
 }
