@@ -1,7 +1,9 @@
 package com.system.dao;
 
+import com.system.entity.AjaxGoodsParameter;
 import com.system.entity.SqlGoods;
 
+import java.util.List;
 import java.util.Map;
 
 public interface GoodsDao {
@@ -17,4 +19,10 @@ public interface GoodsDao {
 
     // 清理商品数据
     void cleanGoodsData(Map temp);
+
+    // 获取商品总数
+    Integer getGoodsNum(AjaxGoodsParameter par);
+
+    // 获取商品列表
+    List<SqlGoods> getGoodsList(AjaxGoodsParameter par);
 }

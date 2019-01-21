@@ -6,6 +6,8 @@ var password = '';
 
 // 作为获取日志的ajax参数
 var log_obj = {};
+// 获取商品数据的ajax参数
+var goods_obj = {};
 // 内容主体
 var js_main_container;
 // 初始化
@@ -35,13 +37,13 @@ function initContent() {
             // 左侧按钮   start
             btns: [{
                 name: '数据管理',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-statsbars2': true
                 }
             }, {
                 name: '数据查看',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-list2': true
                 }
@@ -339,7 +341,7 @@ function ajaxGetLogList() {
         method: 'post',
         params: log_obj
     }).then(function (response) {
-        if (response != null && response.data.success) {
+        if (response != null && response.data != null && response.data.success) {
             parseLogList(response.data);
             console.log(response);
         }
@@ -396,6 +398,36 @@ function parseLogList(data) {
 // 限制跳转输入框
 function limitInput(event) {
     event.value = event.value.replace(/\D/g, '')
+}
+
+// 初始化goods_obj
+function initGoodsObj() {
+    goods_obj = {};
+    goods_obj['username'] = "admin";
+    goods_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
+    goods_obj['page_num'] = 1;
+    goods_obj['page_size'] = 10;
+}
+
+// 获取商品列表
+function ajaxGetGoodsList() {
+    axios({
+        url: base_url + '/getGoodsList',
+        method: 'post',
+        params: goods_obj
+    }).then(function (response) {
+        if (response != null && response.data.success) {
+            // parseLogList(response.data);
+            console.log(response);
+        }
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+// 解析商品列表
+function parseGoodsList(data) {
+
 }
 
 function testUpdate() {

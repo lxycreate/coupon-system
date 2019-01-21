@@ -1,10 +1,10 @@
 package com.system.service.impl;
 
 
+import com.system.dao.GoodsDao;
 import com.system.dao.LogDao;
-import com.system.entity.AjaxDataManage;
-import com.system.entity.AjaxLogParameter;
-import com.system.entity.SqlLog;
+import com.system.entity.*;
+import com.system.entity.json.GoodsJson;
 import com.system.entity.json.LogJson;
 import com.system.entity.json.LoginJson;
 import com.system.service.DataManageService;
@@ -28,6 +28,9 @@ public class DataManageServiceImpl implements DataManageService {
 
     @Autowired
     LogDao log_dao;
+
+    @Autowired
+    GoodsDao goods_dao;
 
     private static BlockingQueue<Task> queue;
 
@@ -126,9 +129,13 @@ public class DataManageServiceImpl implements DataManageService {
     public LogJson getLogList(AjaxLogParameter ajax) {
         LogJson json = new LogJson();
         if (checkUserPsd(ajax.getUsername(), ajax.getPassword())) {
-            List<SqlLog> temp = getLogListFromDataBase(ajax);
-            json.setPage_num(ajax.getPage_num());
+            // 页码总数
             json.setPage_count(getPageCount(ajax));
+            // 当前第几页
+            if (ajax.getPage_num() <= json.getPage_count()) {
+                json.setPage_num(ajax.getPage_num());
+            }
+            List<SqlLog> temp = getLogListFromDataBase(ajax, json.getPage_count());
             json.setSuccess(true);
             json.setCode("success");
             json.setLog_list(temp);
@@ -151,14 +158,68 @@ public class DataManageServiceImpl implements DataManageService {
     }
 
     // 获取第几页日志
-    public List<SqlLog> getLogListFromDataBase(AjaxLogParameter ajax) {
+    public List<SqlLog> getLogListFromDataBase(AjaxLogParameter ajax, Integer page_count) {
         Integer page_num = ajax.getPage_num();
-        Integer page_count = getPageCount(ajax);
         List<SqlLog> temp = new ArrayList<SqlLog>();
         if (page_num <= page_count) {
             temp = log_dao.getLogList(ajax);
         }
         return temp;
+    }
+
+    // 获取商品列表
+    @Override
+    public GoodsJson getGoodsList(AjaxGoodsParameter temp) {
+        GoodsJson json = new GoodsJson();
+        if (checkUserPsd(temp.getUsername(), temp.getPassword())) {
+            json.setPage_count(getGoodsPageCount(temp));
+            if (temp.getPage_num() <= json.getPage_count()) {
+                json.setPage_num(temp.getPage_num());
+                List<Goods> goods_list = getGoodsListFromDataBase(temp,json.getPage_count());
+                json.setSuccess(true);
+                json.setCode("success");
+                json.setGoods_list(goods_list);
+            }
+        } else {
+            json.setSuccess(false);
+            json.setCode("verify error");
+        }
+        return json;
+    }
+
+    // 获取商品总页数
+    public Integer getGoodsPageCount(AjaxGoodsParameter par) {
+        Integer goods_num = goods_dao.getGoodsNum(par);
+        Integer page_size = par.getPage_size();
+        Integer page_count = goods_num / page_size;
+        if (goods_num % page_size != 0) {
+            page_count = page_count + 1;
+        }
+        return page_count;
+    }
+
+    // 获取第几页商品数据
+    public List<Goods> getGoodsListFromDataBase(AjaxGoodsParameter par, Integer page_count) {
+        List<Goods> goods_list = new ArrayList<>();
+        if (par.getPage_num() <= page_count) {
+            List<SqlGoods> temp_list = goods_dao.getGoodsList(par);
+            if (temp_list != null) {
+                for (int i = 0; i < temp_list.size(); ++i) {
+                    Goods temp = new Goods();
+                    SqlGoods temp_sql = temp_list.get(i);
+                    temp.setGoods_pic(temp_sql.getGoods_pic());
+                    temp.setGoods_stitle(temp_sql.getGoods_stitle());
+                    temp.setPlatform_id(temp_sql.getPlatform_id());
+                    temp.setIs_tmall(temp_sql.getIs_tmall());
+                    temp.setGoods_price(temp_sql.getGoods_price());
+                    temp.setCoupon_price(temp_sql.getCoupon_price());
+                    temp.setDsr(temp_sql.getDsr());
+                    temp.setCoupon_end(temp_sql.getCoupon_end());
+                    goods_list.add(temp);
+                }
+            }
+        }
+        return goods_list;
     }
 
     // 函数备份

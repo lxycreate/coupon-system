@@ -1,7 +1,9 @@
 package com.system.controller;
 
 import com.system.entity.AjaxDataManage;
+import com.system.entity.AjaxGoodsParameter;
 import com.system.entity.AjaxLogParameter;
+import com.system.entity.json.GoodsJson;
 import com.system.entity.json.LogJson;
 import com.system.service.DataManageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +37,13 @@ public class DataManageController {
         AjaxLogParameter temp = new AjaxLogParameter(request);
         return service.getLogList(temp);
     }
+
+    // 获取商品列表
+    @RequestMapping(value = "/getGoodsList", method = RequestMethod.POST)
+    public @ResponseBody
+    GoodsJson getGoodsList() {
+        AjaxGoodsParameter temp = new AjaxGoodsParameter(request);
+        return service.getGoodsList(temp);
+    }
+
 }

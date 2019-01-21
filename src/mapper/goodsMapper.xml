@@ -337,4 +337,23 @@
     <delete id="cleanGoodsData">
           delete from goods_test where platform_id = #{platform_id} and coupon_end &lt;=#{date}
     </delete>
+
+    <!--获取商品总数-->
+    <select id="getGoodsNum" resultType="java.lang.Integer">
+       select count(*) from goods_test where 1 = 1
+        <if test="platform_id != null">
+         and platform_id = #{platfrom_id}
+        </if>
+    </select>
+
+    <!--获取商品列表-->
+    <select id="getGoodsList">
+        select * from goods_test where 1 = 1
+        <if test="platform_id != null">
+            and platform_id = #{platfrom_id}
+        </if>
+        <if test="start != null and page_size != null">
+            limit #{start},#{page_size}
+        </if>
+    </select>
 </mapper>

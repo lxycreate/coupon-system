@@ -1,24 +1,24 @@
 package com.system.entity.json;
 
-import com.system.entity.SqlLog;
+import com.system.entity.Goods;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogJson {
+public class GoodsJson {
     private Boolean success;    // 是否成功
     private String code;        // 执行代码
     private Integer page_num;   // 第几页
     private Integer page_size;  // 每页数据量
     private Integer page_count;  // 页码总数
-    private List<SqlLog> log_list;  // 日志数组
+    private List<Goods> goods_list; // 商品列表
 
-    public LogJson() {
+    public GoodsJson(){
         success = false;
         page_num = 1;
         page_size = 10;
         page_count = 0;
-        log_list = new ArrayList<>();
+        goods_list = new ArrayList<>();
     }
 
     public Boolean getSuccess() {
@@ -61,11 +61,11 @@ public class LogJson {
         this.page_count = page_count;
     }
 
-    public List<SqlLog> getLog_list() {
-        return log_list;
+    public List<Goods> getGoods_list() {
+        return goods_list;
     }
 
-    public void setLog_list(List<SqlLog> log_list) {
-        this.log_list = log_list;
+    public void setGoods_list(List<Goods> goods_list) {
+        this.goods_list = goods_list;
     }
 }

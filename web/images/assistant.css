@@ -599,6 +599,7 @@ li {
 }
 
 .main_body .right .container .content .pic {
+    position: relative;
     width: 10%;
 }
 
@@ -648,6 +649,11 @@ li {
     text-align: center;
     line-height: 80px;
     vertical-align: middle;
+}
+
+.main_body .right .container .content .goods_list li .pic>img {
+    width: 70px;
+    margin-top: 5px;
 }
 
 /* =================  商品  end   ==================*/
