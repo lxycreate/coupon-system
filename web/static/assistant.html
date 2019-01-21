@@ -79,8 +79,8 @@
                             <li class="btn filter">
                                 <span class="filter_box">
                                     <span class="title">筛选:</span>
-                                    <span class="filter_btn" v-for="filter_btn in filter_btns" v-bind:class="{filter_btn_selected:filter_btn.is_select}"
-                                        @click="filterLogType(filter_btn.index)">
+                                    <span class="filter_btn" v-for="(filter_btn,index) in filter_btns" v-bind:class="{filter_btn_selected:filter_btn.is_select}"
+                                        @click="filterLogType(index)">
                                         {{filter_btn.name}}
                                     </span>
                                 </span>
@@ -139,7 +139,7 @@
                                 <span class="origin">
                                     <span class="title">请选择数据源</span>
                                     <span class="btn_box">
-                                        <span class="origin_btn" v-for="origin_btn in update_origin" @click="selectUpdateItem(origin_btn.index)">
+                                        <span class="origin_btn" v-for="(origin_btn,index) in update_origin" @click="selectUpdateItem(index)">
                                             <i class="iconfont " v-bind:class="{'icon-checkboxunchecked':!origin_btn.is_select,'icon-checkboxchecked':origin_btn.is_select}"></i>{{origin_btn.name}}
                                         </span>
                                     </span>
@@ -172,7 +172,7 @@
                                 <span class="origin">
                                     <span class="title">请选择数据源</span>
                                     <span class="btn_box">
-                                        <span class="origin_btn" v-for="origin_btn in clean_origin" @click="selectCleanItem(origin_btn.index)">
+                                        <span class="origin_btn" v-for="(origin_btn,index) in clean_origin" @click="selectCleanItem(index)">
                                             <i class="iconfont " v-bind:class="{'icon-checkboxunchecked':!origin_btn.is_select,'icon-checkboxchecked':origin_btn.is_select}"></i>{{origin_btn.name}}
                                         </span>
                                     </span>
@@ -198,9 +198,27 @@
                 <!-- 数据管理 end -->
                 <!-- 商品数据查看   start -->
                 <div class="container" v-show="btns[1].is_select">
-                    <div class="header"></div>
+                    <div class="header">
+                        <span class="location">
+                            <i class="iconfont icon-list2"></i>
+                            <span class="txt">{{btns[1].name}}</span>
+                        </span>
+                    </div>
                     <div class="content">
-
+                        <!--  -->
+                        <ul class="btn_box">
+                            <li class="btn filter">
+                                <span class="filter_box">
+                                    <span class="title">筛选:</span>
+                                    <span class="filter_btn" v-for="(goods_filter_btn,index) in goods_filter_btns" v-bind:class="{filter_btn_selected:goods_filter_btn.is_select}"
+                                        @click="">
+                                        {{goods_filter_btn.name}}
+                                    </span>
+                                </span>
+                            </li>
+                        </ul>
+                        <!--  -->
+                        <span class="goods_bar"></span>
                     </div>
                 </div>
                 <!-- 商品数据查看   end -->

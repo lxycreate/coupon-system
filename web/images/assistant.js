@@ -31,16 +31,17 @@ function initContent() {
     js_main_container = new Vue({
         el: '.js_main_container',
         data: {
+            // ==================================  日志区域   start  ==================================  //
             // 左侧按钮   start
             btns: [{
                 name: '数据管理',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-statsbars2': true
                 }
             }, {
                 name: '数据查看',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-list2': true
                 }
@@ -55,19 +56,16 @@ function initContent() {
             // "数据管理"下的按钮   start
             filter_btns: [{
                     name: '全部',
-                    index: 0,
                     value: 'all',
                     is_select: true
                 },
                 {
                     name: "更新日志",
-                    index: 1,
                     value: 'update',
                     is_select: false
                 },
                 {
                     name: "清理日志",
-                    index: 2,
                     value: 'clean',
                     is_select: false
                 }
@@ -77,16 +75,13 @@ function initContent() {
             // 更新任务弹窗   start
             update_origin: [{
                     name: '全部',
-                    index: 0,
                     is_select: false
                 }, {
                     name: '淘客助手',
-                    index: 1,
                     is_select: false
                 },
                 {
                     name: '大淘客联盟',
-                    index: 2,
                     is_select: false
                 }
             ],
@@ -96,16 +91,13 @@ function initContent() {
             //  清理任务弹窗  start
             clean_origin: [{
                     name: '全部',
-                    index: 0,
                     is_select: false
                 }, {
                     name: '淘客助手',
-                    index: 1,
                     is_select: false
                 },
                 {
                     name: '大淘客联盟',
-                    index: 2,
                     is_select: false
                 }
             ],
@@ -117,7 +109,20 @@ function initContent() {
             log_page_count: '?', //日志总数
             is_first_log_page: false, // 是否是第一页日志
             is_last_log_page: false, // 是否是最后一页日志
-            log_page_input: ''
+            log_page_input: '',
+            // ==================================  日志区域   end  ==================================  //
+            // ==================================  商品区域   start  ==================================  //
+            goods_filter_btns: [{
+                name: '全部',
+                is_select: true
+            }, {
+                name: '淘客助手',
+                is_select: false
+            }, {
+                name: '大淘客联盟',
+                is_select: false
+            }]
+            // ==================================  商品区域   end  ==================================  //
         },
         created: function () {
             this.log_page_num = 1;
@@ -146,6 +151,7 @@ function initContent() {
         },
         // data  end
         methods: {
+            //  ======================================= 日志区域 =================================//
             // 初始化数据管理页
             initDataManage: function () {
                 this.resetLogType();
@@ -298,6 +304,7 @@ function initContent() {
                     }
                 }
             }
+            //  ======================================= 日志区域 =================================//
         }
         // 
     });
