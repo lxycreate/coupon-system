@@ -123,7 +123,7 @@ function initContent() {
             log_page_count: '?', //日志总数
             is_first_log_page: false, // 是否是第一页日志
             is_last_log_page: false, // 是否是最后一页日志
-            log_input: ''           
+            log_input: ''
         },
         created: function () {
             this.log_page_num = 1;
@@ -137,16 +137,14 @@ function initContent() {
                 }
                 if (this.log_page_num == this.log_page_count) {
                     this.is_last_log_page = true;
-                }
-                else{
+                } else {
                     this.is_last_log_page = false;
                 }
             },
-            log_page_count:function(){
+            log_page_count: function () {
                 if (this.log_page_num == this.log_page_count) {
                     this.is_last_log_page = true;
-                }
-                else{
+                } else {
                     this.is_last_log_page = false;
                 }
             }
@@ -244,6 +242,14 @@ function initContent() {
                 this.filter_btns[index].is_select = true;
                 addToLogObj('type', this.filter_btns[index].value);
             },
+            // 首页
+            firstLogPage: function () {
+                addToLogObj('page_num', 1);
+            },
+            // 尾页
+            lastLogPage: function () {
+                addToLogObj('page_num', this.log_page_count);
+            },
             // 下一页
             nextLogPage: function () {
                 if (this.log_page_num < this.log_page_count) {
@@ -268,7 +274,7 @@ function initLogObj() {
     log_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
     log_obj['page_num'] = 1;
     log_obj['page_size'] = 10;
-    log_obj['order'] = 'create_time desc';
+    log_obj['order'] = 'create_time asc';
 }
 
 // 添加参数
@@ -285,7 +291,7 @@ function ajaxGetLogList() {
         method: 'post',
         params: log_obj
     }).then(function (response) {
-        if (response!=null&&response.data.success) {
+        if (response != null && response.data.success) {
             parseLogList(response.data);
             console.log(response);
         }

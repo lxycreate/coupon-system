@@ -509,7 +509,7 @@ li {
     text-align: center;
     line-height: 39px;
     /* background-color: #4d5b85; */
-    border-top: 1px solid #f4f5fc;
+    /* border-top: 1px solid #f4f5fc; */
 }
 
 .main_body .right .container .log_pager>span {

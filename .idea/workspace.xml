@@ -7,8 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede64fec-2273-4389-8d62-e90de1bbd7d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/images/assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/images/assistant.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/images/assistant.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/images/assistant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/static/assistant.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/assistant.html" afterDir="false" />
     </list>
@@ -81,8 +79,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+            <state relative-caret-position="308">
+              <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -790,7 +788,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548049761536" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548049817989" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -973,12 +971,12 @@
       <workItem from="1547894101976" duration="498000" />
       <workItem from="1547894739683" duration="11997000" />
       <workItem from="1547955526799" duration="18887000" />
-      <workItem from="1548038998199" duration="7828000" />
+      <workItem from="1548038998199" duration="8119000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97104000" />
+    <option name="totallyTimeSpent" value="97395000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -1368,8 +1366,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        <state relative-caret-position="308">
+          <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
