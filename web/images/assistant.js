@@ -209,7 +209,7 @@ function initContent() {
             // 初始化数据管理页
             initDataManage: function () {
                 this.resetLogType();
-                this.changeLogSortWay(true);
+                this.resetLogSortWay();
                 initLogObj();
                 ajaxGetLogList();
             },
@@ -289,7 +289,8 @@ function initContent() {
                     task_obj['page_size'] = 10;
                     ajaxCleanOrUpdate(task_obj);
                     this.resetLogType();
-                    this.changeLogSortWay(true);
+                    this.resetLogSortWay();
+                    initLogObj();
                 }
                 this.cancelUpdate();
             },
@@ -340,7 +341,8 @@ function initContent() {
                     task_obj['page_size'] = 10;
                     ajaxCleanOrUpdate(task_obj);
                     this.resetLogType();
-                    this.changeLogSortWay(true);
+                    this.resetLogSortWay();
+                    initLogObj();
                 }
                 this.cancelClean();
             },
@@ -360,6 +362,13 @@ function initContent() {
                     this.filter_btns[i].is_select = false;
                 }
                 this.filter_btns[0].is_select = true;
+            },
+            // 重置排序方式
+            resetLogSortWay:function(){
+                Velocity(this.$refs.js_sort_btn, {
+                    'margin-top': '8px',
+                    rotateZ: '0deg'
+                });
             },
             // 改变日志排序方式
             changeLogSortWay: function (flag) {
@@ -408,6 +417,7 @@ function initContent() {
                         addToLogObj('page_num', e);
                     }
                 }
+                this.log_page_input = '';
             },
             //  ======================================= 日志区域 =================================//
             //  ======================================= 商品区域 =================================//
@@ -461,6 +471,7 @@ function initContent() {
                         addToGoodsObj('page_num', e);
                     }
                 }
+                this.goods_page_input = '';
             },
             //  ======================================= 商品区域 =================================//
             initData: function () {
@@ -742,7 +753,7 @@ function initChart(data) {
 
 // 更新清理事件
 function ajaxCleanOrUpdate(temp) {
-    console.log(temp);
+    // console.log(temp);
     axios({
         url: base_url + '/manage/data',
         method: 'post',

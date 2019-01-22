@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede64fec-2273-4389-8d62-e90de1bbd7d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/system/dao/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/dao/LogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/system/task/impl/UpdateDtklmData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/task/impl/UpdateDtklmData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/system/task/impl/UpdateTkzsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/task/impl/UpdateTkzsData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapper/logMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapper/logMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/images/assistant.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/images/assistant.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -900,8 +895,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548149152346" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548150410070" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TaoQuanQuan" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1084,16 +1079,15 @@
       <workItem from="1547894739683" duration="11997000" />
       <workItem from="1547955526799" duration="18887000" />
       <workItem from="1548038998199" duration="14970000" />
-      <workItem from="1548119964725" duration="11093000" />
+      <workItem from="1548119964725" duration="12162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115339000" />
+    <option name="totallyTimeSpent" value="116408000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4979253" visible="true" weight="0.21180275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1105,7 +1099,7 @@
       <window_info id="设计师" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3291815" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4987874" visible="true" weight="0.31850535" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4987874" visible="true" weight="0.30782917" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
