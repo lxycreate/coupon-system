@@ -35,9 +35,9 @@ public class UpdateDtklmData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("大淘客联盟页码: " + start_page);
         getGoodsData(start_page++);
-        if (start_page > 10) {
-            setStatusCode("success");
-        }
+//        if (start_page > 10) {
+//            setStatusCode("success");
+//        }
     }
 
     // 获取第几页的数据
@@ -57,54 +57,58 @@ public class UpdateDtklmData implements UpdateGoodsData {
 
     // 解析返回的Json
     public void parseGoodsJson(JSONObject jsonObject) {
-        JSONArray temp_array = jsonObject.getJSONArray("result");
-        List<SqlGoods> temp_list = new ArrayList<SqlGoods>();
-        if (temp_array.size() > 0) {
-            for (int i = 0; i < temp_array.size(); ++i) {
-                SqlGoods temp_goods = new SqlGoods();
-                JSONObject good = temp_array.getJSONObject(i);
-                temp_goods.setGoods_id(good.getString("GoodsID"));
-                temp_goods.setPlatform_id(2);//2代表大淘客联盟
-                temp_goods.setSeller_id(good.getString("SellerID"));
-                temp_goods.setGoods_title(good.getString("Title"));
-                temp_goods.setGoods_stitle(good.getString("D_title"));
-                temp_goods.setGoods_pic(good.getString("Pic"));
-                if (good.getInt("IsTmall") == 1) {
-                    temp_goods.setGoods_url("https://detail.tmall.com/item.htm?id=" + good.getString("ID"));
-                } else {
-                    temp_goods.setGoods_url("https://item.taobao.com/item.htm?id=" + good.getString("ID"));
+        try {
+            JSONArray temp_array = jsonObject.getJSONArray("result");
+            List<SqlGoods> temp_list = new ArrayList<SqlGoods>();
+            if (temp_array.size() > 0) {
+                for (int i = 0; i < temp_array.size(); ++i) {
+                    SqlGoods temp_goods = new SqlGoods();
+                    JSONObject good = temp_array.getJSONObject(i);
+                    temp_goods.setGoods_id(good.getString("GoodsID"));
+                    temp_goods.setPlatform_id(2);//2代表大淘客联盟
+                    temp_goods.setSeller_id(good.getString("SellerID"));
+                    temp_goods.setGoods_title(good.getString("Title"));
+                    temp_goods.setGoods_stitle(good.getString("D_title"));
+                    temp_goods.setGoods_pic(good.getString("Pic"));
+                    if (good.getInt("IsTmall") == 1) {
+                        temp_goods.setGoods_url("https://detail.tmall.com/item.htm?id=" + good.getString("ID"));
+                    } else {
+                        temp_goods.setGoods_url("https://item.taobao.com/item.htm?id=" + good.getString("ID"));
+                    }
+                    temp_goods.setGoods_intro(good.getString("Introduce"));
+                    temp_goods.setGoods_price(good.getDouble("Org_Price"));
+                    temp_goods.setGoods_sale(good.getInt("Sales_num"));
+                    //目录
+                    temp_goods.setGoods_cid(changeCid(good.getInt("Cid")));
+
+                    temp_goods.setCommission_rate(good.getDouble("Commission_jihua"));
+                    temp_goods.setCommission_type(-1);
+                    temp_goods.setCoupon_id(good.getString("Quan_id"));
+                    temp_goods.setCoupon_url("https://uland.taobao.com/quan/detail?sellerId=" + good.getString("SellerID") + "&activityId=" + good.getString("Quan_id"));
+                    temp_goods.setCoupon_price(good.getDouble("Quan_price"));
+                    temp_goods.setAfter_coupon(good.getDouble("Price"));
+                    temp_goods.setCoupon_condition(good.getString("Quan_condition"));
+                    temp_goods.setCoupon_total(good.getInt("Quan_surplus") + good.getInt("Quan_receive"));
+                    temp_goods.setCoupon_rest(good.getInt("Quan_surplus"));
+                    temp_goods.setCoupon_use(good.getInt("Quan_receive"));
+                    temp_goods.setCoupon_start("-1");
+                    temp_goods.setCoupon_end(good.getString("Quan_time"));
+                    temp_goods.setIs_tmall(good.getInt("IsTmall"));
+                    temp_goods.setIs_ju(-1);
+                    temp_goods.setIs_qiang(-1);
+                    temp_goods.setIs_yun(-1);
+                    temp_goods.setIs_gold(-1);
+                    temp_goods.setIs_ji(-1);
+                    temp_goods.setIs_hai(-1);
+                    temp_goods.setDsr(good.getDouble("Dsr"));
+
+                    // 插入数据库
+                    addToDataBase(temp_goods);
                 }
-                temp_goods.setGoods_intro(good.getString("Introduce"));
-                temp_goods.setGoods_price(good.getDouble("Org_Price"));
-                temp_goods.setGoods_sale(good.getInt("Sales_num"));
-                //目录
-                temp_goods.setGoods_cid(changeCid(good.getInt("Cid")));
-
-                temp_goods.setCommission_rate(good.getDouble("Commission_jihua"));
-                temp_goods.setCommission_type(-1);
-                temp_goods.setCoupon_id(good.getString("Quan_id"));
-                temp_goods.setCoupon_url("https://uland.taobao.com/quan/detail?sellerId=" + good.getString("SellerID") + "&activityId=" + good.getString("Quan_id"));
-                temp_goods.setCoupon_price(good.getDouble("Quan_price"));
-                temp_goods.setAfter_coupon(good.getDouble("Price"));
-                temp_goods.setCoupon_condition(good.getString("Quan_condition"));
-                temp_goods.setCoupon_total(good.getInt("Quan_surplus") + good.getInt("Quan_receive"));
-                temp_goods.setCoupon_rest(good.getInt("Quan_surplus"));
-                temp_goods.setCoupon_use(good.getInt("Quan_receive"));
-                temp_goods.setCoupon_start("-1");
-                temp_goods.setCoupon_end(good.getString("Quan_time"));
-                temp_goods.setIs_tmall(good.getInt("IsTmall"));
-                temp_goods.setIs_ju(-1);
-                temp_goods.setIs_qiang(-1);
-                temp_goods.setIs_yun(-1);
-                temp_goods.setIs_gold(-1);
-                temp_goods.setIs_ji(-1);
-                temp_goods.setIs_hai(-1);
-                temp_goods.setDsr(good.getDouble("Dsr"));
-
-                // 插入数据库
-                addToDataBase(temp_goods);
+            } else {
+                setStatusCode("success");
             }
-        } else {
+        } catch (Exception e) {
             setStatusCode("success");
         }
     }
