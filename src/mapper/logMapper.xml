@@ -34,7 +34,7 @@
                 id,
             </if>
             <if test="type != null">
-                type,
+                task_type,
             </if>
             <if test="obj != null">
                 obj,
@@ -114,7 +114,7 @@
     </select>
 
     <!--获取正在等待执行的且ID最小的任务-->
-    <select id="getWaitWork" resultType="java.lang.Integer">
+    <select id="getWaitWork" resultType="log">
        select * from log where status='wait' order by id asc limit 1
     </select>
 

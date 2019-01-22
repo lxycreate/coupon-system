@@ -41,7 +41,7 @@ public class DataManageServiceImpl implements DataManageService {
     // 初始化静态变量
     @Override
     public void initTaskList() {
-//        scanTask();
+        scanTask();
     }
 
     // 检查用户名和密码
@@ -78,7 +78,7 @@ public class DataManageServiceImpl implements DataManageService {
                 flag = true;
             }
             if (flag) {
-//                scanTask();
+                scanTask();
                 AjaxLogParameter logParameter = new AjaxLogParameter(null);
                 Integer page_count = getPageCount(logParameter);
                 logParameter.setPage_num(page_count);
@@ -111,9 +111,8 @@ public class DataManageServiceImpl implements DataManageService {
     // 扫描任务数组
     public void scanTask() {
         if (log_dao.getRunningWorkNum() == 0) {
-            List<SqlLog> my_log = log_dao.getWaitWork();
-            if (my_log.size() > 0) {
-                SqlLog temp = my_log.get(0);
+            SqlLog temp = log_dao.getWaitWork();
+            if (temp != null) {
                 Task t = null;
                 if (temp.getType().equals("update")) {
                     t = new UpdateTask();
@@ -252,11 +251,11 @@ public class DataManageServiceImpl implements DataManageService {
         if (checkUserPsd(par.getUsername(), par.getPassword())) {
             par.setPlatform_id(1);
             List<Platform> a = new ArrayList<>();
-            Platform p = new Platform("淘客助手",goods_dao.getGoodsNum(par));
+            Platform p = new Platform("淘客助手", goods_dao.getGoodsNum(par));
             a.add(p);
 
             par.setPlatform_id(2);
-            p = new Platform("大淘客联盟",goods_dao.getGoodsNum(par));
+            p = new Platform("大淘客联盟", goods_dao.getGoodsNum(par));
             a.add(p);
             json.setCode("success");
             json.setSuccess(true);

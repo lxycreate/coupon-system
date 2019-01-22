@@ -6,13 +6,15 @@ var password = '';
 
 // 商品滚动条
 var goods_scroll;
-
+// 更新或清理
+var task_obj = {};
 // 作为获取日志的ajax参数
 var log_obj = {};
 // 获取商品数据的ajax参数
 var goods_obj = {};
-//
+//  数据分析参数
 var data_obj = {};
+// 图表
 var mychart;
 // 内容主体
 var js_main_container;
@@ -29,6 +31,7 @@ function initUserAndPsd() {
     if (temp != undefined) {
         username = temp.username;
         password = temp.password;
+        Cookies.remove('taoAssistant');
     } else {
         window.location.href = "login.html";
     }
@@ -228,6 +231,7 @@ function initContent() {
                 for (var i = 0; i < this.update_origin.length; ++i) {
                     this.update_origin[i].is_select = false;
                 }
+                initTaskObj();
             },
             selectUpdateItem: function (index) {
                 this.selectItem(this.update_origin, index);
@@ -265,6 +269,30 @@ function initContent() {
             cleanBeforeUpdate: function () {
                 this.is_clean = !this.is_clean;
             },
+            confirmUpdate: function () {
+                var flag = false;
+                if (this.update_origin[1].is_select) {
+                    task_obj['is_update_tkzs'] = true;
+                    if (this.is_clean) {
+                        task_obj['is_clean_tkzs'] = true;
+                    }
+                    flag = true;
+                }
+                if (this.update_origin[2].is_select) {
+                    task_obj['is_update_dtklm'] = true;
+                    if (this.is_clean) {
+                        task_obj['is_clean_dtklm'] = true;
+                    }
+                    flag = true;
+                }
+                if (flag) {
+                    task_obj['page_size'] = 10;
+                    ajaxCleanOrUpdate(task_obj);
+                    this.resetLogType();
+                    this.changeLogSortWay(true);
+                }
+                this.cancelUpdate();
+            },
             // 更新弹窗 end
             // 清理弹窗 start
             showCleanBox: function () {
@@ -284,12 +312,37 @@ function initContent() {
                 for (var i = 0; i < this.clean_origin.length; ++i) {
                     this.clean_origin[i].is_select = false;
                 }
+                initTaskObj();
             },
             selectCleanItem: function (index) {
                 this.selectItem(this.clean_origin, index);
             },
             updateAfterClean: function () {
                 this.is_update = !this.is_update;
+            },
+            confirmClean: function () {
+                var flag = false;
+                if (this.clean_origin[1].is_select) {
+                    task_obj['is_clean_tkzs'] = true;
+                    if (this.is_update) {
+                        task_obj['is_update_tkzs'] = true;
+                    }
+                    flag = true;
+                }
+                if (this.clean_origin[2].is_select) {
+                    task_obj['is_clean_dtklm'] = true;
+                    if (this.is_update) {
+                        task_obj['is_update_dtklm'] = true;
+                    }
+                    flag = true;
+                }
+                if (flag) {
+                    task_obj['page_size'] = 10;
+                    ajaxCleanOrUpdate(task_obj);
+                    this.resetLogType();
+                    this.changeLogSortWay(true);
+                }
+                this.cancelClean();
             },
             // 清理弹窗 end
             // 筛选日志类型
@@ -310,6 +363,7 @@ function initContent() {
             },
             // 改变日志排序方式
             changeLogSortWay: function (flag) {
+                log_obj['page_num'] = 1;
                 Velocity(this.$refs.js_sort_btn, 'stop');
                 if (flag) {
                     Velocity(this.$refs.js_sort_btn, {
@@ -416,6 +470,21 @@ function initContent() {
         }
         // 
     });
+}
+
+// 
+function initTaskObj() {
+    var flag = true;
+    task_obj = {};
+    if (username == undefined || username == '' || password == undefined || password == '') {
+        flag = false;
+    }
+    if (flag) {
+        task_obj['username'] = username;
+        task_obj['password'] = password;
+    } else {
+        window.location.href = "login.html";
+    }
 }
 
 // 初始化log_obj
@@ -644,49 +713,46 @@ function parseData(data) {
 // 加载图表
 function initChart(data) {
     // if (mychart == undefined) {
-        mychart = new Chart(js_main_container.$refs.js_data_chart, {
-            type: "pie",
-            data: data,
-            options: {
-                title: {
-                    display: true,
-                    text: '商品数据分析图',
-                    position: 'bottom',
-                    fontSize: 16,
-                    padding: 20
+    mychart = new Chart(js_main_container.$refs.js_data_chart, {
+        type: "pie",
+        data: data,
+        options: {
+            title: {
+                display: true,
+                text: '商品数据分析图',
+                position: 'bottom',
+                fontSize: 16,
+                padding: 20
+            },
+            legend: {
+                display: true,
+                labels: {
+                    fontColor: '#4c62bd',
+                    padding: 30
                 },
-                legend: {
-                    display: true,
-                    labels: {
-                        fontColor: '#4c62bd',
-                        padding: 30
-                    },
-                    position: 'bottom'
-                }
+                position: 'bottom'
             }
-        });
+        }
+    });
     // } else {
     //     console.log('update data');
     //     mychart.data.datasets = data.datasets;
     // }
 }
 
-function testUpdate() {
-    var temp = {};
-    temp['page_size'] = 10;
-    temp['page_num'] = 1;
-    temp['username'] = 'admin';
-    temp['password'] = '6323d5f91d07bb414a29c813c35c3660';
+// 更新清理事件
+function ajaxCleanOrUpdate(temp) {
+    console.log(temp);
     axios({
-        url: base_url + '/getData',
+        url: base_url + '/manage/data',
         method: 'post',
         params: temp
     }).then(function (response) {
-
-        console.log(response);
+        if (response != null && response.data != null && response.data.success) {
+            parseLogList(response.data);
+            console.log(response);
+        }
     }).catch(function (error) {
         console.log(error);
     });
 }
-
-// testUpdate();
