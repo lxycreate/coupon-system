@@ -4,6 +4,9 @@ var base_url = 'http://localhost:8066';
 var username = '';
 var password = '';
 
+// 商品滚动条
+var goods_scroll;
+
 // 作为获取日志的ajax参数
 var log_obj = {};
 // 获取商品数据的ajax参数
@@ -45,13 +48,13 @@ function initContent() {
                 }
             }, {
                 name: '数据查看',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-list2': true
                 }
             }, {
                 name: '数据分析',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-database': true
                 }
@@ -528,6 +531,24 @@ function parseGoodsList(data) {
             temp_list.push(temp);
         }
         js_main_container.goods_list = temp_list;
+    }
+    initGoodsScroll();
+}
+
+// 加载滚动条
+function initGoodsScroll() {
+    if (goods_scroll == undefined) {
+        goods_scroll = new BScroll('.js_goods_container', {
+            scrollY: true,
+            click: true,
+            scrollbar: {
+                fade: true,
+                interactive: false // 1.8.0 新增
+            },
+            mouseWheel: true
+        });
+    } else {
+        goods_scroll.refresh();
     }
 }
 

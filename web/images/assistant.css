@@ -634,9 +634,15 @@ li {
     width: 10%;
 }
 
-.main_body .right .container .content .goods_list {
+.main_body .right .container .content .goods_container {
+    position: relative;
     height: 410px;
-    overflow: auto;
+    overflow: hidden;
+}
+
+.main_body .right .container .content .goods_list {
+    /* height: 410px;
+    overflow: auto; */
 }
 
 .main_body .right .container .content .goods_list li {
