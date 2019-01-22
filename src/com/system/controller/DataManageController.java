@@ -3,6 +3,7 @@ package com.system.controller;
 import com.system.entity.AjaxDataManage;
 import com.system.entity.AjaxGoodsParameter;
 import com.system.entity.AjaxLogParameter;
+import com.system.entity.json.DataJson;
 import com.system.entity.json.GoodsJson;
 import com.system.entity.json.LogJson;
 import com.system.service.DataManageService;
@@ -45,5 +46,14 @@ public class DataManageController {
         AjaxGoodsParameter temp = new AjaxGoodsParameter(request);
         return service.getGoodsList(temp);
     }
+
+    // 获取商品列表
+    @RequestMapping(value = "/getData", method = RequestMethod.POST)
+    public @ResponseBody
+    DataJson getData() {
+        AjaxGoodsParameter temp = new AjaxGoodsParameter(request);
+        return service.getData(temp);
+    }
+
 
 }

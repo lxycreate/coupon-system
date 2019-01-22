@@ -4,6 +4,7 @@ package com.system.service.impl;
 import com.system.dao.GoodsDao;
 import com.system.dao.LogDao;
 import com.system.entity.*;
+import com.system.entity.json.DataJson;
 import com.system.entity.json.GoodsJson;
 import com.system.entity.json.LogJson;
 import com.system.entity.json.LoginJson;
@@ -15,8 +16,11 @@ import com.system.task.impl.UpdateTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -175,7 +179,7 @@ public class DataManageServiceImpl implements DataManageService {
             json.setPage_count(getGoodsPageCount(temp));
             if (temp.getPage_num() <= json.getPage_count()) {
                 json.setPage_num(temp.getPage_num());
-                List<Goods> goods_list = getGoodsListFromDataBase(temp,json.getPage_count());
+                List<Goods> goods_list = getGoodsListFromDataBase(temp, json.getPage_count());
                 json.setSuccess(true);
                 json.setCode("success");
                 json.setGoods_list(goods_list);
@@ -239,6 +243,29 @@ public class DataManageServiceImpl implements DataManageService {
             }
         }
         scanTask();
+    }
+
+    // 获取商品数量
+    @Override
+    public DataJson getData(AjaxGoodsParameter par) {
+        DataJson json = new DataJson();
+        if (checkUserPsd(par.getUsername(), par.getPassword())) {
+            par.setPlatform_id(1);
+            List<Platform> a = new ArrayList<>();
+            Platform p = new Platform("淘客助手",goods_dao.getGoodsNum(par));
+            a.add(p);
+
+            par.setPlatform_id(2);
+            p = new Platform("大淘客联盟",goods_dao.getGoodsNum(par));
+            a.add(p);
+            json.setCode("success");
+            json.setSuccess(true);
+            json.setPlatform(a);
+        } else {
+            json.setSuccess(false);
+            json.setCode("verify error");
+        }
+        return json;
     }
 
     // 备份

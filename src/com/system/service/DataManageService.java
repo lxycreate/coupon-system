@@ -3,6 +3,7 @@ package com.system.service;
 import com.system.entity.AjaxDataManage;
 import com.system.entity.AjaxGoodsParameter;
 import com.system.entity.AjaxLogParameter;
+import com.system.entity.json.DataJson;
 import com.system.entity.json.GoodsJson;
 import com.system.entity.json.LogJson;
 
@@ -21,4 +22,7 @@ public interface DataManageService {
 
     // 获取商品列表
     GoodsJson getGoodsList(AjaxGoodsParameter temp);
+
+    //获取商品数量
+    DataJson getData(AjaxGoodsParameter par);
 }

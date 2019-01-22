@@ -33,6 +33,7 @@
     <script src="../images/velocity.min.js"></script>
     <script src="../images/vue.js"></script>
     <script src="../images/bscroll.min.js"></script>
+    <script src="../images/Chart.min.js"></script>
 </head>
 
 <body>
@@ -46,8 +47,8 @@
                     <img class="txt" src="../images/title.png">
                 </span>
                 <ul class="btn_box">
-                    <li class="btn" v-for="btn in btns">
-                        <span class="name" v-bind:class="{btn_selected:btn.is_select}">
+                    <li class="btn" v-for="(btn,index) in btns">
+                        <span class="name" v-bind:class="{btn_selected:btn.is_select}" @click="clickLeftBtn(index)">
                             <i class="iconfont" v-bind:class="btn.icon_class"></i>
                             <span class="txt">{{btn.name}}</span>
                         </span>
@@ -263,9 +264,16 @@
                 <!-- 商品数据查看   end -->
                 <!-- 数据分析   start -->
                 <div class="container" v-show="btns[2].is_select">
-                    <div class="header"></div>
+                    <div class="header">
+                        <span class="location">
+                            <i class="iconfont icon-database"></i>
+                            <span class="txt">{{btns[2].name}}</span>
+                        </span>
+                    </div>
                     <div class="content">
-
+                        <div class="chart_box">
+                            <canvas class="data_chart" ref="js_data_chart"></canvas>
+                        </div>
                     </div>
                 </div>
                 <!-- 数据分析   end -->

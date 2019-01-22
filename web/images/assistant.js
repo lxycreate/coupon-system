@@ -11,14 +11,16 @@ var goods_scroll;
 var log_obj = {};
 // 获取商品数据的ajax参数
 var goods_obj = {};
+//
+var data_obj = {};
+var mychart;
 // 内容主体
 var js_main_container;
 // 初始化
 window.onload = function () {
     initUserAndPsd();
     initContent();
-    initGoodsObj();
-    ajaxGetGoodsList();
+    js_main_container.initDataManage();
 }
 
 // 初始化姓名和密码
@@ -28,7 +30,7 @@ function initUserAndPsd() {
         username = temp.username;
         password = temp.password;
     } else {
-        // window.location.href = "login.html";
+        window.location.href = "login.html";
     }
     //这里应该删除Cookie,开发过程为了方便先不删
 }
@@ -42,7 +44,7 @@ function initContent() {
             // 左侧按钮   start
             btns: [{
                 name: '数据管理',
-                is_select: false,
+                is_select: true,
                 icon_class: {
                     'icon-statsbars2': true
                 }
@@ -54,7 +56,7 @@ function initContent() {
                 }
             }, {
                 name: '数据分析',
-                is_select: true,
+                is_select: false,
                 icon_class: {
                     'icon-database': true
                 }
@@ -185,6 +187,21 @@ function initContent() {
         },
         // data  end
         methods: {
+            clickLeftBtn: function (index) {
+                for (var i = 0; i < this.btns.length; ++i) {
+                    this.btns[i].is_select = false;
+                }
+                this.btns[index].is_select = true;
+                if (index == 0) {
+                    this.initDataManage();
+                }
+                if (index == 1) {
+                    this.initGoodsArea();
+                }
+                if (index == 2) {
+                    this.initData();
+                }
+            },
             //  ======================================= 日志区域 =================================//
             // 初始化数据管理页
             initDataManage: function () {
@@ -390,8 +407,12 @@ function initContent() {
                         addToGoodsObj('page_num', e);
                     }
                 }
-            }
+            },
             //  ======================================= 商品区域 =================================//
+            initData: function () {
+                initDataObj();
+                ajaxGetData();
+            }
         }
         // 
     });
@@ -399,9 +420,17 @@ function initContent() {
 
 // 初始化log_obj
 function initLogObj() {
+    var flag = true;
     log_obj = {};
-    log_obj['username'] = "admin";
-    log_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
+    if (username == undefined || username == '' || password == undefined || password == '') {
+        flag = false;
+    }
+    if (flag) {
+        log_obj['username'] = username;
+        log_obj['password'] = password;
+    } else {
+        window.location.href = "login.html";
+    }
     log_obj['page_num'] = 1;
     log_obj['page_size'] = 10;
     log_obj['order'] = 'create_time asc';
@@ -481,9 +510,17 @@ function limitInput(event) {
 
 // 初始化goods_obj
 function initGoodsObj() {
+    var flag = true;
     goods_obj = {};
-    goods_obj['username'] = "admin";
-    goods_obj['password'] = "6323d5f91d07bb414a29c813c35c3660";
+    if (username == undefined || username == '' || password == undefined || password == '') {
+        flag = false;
+    }
+    if (flag) {
+        goods_obj['username'] = username;
+        goods_obj['password'] = password;
+    } else {
+        window.location.href = "login.html";
+    }
     goods_obj['page_num'] = 1;
     goods_obj['page_size'] = 10;
 }
@@ -552,12 +589,96 @@ function initGoodsScroll() {
     }
 }
 
+//
+function initDataObj() {
+    data_obj = {};
+    var flag = true;
+    if (username == undefined || username == '' || password == undefined || password == '') {
+        flag = false;
+    }
+    if (flag) {
+        data_obj['username'] = username;
+        data_obj['password'] = password;
+    } else {
+        window.location.href = "login.html";
+    }
+}
+
+// 
+function ajaxGetData() {
+    axios({
+        url: base_url + '/getData',
+        method: 'post',
+        params: data_obj
+    }).then(function (response) {
+        if (response != null && response.data != null && response.data.success) {
+            parseData(response.data);
+        }
+        // console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+// 解析数据
+function parseData(data) {
+    // console.log(data);
+    if (data.platform != null) {
+        var temp = {};
+        var labels = [];
+        var temp_data = [];
+        for (var i = 0; i < data.platform.length; ++i) {
+            labels.push(data.platform[i].name);
+            temp_data.push(data.platform[i].value);
+        }
+        temp.labels = labels;
+        var obj = {};
+        obj.data = temp_data;
+        obj.backgroundColor = ["#3f5683", "#3f98d0"];
+        temp.datasets = [];
+        temp.datasets.push(obj);
+        initChart(temp);
+    }
+}
+
+// 加载图表
+function initChart(data) {
+    // if (mychart == undefined) {
+        mychart = new Chart(js_main_container.$refs.js_data_chart, {
+            type: "pie",
+            data: data,
+            options: {
+                title: {
+                    display: true,
+                    text: '商品数据分析图',
+                    position: 'bottom',
+                    fontSize: 16,
+                    padding: 20
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: '#4c62bd',
+                        padding: 30
+                    },
+                    position: 'bottom'
+                }
+            }
+        });
+    // } else {
+    //     console.log('update data');
+    //     mychart.data.datasets = data.datasets;
+    // }
+}
+
 function testUpdate() {
     var temp = {};
     temp['page_size'] = 10;
     temp['page_num'] = 1;
+    temp['username'] = 'admin';
+    temp['password'] = '6323d5f91d07bb414a29c813c35c3660';
     axios({
-        url: base_url + '/getLogList',
+        url: base_url + '/getData',
         method: 'post',
         params: temp
     }).then(function (response) {

@@ -640,11 +640,6 @@ li {
     overflow: hidden;
 }
 
-.main_body .right .container .content .goods_list {
-    /* height: 410px;
-    overflow: auto; */
-}
-
 .main_body .right .container .content .goods_list li {
     font-size: 0;
     border-bottom: 1px solid #f4f5fc;
@@ -666,4 +661,11 @@ li {
 }
 
 /* =================  商品  end   ==================*/
+.main_body .right .container .content .chart_box {
+    position: relative;
+    width: 800px;
+    height: 400px;
+    margin: 50px auto 0 auto;
+}
+
 /* ===================================  右 end  ======================================= */
