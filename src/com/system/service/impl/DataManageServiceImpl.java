@@ -41,7 +41,7 @@ public class DataManageServiceImpl implements DataManageService {
     // 初始化静态变量
     @Override
     public void initTaskList() {
-        scanTask();
+        startServerAndScanTask();
     }
 
     // 检查用户名和密码
@@ -125,6 +125,24 @@ public class DataManageServiceImpl implements DataManageService {
                 t.setService(this);
                 t.run();
             }
+        }
+    }
+
+    // 启动服务器时扫描未完成任务
+    public void startServerAndScanTask() {
+        SqlLog temp = log_dao.getRunningWork();
+        if (temp != null) {
+            Task t = null;
+            if (temp.getType().equals("clean")) {
+                t = new CleanTask();
+            }
+            if (temp.getType().equals("update")) {
+                t = new UpdateTask();
+            }
+
+            t.setLog(temp);
+            t.setService(this);
+            t.run();
         }
     }
 

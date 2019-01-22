@@ -117,7 +117,10 @@
     <select id="getWaitWork" resultType="log">
        select * from log where status='wait' order by id asc limit 1
     </select>
-
+    <!--获取正在执行的且ID最小的任务-->
+    <select id="getRunningWork" resultType="log">
+       select * from log where  status = 'running' or status='wait' order by id asc limit 1
+    </select>
     <!--获取第几页日志-->
     <select id="getLogList" resultType="log">
         select * from log where 1 = 1

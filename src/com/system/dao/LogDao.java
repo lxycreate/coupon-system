@@ -27,6 +27,9 @@ public interface LogDao {
     // 获取ID值最小并且处于等待状态的任务
     SqlLog getWaitWork();
 
+    // 获取ID值最小并且处于运行状态的任务
+    SqlLog getRunningWork();
+
     // 获取第几页数据
     List<SqlLog> getLogList(AjaxLogParameter ajax);
 }
