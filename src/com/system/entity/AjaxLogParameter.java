@@ -93,6 +93,9 @@ public class AjaxLogParameter {
 
     public void setPage_num(Integer page_num) {
         this.page_num = page_num;
+        if (page_num > 0) {
+            start = (page_num - 1) * page_size;
+        }
     }
 
     public Integer getPage_size() {

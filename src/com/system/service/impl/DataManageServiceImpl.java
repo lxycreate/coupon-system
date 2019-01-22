@@ -81,6 +81,7 @@ public class DataManageServiceImpl implements DataManageService {
                 scanTask();
                 AjaxLogParameter logParameter = new AjaxLogParameter(null);
                 Integer page_count = getPageCount(logParameter);
+                logParameter.setPage_size(par.getPage_size());
                 logParameter.setPage_num(page_count);
                 logParameter.setUsername(par.getUsername());
                 logParameter.setPassword(par.getPassword());

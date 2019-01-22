@@ -31,7 +31,7 @@ function initUserAndPsd() {
     if (temp != undefined) {
         username = temp.username;
         password = temp.password;
-        Cookies.remove('taoAssistant');
+        // Cookies.remove('taoAssistant');
     } else {
         window.location.href = "login.html";
     }
@@ -691,7 +691,7 @@ function ajaxGetData() {
 
 // 解析数据
 function parseData(data) {
-    // console.log(data);
+    console.log(data);
     if (data.platform != null) {
         var temp = {};
         var labels = [];
