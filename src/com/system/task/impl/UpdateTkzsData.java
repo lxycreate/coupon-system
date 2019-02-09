@@ -32,9 +32,9 @@ public class UpdateTkzsData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("淘客助手页码: " + start_page);
         getGoodsData(start_page++);
-        if (start_page > 10) {
-            setStatusCode("success");
-        }
+//        if (start_page > 10) {
+//            setStatusCode("success");
+//        }
     }
 
     //获取数据
