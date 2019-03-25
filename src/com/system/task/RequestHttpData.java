@@ -83,7 +83,14 @@ public class RequestHttpData {
             httpUrlConn.disconnect();
         }
         if (strb.toString() != null)
-            return JSONObject.fromObject(strb.toString());
+        {
+            try {
+                return JSONObject.fromObject(strb.toString());
+            }
+            catch (Exception e){
+                return null;
+            }
+        }
         else
             return null;
     }
