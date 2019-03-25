@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49ca84d4-13e4-474c-b006-09627a96b31e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/TaoQuanSystem_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/TaoQuanSystem_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Spring_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Spring_MVC_4_3_18_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaoQuanSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TaoQuanSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/images/assistant.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/images/assistant.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/images/assistant.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/images/assistant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/assistant.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/assistant.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -243,12 +235,12 @@
       <updated>1552208177058</updated>
       <workItem from="1552208178399" duration="6463000" />
       <workItem from="1552224202498" duration="223000" />
-      <workItem from="1553498871963" duration="1250000" />
+      <workItem from="1553498871963" duration="1675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7936000" />
+    <option name="totallyTimeSpent" value="8361000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

@@ -364,7 +364,7 @@ function initContent() {
                 this.filter_btns[0].is_select = true;
             },
             // 重置排序方式
-            resetLogSortWay:function(){
+            resetLogSortWay: function () {
                 Velocity(this.$refs.js_sort_btn, {
                     'margin-top': '8px',
                     rotateZ: '0deg'
@@ -522,6 +522,12 @@ function addToLogObj(name, value) {
     ajaxGetLogList();
 }
 
+// 回车跳转
+function enterAndGetLog() {
+    js_main_container.jumpLog();
+    return false;
+}
+
 // 获取日志
 function ajaxGetLogList() {
     axios({
@@ -609,6 +615,12 @@ function initGoodsObj() {
 function addToGoodsObj(name, value) {
     goods_obj[name] = value;
     ajaxGetGoodsList();
+}
+
+// 回车跳转
+function enterAndGetGoods() {
+    js_main_container.jumpGoods();
+    return false;
 }
 
 // 获取商品列表

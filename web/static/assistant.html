@@ -124,7 +124,7 @@
                             <span class="next_page btn" v-show="!is_last_log_page" @click="nextLogPage">下一页</span>
                             <span class="end_page btn" v-show="!is_last_log_page" @click="lastLogPage">尾页</span>
                             <form class="form">
-                                <input class="input" type="text" onkeyup="limitInput(this)" v-model="log_page_input">
+                                <input class="input" type="text" onsubmit="enterAndGetLog()" onkeyup="limitInput(this)" v-model="log_page_input">
                             </form>
                             <span class="jump btn" @click="jumpLog">跳转</span>
                             <span class="total">共 {{log_page_count}} 页</span>
@@ -254,7 +254,7 @@
                             <span class="next_page btn" v-show="!is_last_goods_page" @click="nextGoodsPage">下一页</span>
                             <span class="end_page btn" v-show="!is_last_goods_page" @click="lastGoodsPage">尾页</span>
                             <form class="form">
-                                <input class="input" type="text" onkeyup="limitInput(this)" v-model="goods_page_input">
+                                <input class="input" type="text" onsubmit="enterAndGetGoods()" onkeyup="limitInput(this)" v-model="goods_page_input">
                             </form>
                             <span class="jump btn" @click="jumpGoods">跳转</span>
                             <span class="total">共 {{goods_page_count}} 页</span>
