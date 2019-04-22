@@ -11,4 +11,6 @@ public interface UpdateGoodsData {
     // 设置执行状态码
     void setStatusCode(String str);
 
+    // 将数据插入goods表
+    void insertIntoTableGoods();
 }

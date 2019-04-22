@@ -8,6 +8,9 @@ import com.system.task.UpdateGoodsData;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class UpdateTkzsData implements UpdateGoodsData {
 
@@ -32,9 +35,9 @@ public class UpdateTkzsData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("淘客助手页码: " + start_page);
         getGoodsData(start_page++);
-//        if (start_page > 10) {
-//            setStatusCode("success");
-//        }
+        if (start_page > 100) {
+            setStatusCode("success");
+        }
     }
 
     //获取数据
@@ -103,8 +106,7 @@ public class UpdateTkzsData implements UpdateGoodsData {
             } else {
                 setStatusCode("success");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             setStatusCode("success");
         }
     }
@@ -119,6 +121,15 @@ public class UpdateTkzsData implements UpdateGoodsData {
     @Override
     public void setStatusCode(String str) {
         this.status_code = str;
+    }
+
+    // 将数据插入goods表
+    @Override
+    public void insertIntoTableGoods() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String now_time = df.format(new Date());
+        dao.cleanGoods(now_time);
+        dao.insertIntoGoods(1);
     }
 
     // 检查商品是否已经存在

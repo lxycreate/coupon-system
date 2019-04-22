@@ -9,7 +9,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UpdateDtklmData implements UpdateGoodsData {
@@ -35,9 +37,9 @@ public class UpdateDtklmData implements UpdateGoodsData {
     public void runGetData() {
         System.out.println("大淘客联盟页码: " + start_page);
         getGoodsData(start_page++);
-//        if (start_page > 10) {
-//            setStatusCode("success");
-//        }
+        if (start_page > 100) {
+            setStatusCode("success");
+        }
     }
 
     // 获取第几页的数据
@@ -50,7 +52,7 @@ public class UpdateDtklmData implements UpdateGoodsData {
         if (temp != null) {
             parseGoodsJson(temp);
         } else {
-            System.out.println("无数据");
+            System.out.println("大淘客联盟无数据");
             setStatusCode("success");
         }
     }
@@ -123,6 +125,15 @@ public class UpdateDtklmData implements UpdateGoodsData {
     @Override
     public void setStatusCode(String str) {
         this.status_code = str;
+    }
+
+    // 将数据插入goods表
+    @Override
+    public void insertIntoTableGoods() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String now_time = df.format(new Date());
+        dao.cleanGoods(now_time);
+        dao.insertIntoGoods(2);
     }
 
     // 目录ID转换

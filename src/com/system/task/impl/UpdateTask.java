@@ -48,7 +48,7 @@ public class UpdateTask implements Task {
         log.setObj(obj);
         log.setStatus("wait");
         log.setCode("wait");
-        // 插入日志
+        // 插入日志表
         dao.insertLog(log);
         System.out.println("插入日志");
     }

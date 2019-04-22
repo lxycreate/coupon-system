@@ -25,4 +25,10 @@ public interface GoodsDao {
 
     // 获取商品列表
     List<SqlGoods> getGoodsList(AjaxGoodsParameter par);
+
+    // 清理goods表中过期数据
+    void cleanGoods(String date);
+
+    // 将goods_test中的数据插入goods中
+    void insertIntoGoods(Integer platform_id);
 }
