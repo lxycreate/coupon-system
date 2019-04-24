@@ -29,6 +29,9 @@ public interface GoodsDao {
     // 清理goods表中过期数据
     void cleanGoods(String date);
 
+    // 清理goods表中过期数据
+    void cleanGoodsByPlatformId(Integer id);
+
     // 将goods_test中的数据插入goods中
     void insertIntoGoods(Integer platform_id);
 }

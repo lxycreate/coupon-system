@@ -130,10 +130,19 @@ public class UpdateDtklmData implements UpdateGoodsData {
     // 将数据插入goods表
     @Override
     public void insertIntoTableGoods() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String now_time = df.format(new Date());
-        dao.cleanGoods(now_time);
+//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String now_time = df.format(new Date());
+//        dao.cleanGoods(now_time);
+        dao.cleanGoodsByPlatformId(2);
+//        try {
+//            Thread.currentThread().sleep(10000);//毫秒
+//        } catch (Exception e) {
+//        }
         dao.insertIntoGoods(2);
+//        try {
+//            Thread.currentThread().sleep(100000);//毫秒
+//        } catch (Exception e) {
+//        }
     }
 
     // 目录ID转换

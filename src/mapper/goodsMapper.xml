@@ -343,6 +343,11 @@
           delete from goods where coupon_end &lt;=#{date}
     </delete>
 
+    <!--清理goods表中的过期数据-->
+    <delete id="cleanGoodsByPlatformId">
+          delete from goods where platform_id =#{id}
+    </delete>
+
     <!--将goods_test中的数据插入goods中-->
     <insert id="insertIntoGoods">
           insert into goods select * from goods_test where platform_id = #{platform_id}
@@ -350,9 +355,9 @@
 
     <!--获取商品总数-->
     <select id="getGoodsNum" resultType="java.lang.Integer">
-       select count(*) from goods_test where 1 = 1
+        select count(*) from goods_test where 1 = 1
         <if test="platform_id != null">
-         and platform_id = #{platform_id}
+            and platform_id = #{platform_id}
         </if>
     </select>
 
