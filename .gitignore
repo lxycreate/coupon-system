@@ -4,3 +4,4 @@ node_modules/
 out/
 /out/
 workspace.xml
+.idea/workspace.xml
