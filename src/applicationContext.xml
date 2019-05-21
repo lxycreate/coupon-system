@@ -18,7 +18,7 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
         <property name="jdbcUrl" value="jdbc:mysql:///taobao?characterEncoding=utf-8"></property>
         <property name="user" value="root"></property>
-        <property name="password" value="123456"></property>
+        <property name="password" value="root"></property>
         <property name="initialPoolSize" value="5"></property>
         <property name="maxPoolSize" value="30"></property>
         <property name="maxStatements" value="100"></property>
