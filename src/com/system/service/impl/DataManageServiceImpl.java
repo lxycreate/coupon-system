@@ -59,25 +59,31 @@ public class DataManageServiceImpl implements DataManageService {
     // 新建更新或者清理任务
     @Override
     public LogJson updateOrClean(AjaxDataManage par) {
+        // 用户信息验证
         if (checkUserPsd(par.getUsername(), par.getPassword())) {
             Boolean flag = false;
+            // 清理淘客助手数据
             if (par.getIs_clean_tkzs()) {
                 createCleanTask("tkzs");
                 flag = true;
             }
+            // 清理大淘客联盟数据
             if (par.getIs_clean_dtklm()) {
                 createCleanTask("dtklm");
                 flag = true;
             }
+            // 更新淘客助手数据
             if (par.getIs_update_tkzs()) {
                 createUpdateTask("tkzs");
                 flag = true;
             }
+            // 更新大淘客联盟数据
             if (par.getIs_update_dtklm()) {
                 createUpdateTask("dtklm");
                 flag = true;
             }
             if (flag) {
+                // 扫描未完成任务
                 scanTask();
                 AjaxLogParameter logParameter = new AjaxLogParameter(null);
                 Integer page_count = getPageCount(logParameter);
@@ -85,6 +91,7 @@ public class DataManageServiceImpl implements DataManageService {
                 logParameter.setPage_num(page_count);
                 logParameter.setUsername(par.getUsername());
                 logParameter.setPassword(par.getPassword());
+                // 返回任务日志
                 return getLogList(logParameter);
             }
         }
@@ -157,7 +164,9 @@ public class DataManageServiceImpl implements DataManageService {
             if (ajax.getPage_num() <= json.getPage_count()) {
                 json.setPage_num(ajax.getPage_num());
             }
+            // 获取日志列表
             List<SqlLog> temp = getLogListFromDataBase(ajax, json.getPage_count());
+            // 设置执行码
             json.setSuccess(true);
             json.setCode("success");
             json.setLog_list(temp);

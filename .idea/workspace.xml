@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="49ca84d4-13e4-474c-b006-09627a96b31e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="168" column="5" selection-start-line="168" selection-start-column="5" selection-end-line="168" selection-end-column="5" />
+            <state relative-caret-position="341">
+              <caret line="157" selection-start-line="157" selection-end-line="177" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -76,13 +76,15 @@
     <option name="x" value="60" />
     <option name="y" value="23" />
     <option name="width" value="760" />
-    <option name="height" value="809" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,8 +162,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,11 +306,17 @@
       <workItem from="1558317270829" duration="1412000" />
       <workItem from="1558407701827" duration="2687000" />
       <workItem from="1558439772105" duration="224000" />
+      <workItem from="1558483581558" duration="477000" />
+      <workItem from="1558537481718" duration="141000" />
+      <workItem from="1558579129000" duration="330000" />
+      <workItem from="1558664949420" duration="225000" />
+      <workItem from="1558789073798" duration="922000" />
+      <workItem from="1558839461611" duration="239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40897000" />
+    <option name="totallyTimeSpent" value="43231000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,9 +329,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49910232" visible="true" weight="0.21816881" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49910232" visible="true" weight="0.2353362" />
       <window_info id="Structure" order="1" sideWeight="0.50089765" side_tool="true" weight="0.27825466" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -650,8 +655,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/system/service/impl/DataManageServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="168" column="5" selection-start-line="168" selection-start-column="5" selection-end-line="168" selection-end-column="5" />
+        <state relative-caret-position="341">
+          <caret line="157" selection-start-line="157" selection-end-line="177" selection-end-column="5" />
         </state>
       </provider>
     </entry>
