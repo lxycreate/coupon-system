@@ -1,8 +1,10 @@
-package com.system.task;
+package com.system.task.impl;
 
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
 import com.system.spring.SpringTool;
+import com.system.task.Task;
+import com.system.task.UpdateGoodsData;
 
 
 import java.text.SimpleDateFormat;
@@ -52,14 +54,6 @@ public class UpdateTimer extends TimerTask {
             task.end();
             goods_data.insertIntoTableGoods();
         }
-//        if (goods_data.getStatusCode() == "parse error") {
-//            this.cancel();
-//            end = true;
-//        }
-//        if (goods_data.getStatusCode() == "connection error") {
-//            this.cancel();
-//            end = true;
-//        }
     }
 
     // 设置获取商品数据类

@@ -14,9 +14,6 @@ public interface Task {
     // 结束任务
     void end();
 
-    // 设置service
-    void setService(DataManageService service);
-
     // 获取执行状态码
     String getStatus();
 

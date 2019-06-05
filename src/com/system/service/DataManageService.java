@@ -11,9 +11,6 @@ public interface DataManageService {
     // 任务
     LogJson updateOrClean(AjaxDataManage par);
 
-    // 扫描是否有待执行任务
-    void scanTask();
-
     // 初始化事件
     void initTaskList();
 

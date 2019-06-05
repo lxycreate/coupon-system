@@ -3,7 +3,7 @@ package com.system.task.impl;
 import com.system.dao.GoodsDao;
 import com.system.dao.LogDao;
 import com.system.entity.SqlLog;
-import com.system.service.DataManageService;
+import com.system.task.ProcessTask;
 import com.system.spring.SpringTool;
 import com.system.task.Task;
 
@@ -13,18 +13,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CleanTask implements Task {
+
+
+    private ProcessTask processTask;
     private GoodsDao goods_dao;  // 用于清理数据库
     private LogDao dao;     // 用于读取日志
     private Integer id;    //任务id
     private SqlLog log;   //log
-    private DataManageService service;  //service
     private String obj;     // 更新的对象
+
+    public CleanTask() {
+        processTask = new ProcessTask();
+        goods_dao = (GoodsDao) SpringTool.getBean("goodsDao");
+        dao = (LogDao) SpringTool.getBean("logDao");
+    }
 
     // 初始化
     @Override
     public void init(String obj) {
-        goods_dao = (GoodsDao) SpringTool.getBean("goodsDao");
-        dao = (LogDao) SpringTool.getBean("logDao");
         this.obj = obj;
     }
 
@@ -63,13 +69,7 @@ public class CleanTask implements Task {
     // 结束
     @Override
     public void end() {
-        service.scanTask();
-    }
-
-    // 设置服务
-    @Override
-    public void setService(DataManageService service) {
-        this.service = service;
+        processTask.scanTask();
     }
 
     // 获取状态码

@@ -10,19 +10,15 @@ import com.system.entity.json.LogJson;
 import com.system.entity.json.LoginJson;
 import com.system.service.DataManageService;
 import com.system.service.LoginService;
+import com.system.task.ProcessTask;
 import com.system.task.Task;
 import com.system.task.impl.CleanTask;
 import com.system.task.impl.UpdateTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 @Service
 public class DataManageServiceImpl implements DataManageService {
@@ -35,8 +31,6 @@ public class DataManageServiceImpl implements DataManageService {
 
     @Autowired
     GoodsDao goods_dao;
-
-    private static BlockingQueue<Task> queue;
 
     // 初始化静态变量
     @Override
@@ -59,32 +53,33 @@ public class DataManageServiceImpl implements DataManageService {
     // 新建更新或者清理任务
     @Override
     public LogJson updateOrClean(AjaxDataManage par) {
+        ProcessTask processTask = new ProcessTask();
         // 用户信息验证
         if (checkUserPsd(par.getUsername(), par.getPassword())) {
             Boolean flag = false;
             // 清理淘客助手数据
             if (par.getIs_clean_tkzs()) {
-                createCleanTask("tkzs");
+                processTask.createCleanTask("tkzs");
                 flag = true;
             }
             // 清理大淘客联盟数据
             if (par.getIs_clean_dtklm()) {
-                createCleanTask("dtklm");
+                processTask.createCleanTask("dtklm");
                 flag = true;
             }
             // 更新淘客助手数据
             if (par.getIs_update_tkzs()) {
-                createUpdateTask("tkzs");
+                processTask.createUpdateTask("tkzs");
                 flag = true;
             }
             // 更新大淘客联盟数据
             if (par.getIs_update_dtklm()) {
-                createUpdateTask("dtklm");
+                processTask.createUpdateTask("dtklm");
                 flag = true;
             }
             if (flag) {
                 // 扫描未完成任务
-                scanTask();
+                processTask.scanTask();
                 AjaxLogParameter logParameter = new AjaxLogParameter(null);
                 Integer page_count = getPageCount(logParameter);
                 logParameter.setPage_size(par.getPage_size());
@@ -96,43 +91,6 @@ public class DataManageServiceImpl implements DataManageService {
             }
         }
         return null;
-    }
-
-    // 创建更新任务
-    public void createUpdateTask(String obj) {
-        Task t = new UpdateTask();
-        t.setService(this);
-        t.init(obj);
-        t.createLog();
-        // queue.add(t);
-    }
-
-    // 创建清理任务
-    public void createCleanTask(String obj) {
-        Task t = new CleanTask();
-        t.setService(this);
-        t.init(obj);
-        t.createLog();
-    }
-
-    @Override
-    // 扫描任务数组
-    public void scanTask() {
-        if (log_dao.getRunningWorkNum() == 0) {
-            SqlLog temp = log_dao.getWaitWork();
-            if (temp != null) {
-                Task t = null;
-                if (temp.getType().equals("update")) {
-                    t = new UpdateTask();
-                }
-                if (temp.getType().equals("clean")) {
-                    t = new CleanTask();
-                }
-                t.setLog(temp);
-                t.setService(this);
-                t.run();
-            }
-        }
     }
 
     // 启动服务器时扫描未完成任务
@@ -148,7 +106,6 @@ public class DataManageServiceImpl implements DataManageService {
             }
 
             t.setLog(temp);
-            t.setService(this);
             t.run();
         }
     }
@@ -221,8 +178,11 @@ public class DataManageServiceImpl implements DataManageService {
     // 获取商品总页数
     public Integer getGoodsPageCount(AjaxGoodsParameter par) {
         Integer goods_num = goods_dao.getGoodsNum(par);
+        // 获取每页数据量
         Integer page_size = par.getPage_size();
+        // 获取页码总数
         Integer page_count = goods_num / page_size;
+        // 是否有余
         if (goods_num % page_size != 0) {
             page_count = page_count + 1;
         }
@@ -253,25 +213,6 @@ public class DataManageServiceImpl implements DataManageService {
         return goods_list;
     }
 
-    // 函数备份
-    public void backUpinitTaskList() {
-        if (queue == null) {
-            queue = new LinkedBlockingQueue<Task>();
-        }
-
-        List<SqlLog> temp = log_dao.getUnFinishWork();
-        for (int i = 0; i < temp.size(); ++i) {
-            SqlLog m = temp.get(i);
-            if (m.getType().equals("update")) {
-                Task t = new UpdateTask();
-                t.setLog(m);
-                t.setService(this);
-                queue.add(t);
-            }
-        }
-        scanTask();
-    }
-
     // 获取商品数量
     @Override
     public DataJson getData(AjaxGoodsParameter par) {
@@ -293,17 +234,6 @@ public class DataManageServiceImpl implements DataManageService {
             json.setCode("verify error");
         }
         return json;
-    }
-
-    // 备份
-    public void backUpscanTask() {
-        while (queue.peek() != null) {
-            Task t = queue.poll();
-            if (t.getStatus().equals("wait")) {
-                t.run();
-                break;
-            }
-        }
     }
 
 //
