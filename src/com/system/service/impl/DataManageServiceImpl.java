@@ -10,6 +10,7 @@ import com.system.entity.json.LogJson;
 import com.system.entity.json.LoginJson;
 import com.system.service.DataManageService;
 import com.system.service.LoginService;
+import com.system.task.AutoTask;
 import com.system.task.ProcessTask;
 import com.system.task.Task;
 import com.system.task.impl.CleanTask;
@@ -17,8 +18,7 @@ import com.system.task.impl.UpdateTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DataManageServiceImpl implements DataManageService {
@@ -32,10 +32,26 @@ public class DataManageServiceImpl implements DataManageService {
     @Autowired
     GoodsDao goods_dao;
 
-    // 初始化静态变量
+    // 开始自动更新与清理任务
+    public void startAutotask() {
+        AutoTask t = new AutoTask();
+        Timer temp_timer = new Timer();
+        Calendar now = Calendar.getInstance();
+        Integer hour = now.get(Calendar.HOUR_OF_DAY);
+        Integer minute = now.get(Calendar.MINUTE);
+        Integer second = now.get(Calendar.SECOND);
+        Integer delay = 1000 * 60 * 60 * 24 - hour * 1000 * 60 * 60 - minute * 60 * 1000 - second * 1000;
+        temp_timer.scheduleAtFixedRate(t, delay, 1000 * 60*60*24);
+    }
+
+    // 初始化
     @Override
     public void initTaskList() {
-        startServerAndScanTask();
+        ProcessTask temp = new ProcessTask();
+        // 扫描未完成任务
+        temp.scanTask();
+//        startServerAndScanTask();
+        startAutotask();
     }
 
     // 检查用户名和密码

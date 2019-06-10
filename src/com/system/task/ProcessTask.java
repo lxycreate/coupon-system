@@ -31,7 +31,7 @@ public class ProcessTask {
         t.createLog();
     }
 
-    // 扫描任务数组
+    // 扫描任务
     public void scanTask() {
         if (log_dao.getRunningWorkNum() == 0) {
             SqlLog temp = log_dao.getWaitWork();
